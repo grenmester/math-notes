@@ -1,0 +1,92 @@
+\documentclass[11pt,letterpaper,boxed]{hmcpset}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage, mathtools}
+\usepackage[usenames, dvipsnames, svgnames]{xcolor}
+\usepackage{amsthm, thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\pagestyle{fancy}
+\lhead{Jacky Lee}
+\chead{Abstract Algebra Notes}
+\rhead{February 14, 2017}
+\lfoot{}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+
+\linespread{1.1}
+
+\newcommand\blankpage{
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage}
+\renewcommand\footrulewidth{0.4pt}
+
+\newcommand{\define}[1]{\underline{\textbf{#1}}}
+
+\mdfdefinestyle{mdgreenbox}{%
+	roundcorner = 10pt,
+	linewidth=1pt,
+	skipabove=12pt,
+	innerbottommargin=9pt,
+	skipbelow=2pt,
+	linecolor=PineGreen,
+	nobreak=true,
+	backgroundcolor=SeaGreen!5,
+}
+
+\declaretheoremstyle[
+headfont=\bfseries\color{Emerald},
+mdframed={style=mdgreenbox},
+headpunct={\\[3pt]},
+postheadspace={0pt},
+]{thmgreenbox}
+
+\theoremstyle{definition}
+\declaretheorem[name=\color{Emerald}\bfseries Definition, numbered=no]{defi}
+%\declaretheorem[name=\color{ForestGreen}\bfseries Definition, numbered=no]{bdefi}
+\declaretheorem[style=thmgreenbox, name=Definition, numbered=no]{bdefi}
+
+
+\begin{document}
+\begin{center}
+    \LARGE{Abstract Algebra Notes}
+\end{center}
+
+\begin{defi}
+    A \define{map} $f:A \rightarrow B$ is a subset $f\subset A\times B$ such that for all $a\in A$, there exists a $b\in B$ such that $b$ is unique with $(a,b)\in f$.
+\end{defi}
+
+\begin{defi}
+    We write $f(a)=b$ if $(a,b)\in f$. $A$ is the \define{domain} of $f$ and $B$ is the \define{codomain}.
+\end{defi}
+
+\begin{defi}
+    A \define{binary operation} on $A$ is a map $\star:A\times A\rightarrow A$ such that $\star(a_1,a_2)=a_1\star a_2$ for $a_1,a_2\in A$.
+\end{defi}
+
+\begin{defi}
+    A binary operation $\star$ is \define{associative} on $A$ if for all $a,b,c\in A$, $a\star(b\star c)=(a\star b)\star c$.
+\end{defi}
+
+\begin{defi}
+    An element $e\in A$ is an \define{identity} element of $\star$ if for each $a\in A$, $e\star a=a\star e=a$.
+\end{defi}
+
+\begin{defi}
+    An element $a\in A$ has an \define{inverse} under $\star$ if there exists a $b\in A$ such that $a\star b=b\star a=e$.
+\end{defi}
+
+\begin{defi}
+    A set $A$ with an associative binary operation $\star$ is a \define{group} if $A$ has an identity element under $\star$ and every $a\in A$ has an inverse.
+\end{defi}
+
+\begin{bdefi}
+    A group is a pair $(G,\star)$ where $G$ is a set and $\star$ is a binary operation on $G$ such that
+    \begin{enumerate}
+        \item For all $a,b,c\in A$, $a\star(b\star c)=(a\star b)\star c$.
+        \item There exists an $e\in G$ such that $a\star e=e\star a=a$ for all $a\in G$.
+        \item For all $a\in G$, there exists a $b\in G$ such that $a\star b=b\star a=e$.
+    \end{enumerate}
+\end{bdefi}
+
+\end{document}
