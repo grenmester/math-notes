@@ -92,4 +92,65 @@ postheadspace={0pt},
     \end{enumerate}
 \end{bdefi}
 
+\begin{defi}
+    A group $(G,\star)$ is \define{abelian} or commutative if for all $g,h\in G$, $g\star h=h\star g$.
+\end{defi}
+
+\begin{thm}
+    Let $(G,\star)$ be a group.
+    \begin{enumerate}
+        \item $e$ is unique.
+        \item $g^{-1}$ is unique.
+        \item $\forall g\in G, \pn{g^{-1}}^{-1}=g$.
+        \item $\forall g,h\in G, (g\star h)^{-1}=h^{-1}\star g^{-1}$.
+    \end{enumerate}
+\end{thm}
+
+\begin{pf}\begin{samepage}
+    We may prove each part separately.
+    \begin{enumerate}
+        \item Suppose $e,e'$ are identity elements. Then for all $a\in G$,
+            \begin{align*}
+                a\star e&=e\star a=a\tag*{(i)}\\
+                a\star e'&=e'\star a=a\tag*{(ii)}
+            \end{align*}
+            By (i), $e'=e\star e'$ and by (ii), $e=e\star e'$. Therefore, $e=e'$.
+        \item Supposed $a\star b=b\star a=e$, then
+            \begin{align*}
+                b&=b\star e\\
+                 &=b\star(a\star a^{-1})\\
+                 &=(b\star a)\star a^{-1}\\
+                 &=e\star a^{-1}\\
+                 &=a^{-1}
+            \end{align*}
+            Thus, $b=a^{-1}$.
+        \item $g^{-1}\star \pn{g^{-1}}^{-1}=e=g^{-1}\star g$. By (ii), $g=\pn{g^{-1}}^{-1}$.
+        \item Consider $(a\star b)\star(b^{-1}\star a^{-1})$.
+            \begin{align*}
+                (a\star b)\star(b^{-1}\star a^{-1})&=a\star(b\star b^{-1})\star a^{-1}\\
+                                                   &=a\star e\star a^{-1}\\
+                                                   &=a\star a^{-1}\\
+                                                   &=e
+            \end{align*}
+            Thus, $(b^{-1}\star a^{-1})=(a\star b)^{-1}$.
+    \end{enumerate}
+\end{samepage}\end{pf}
+
+\begin{defi}
+    Let $[n]=\{1,2,\ldots,n\}$. The \define{symmetric group} denoted $S_n$ of degree $n$ is the set of all bijections on $[n]$ under the operation of composition.
+    $$S_n=\{\sigma:[n]\rightarrow[n]\mid\sigma\text{ is a bijection}\}$$
+\end{defi}
+
+\begin{defi}
+    The \define{order} of $(G,\star)$ is the number of elements in $G$ denoted $|G|$.
+\end{defi}
+
+\begin{defi}
+    Let $n\ge 2$. The \define{dihedral group} of index $n$ is the group of all symmetries of a regular polygon $P_n$ with $n$ vertices in the Euclidean plane.
+\end{defi}
+
+Symmetries of $P_n$ consist of rotations and reflections.\\
+
+Choose a vertex $v$. Let $L_0$ be the line from the center of $P_n$ through $v$. Let $L_k$ be $L_0$ rotated by $\frac{\pi k}{n}$ for $1\le k\le n$. Let $\sigma_k$ be a reflection about $L_k$. Let $\rho_k$ be a rotation about $\frac{2\pi k}{n}$, $1\le k\le n$.
+
 \end{document}
