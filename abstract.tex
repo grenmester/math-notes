@@ -14,6 +14,7 @@
 \rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
 
 \linespread{1.1}
+\setlength{\parindent}{0pt}
 
 \newcommand\blankpage{
     \thispagestyle{empty}
@@ -22,9 +23,10 @@
 \renewcommand\footrulewidth{0.4pt}
 
 \newcommand{\define}[1]{\underline{\textbf{#1}}}
+\newcommand{\pn}[1]{\left( #1 \right)}
 
 \mdfdefinestyle{mdgreenbox}{%
-	roundcorner = 10pt,
+	roundcorner=10pt,
 	linewidth=1pt,
 	skipabove=12pt,
 	innerbottommargin=9pt,
@@ -45,7 +47,8 @@ postheadspace={0pt},
 \declaretheorem[name=\color{Emerald}\bfseries Definition, numbered=no]{defi}
 %\declaretheorem[name=\color{ForestGreen}\bfseries Definition, numbered=no]{bdefi}
 \declaretheorem[style=thmgreenbox, name=Definition, numbered=no]{bdefi}
-
+\declaretheorem[name=\color{NavyBlue}\bfseries Theorem, numbered=no]{thm}
+\declaretheorem[name=\color{Cerulean}\bfseries Proof, numbered=no]{pf}
 
 \begin{document}
 \begin{center}
