@@ -291,4 +291,43 @@ $$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:
     Let $\emptyset\ne H\subseteq G$, $H\le G$ if and only if $\forall x,y\in H$, $xy^{-1}\in H$.
 \end{bthm}
 
+\begin{defi}
+    Let $A\subseteq G$ be any subset. The \define{centralizer} of $A$ in $G$ is $C_G(A)=\{g\in G:gag^{-1}=a\}$ and it is the set of elements in $G$ which commute with all elements of $A$.
+\end{defi}
+
+\begin{prop}
+    $C_G(A)\le G$
+\end{prop}
+
+\begin{pf}
+    First we show that the centralizer is not empty. $1a=a1=a$, $\forall a\in A$ $\Rightarrow$ $1\in C_G(A)$ $\Rightarrow$ $C_G(A)\ne0$ so the centralizer of $A$ is not empty. Let $x,y\in C_G(A)$. We want to show that $xy^{-1}\in C_G(A)$ or that $xy^{-1}\in C_G(A)$. We do this by showing that $\pn{xy^{-1}}a\pn{xy^{-1}}^{-1}=a$.
+    \begin{align*}
+        \pn{xy^{-1}}a\pn{xy^{-1}}^{-1}&=xy^{-1}ayx^{-1}\\
+        &=x\pn{y^{-1}ay}x^{-1}\\
+        &=xax^{-1}\tag*{($y\in C_G(A)$)}\\
+        &=a\tag*{($x\in C_G(A)$)}
+    \end{align*}
+    Since this subset satisfies the Subgroup Criterion, the centralizer $C_G(A)$ is a subgroup of $G$.
+\end{pf}
+
+\begin{defi}
+    The \define{center} of a group $G$ is denoted $Z(G)=\{g\in G:gx=xg,\ \forall x\in G\}$. $Z(G)=C_G(G)\le G$. $Z(G)$ is the set of elements of $G$ which commute with all elements in $G$. If $G$ is abelian, $Z(G)=G$.
+\end{defi}
+
+\begin{defi}
+    The \define{normalizer} of $A$ in $G$ is $N_G(A)=\{g\in G:gAg^{-1}=A\}$ or $\{g\in G:gag^{-1}=a'\in A\}$.
+\end{defi}
+
+\begin{prop}
+    $C_G(A)\le N_G(A)\le G$
+\end{prop}
+
+\begin{defi}
+    A \define{group action} of a group $G$ on a set $A$ is a map $G\times A\rightarrow A$ such that $(g_1g_2)\cdot a=g_1\cdot\pn{g_2\cdot a}$, $\forall g_1,g_2\in G$, $\forall a\in A$ and $1\cdot a=a$, $\forall a\in A$. It is denoted $G\circlearrowleft A$.
+\end{defi}
+
+\begin{defi}
+    Suppose $G\circlearrowleft A$, the stabilizer of $a\in A$ in $G$ is $G_a=\{g\in G:g\cdot a=a\}$. $G_a\le G$.
+\end{defi}
+
 \end{document}
