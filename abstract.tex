@@ -178,4 +178,117 @@ Symmetries of $P_n$ consist of rotations and reflections.\\
 
 Choose a vertex $v$. Let $L_0$ be the line from the center of $P_n$ through $v$. Let $L_k$ be $L_0$ rotated by $\frac{\pi k}{n}$ for $1\le k\le n$. Let $\sigma_k$ be a reflection about $L_k$. Let $\rho_k$ be a rotation about $\frac{2\pi k}{n}$, $1\le k\le n$.
 
+\begin{defi}
+    A subset $S\subseteq G$ of a group $(G,\star)$ is a set of \define{generators}, denoted $\langle S\rangle=G$, if and only if every element of $G$ can be written as a product of elements of $S$ and their inverses.
+\end{defi}
+
+\begin{defi}
+    Any equation satisfied by generators is called a \define{relation}.
+\end{defi}
+
+\begin{defi}
+    A \define{presentation} of $G$, denoted $\langle S\mid R\rangle$, is a set of generators of $G$ and relations such that any other relation can be derived by those given.
+\end{defi}
+
+\begin{ex}
+    $$D_{2n}=\langle r,s\mid r^n=s^2=1,rs=sr^{-1}\rangle$$
+\end{ex}
+
+\begin{defi}
+    The cycles $\sigma=(\sigma_1\ \sigma_2\ \ldots\ \sigma_n)$ and $\tau=(\tau_1\ \tau_2\ \ldots\ \tau_n)$ are \define{disjoint} if $\sigma_i\ne\tau_j$ for $1\le i\le n$ and $1\le j\le m$.
+\end{defi}
+
+\begin{defi}
+    A cycle of length 2 is called a \define{transposition}.
+\end{defi}
+
+\begin{defi}
+    An expression of the form $(a_1\ a_2\ \ldots\ a_m)$ is called a \define{cycle of length m} or an \define{m-cycle}.
+\end{defi}
+
+\begin{prop}
+    Let $\alpha=(a_1\ a_2\ \ldots\ a_m)$ and $\beta=(b_1\ b_2\ \ldots\ b_n)$. If $a_i\ne b_j$ for any $i,j$, then $\alpha\beta=\beta\alpha$.
+\end{prop}
+
+\begin{prop}
+    Every permutation can be written as a product of disjoint cycles.
+\end{prop}
+
+\begin{prop}
+    A cycle of length $n$ has order $n$.
+\end{prop}
+
+\begin{prop}
+    Let $\alpha_1,\alpha_2,\ldots,\alpha_n$ be disjoint cycles. Then,
+    $$|\alpha_1\alpha_2\ldots\alpha_n|=\lcm(|\alpha_1|,|\alpha_2|,\ldots,|\alpha_n|)$$
+\end{prop}
+
+\begin{prop}
+    Every permutation is $S_n$ is a product of 2-cycles (which are not necessarily disjoint).
+\end{prop}
+
+\begin{prop}
+    If $\alpha=\beta_1\beta_2\ldots\beta_r=\gamma_1\gamma_2\ldots\gamma_s$ where $\beta_i,\gamma_j$ are transpositions, then $r$ and $s$ have the same parity.
+\end{prop}
+
+\begin{defi}
+    If $r$ and $s$ are both odd, $\alpha$ is called an \define{odd permutation}. If $r$ and $s$ are both even, $\alpha$ is called an \define{even permutation}.
+\end{defi}
+
+\begin{defi}
+    The set of even permutations in $S_n$ form a group called the \define{alternating group}, denoted $A_n$.
+\end{defi}
+
+\begin{note}
+    $|A_n|=\frac{n!}{2}$ for $n>1$.
+\end{note}
+
+\begin{bdefi}
+    Let $(G,\star)$ and $(G',\ast)$ be groups. A map of sets $\hmap{G}{G'}$ is a \define{group homomorphism} if for all $a,b\in G$,
+    $$\varphi(a\star b)=\varphi(a)\ast\varphi(b)$$
+\end{bdefi}
+
+\begin{ex}
+    The following are two very simple examples of homomorphisms.\\\\
+    Trivial Homomorphism
+    $$\hmap{G}{G'},\varphi(g)=e,\forall g\in G$$
+    Identity Homomorphism
+    $$\hmap{G}{G'},\varphi(g)=g,\forall g\in G$$
+\end{ex}
+
+\begin{defi}
+    If $\hmap{G}{G'}$ is a homomorphism, the \define{domain} of $\varphi$ is $\text{Dom}(\varphi)=G$, the \define{codomain} of $\varphi$ is $\text{Codom}(\varphi)=G'$, the \define{range} or \define{image} of $\varphi$ is $\varphi(G)=\{\varphi(g):g\in G\}\subseteq G'$ denoted $\text{Range}(\varphi)$ or $\text{Im}(\varphi)$.
+\end{defi}
+
+\begin{bdefi}
+    A homomorphism which is bijective is called an \define{isomorphism}.
+\end{bdefi}
+
+$\hmap{G}{G'}$ is an isomorphism if and only if there exists $\hmap[\psi]{G'}{G}$ such that $\psi$ is a homomorphism and $\varphi\circ\psi=1_{G'}$, $\psi\circ\varphi=1_{G}$, i.e. $\psi$ is an inverse homomorphism to $\varphi$. We say $G$ is isomorphic to $G'$ by $G\cong G'$ or $\phi:G\xrightarrow{\sim}G'$.
+
+\begin{defi}
+    Let $(G,\star)$ be a group. A subset $H\subseteq G$ is a \define{subgroup} if $(H,\ast)$ is also a group.
+\end{defi}
+
+If $H\ne\emptyset$ and $H\subseteq G$, $H\le G$ or $H$ is a subgroup of $G$ if and only if
+\begin{enumerate}
+    \item $H$ is closed under $\star$ ($\forall h_1,h_2\in H$,\ $h_1\star h_2\in H$).
+    \item $H$ is closed under inverses ($h\in H\Rightarrow h^{-1}\in H$).
+\end{enumerate}
+
+\begin{note}
+    The following is notation for arbitrary and abelian groups.
+    \begin{center}
+        $x\star y\rightarrow xy$ for arbitrary $G$, $x+y$ for abelian $G$\\
+        $e\rightarrow1$ for arbitrary $G$, 0 for abelian $G$
+    \end{center}
+\end{note}
+
+For an arbitrary subset $A\subseteq G$, and $g\in G$,
+$$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
+
+\begin{bthm}
+    Let $\emptyset\ne H\subseteq G$, $H\le G$ if and only if $\forall x,y\in H$, $xy^{-1}\in H$.
+\end{bthm}
+
 \end{document}
