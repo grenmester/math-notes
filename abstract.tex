@@ -117,7 +117,7 @@ postheadspace={0pt},
 \begin{document}
 \begin{center}
     \vspace*{20pt}
-    \LARGE{Abstract Algebra Notes}
+    \LARGE{Scrawlings of the MagiKarp}
 \end{center}
 
 \begin{defi}
@@ -161,7 +161,7 @@ postheadspace={0pt},
     A group $(G,\star)$ is \define{abelian} or commutative if for all $g,h\in G$, $g\star h=h\star g$.
 \end{defi}
 
-\begin{thm}
+\begin{bthm}
     Let $(G,\star)$ be a group.
     \begin{enumerate}
         \item $e$ is unique.
@@ -169,9 +169,9 @@ postheadspace={0pt},
         \item $\forall g\in G, \pn{g^{-1}}^{-1}=g$.
         \item $\forall g,h\in G, (g\star h)^{-1}=h^{-1}\star g^{-1}$.
     \end{enumerate}
-\end{thm}
+\end{bthm}
 
-\begin{pf}\begin{samepage}
+\begin{bpf}
     We may prove each part separately.
     \begin{enumerate}
         \item Suppose $e,e'$ are identity elements. Then for all $a\in G$,
@@ -199,7 +199,7 @@ postheadspace={0pt},
             \end{align*}
             Thus, $(b^{-1}\star a^{-1})=(a\star b)^{-1}$.
     \end{enumerate}
-\end{samepage}\end{pf}
+\end{bpf}
 
 \begin{defi}
     Let $[n]=\{1,2,\ldots,n\}$. The \define{symmetric group} denoted $S_n$ of degree $n$ is the set of all bijections on $[n]$ under the operation of composition.
@@ -306,9 +306,9 @@ Choose a vertex $v$. Let $L_0$ be the line from the center of $P_n$ through $v$.
 
 $\hmap{G}{G'}$ is an isomorphism if and only if there exists $\hmap[\psi]{G'}{G}$ such that $\psi$ is a homomorphism and $\varphi\circ\psi=1_{G'}$, $\psi\circ\varphi=1_{G}$, i.e. $\psi$ is an inverse homomorphism to $\varphi$. We say $G$ is isomorphic to $G'$ by $G\cong G'$ or $\phi:G\xrightarrow{\sim}G'$.
 
-\begin{defi}
+\begin{bdefi}
     Let $(G,\star)$ be a group. A subset $H\subseteq G$ is a \define{subgroup} if $(H,\ast)$ is also a group.
-\end{defi}
+\end{bdefi}
 
 If $H\ne\emptyset$ and $H\subseteq G$, $H\le G$ or $H$ is a subgroup of $G$ if and only if
 \begin{enumerate}
