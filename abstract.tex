@@ -370,4 +370,85 @@ $$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:
     Suppose $G\circlearrowleft A$, the stabilizer of $a\in A$ in $G$ is $G_a=\{g\in G:g\cdot a=a\}$. $G_a\le G$.
 \end{defi}
 
+\begin{bdefi}
+    An \define{equivalence relation} $\mathcal{E}$ on a set $S$ is a subset $\mathcal{E}\subseteq S\times S$ which is reflexive, symmetric, and transitive. We write $(a,b)\in\mathcal{E}\Leftrightarrow a\mathrel\mathcal{E}b$ or $a\sim b$.
+    \begin{enumerate}
+        \item $a\sim a$
+        \item $a\sim b\Leftrightarrow b\sim a$
+        \item $a\sim b$, $b\sim c\Rightarrow a\sim c$
+    \end{enumerate}
+\end{bdefi}
+
+\begin{defi}
+    The \define{equivalence class} of $a\in S$ is $[a]=\{b\in S:a\sim b\}$
+\end{defi}
+
+\begin{defi}
+    The \define{quotient set} of $S$ under $\sim$ is $S$/$\sim=\{[a]:a\in S\}$.
+\end{defi}
+
+\begin{ex}
+    $\mathbb{Q}=\{(a,b)\in\mathbb{Z}\times\mathbb{Z}:b\ne 0\}$/$\sim$, $(a,b)\sim(c,d)\Rightarrow ad=bc$.
+\end{ex}
+
+\begin{defi}
+    The quotient set comes equipped with the \define{projection map} $\pi:S\rightarrow S$/$\sim$ where $a\mapsto[a]=\pi(a)$. This map is surjective by definition.
+\end{defi}
+
+\begin{bdefi}
+    A group $G'$ is a \define{quotient group} of a group $G$ if
+    \begin{enumerate}
+        \item $G'=G$/$\sim$, $G'$ is the quotient set of $G$ under an equivalence relation $\sim$.
+        \item The projection map $\hmap[\pi]{G}{G'}=G$/$\sim$ is a group homomorphism.
+    \end{enumerate}
+\end{bdefi}
+
+\begin{defi}
+    Let $\hmap{G}{G'}$ be a homomorphism and let $g'\in G'$. The \define{fiber} over $g'$ is $\varphi^{-1}(g')=\{g\in G:\varphi(g)=g'\}$.
+\end{defi}
+
+\begin{bprop}
+    All quotient groups come from subgroups.
+\end{bprop}
+
+\begin{bpf}
+    Let $\hmap{G}{G'}$ be a homomorphism, then $\varphi$ induces an equivalence relation on $G$. Let $x\sim y\Leftrightarrow\varphi(x)=\varphi(y)$. But $\varphi$ is a group homomorphism, so $\varphi(x)=\varphi(y)\Leftrightarrow\varphi(x)\varphi(y)^{-1}=1_{G'}\Leftrightarrow\varphi(x)\varphi(y^{-1})=1\Leftrightarrow\varphi(xy^{-1})=1$. So $x\sim y\Leftrightarrow\varphi(xy^{-1})=1$. Let $K=\{g\in G:\varphi(g)=1\}$. Then $x\sim y\Leftrightarrow xy^{-1}\in K$. Recall $K=\text{Ker}(\varphi)\le G$.\\\\
+    Let $G'$ be a quotient group of $G$. Then $x\sim y\Leftrightarrow[x]=[y]\Leftrightarrow\pi(x)=\pi(y)$ where $\hmap[\pi]{G}{G'}$ is the projection. But $\pi(x)=\pi(y)\Leftrightarrow xy^{-1}\in\text{Ker}(\varphi)$.
+\end{bpf}
+
+\begin{defi}
+    The \define{right coset} of a subgroup $H$ of a group $G$ by the element $x\in G$ is $Hx=\{hx:h\in H\}$. The \define{left coset}, denoted $xH$ is denoted similarly.
+\end{defi}
+
+\begin{prop}
+    Let $\hmap{G}{G'}$ be a homomorphism and $K=\text{Ker}(\varphi)$. Then $xKx^{-1}\subseteq K$, $\forall x\in G$.
+\end{prop}
+
+\begin{pf}
+    We must show $\varphi(xkx^{-1})=1_{G'}$ for $x\in G$, $k\in K$. Then, $\varphi(xkx^{-1})=\varphi(x)\varphi(k)\varphi(x^{-1})=\varphi(x)\varphi(x)^{-1}=1_{G'}$.
+\end{pf}
+
+\begin{bdefi}
+    The subgroup $N\le G$ is \define{normal} if $xNx^{-1}\subseteq N$ for all $x\in G$. It is denoted $N\unlhd G$.
+\end{bdefi}
+
+\begin{prop}
+    $\text{Ker}(\varphi)\unlhd G$ for any homomorphism $\hmap{G}{G'}$.
+\end{prop}
+
+\begin{bthm}
+    Let $N\le G$. Then the following are equivalent.
+    \begin{enumerate}
+        \item $N\unlhd G$ ($xNx^{-1}\subseteq N,\ \forall x\in G$)
+        \item $xNx^{-1}=N$
+        \item $xN=Nx$
+        \item $\forall x,y\in G,\ xy^{-1}\in N\Leftrightarrow y^{-1}x\in N$
+    \end{enumerate}
+\end{bthm}
+
+\begin{bpf}
+    $(1)\Rightarrow(2)$ Assume $\forall x\in G$, $xNx^{-1}\subseteq N$. We want to show $xNx^{-1}=N$. We do this by showing $N\subseteq xNx^{-1}$. Let $x\in G$, $n_0\in N$. We show $n_0\in xNx^{-1}$. Note that $x\in G\Rightarrow x^{-1}\in G$. Thus, $x^{-1}N\pn{x^{-1}}^{-1}\subseteq N$ since $N\unlhd G$. Thus there exists $n$ such that $x^{-1}nx=n_1\in N$. $n_0=x\pn{x^{-1}n_0x}x^{-1}=xn_1x^{-1}\in xNx^{-1}$.\\\\
+    $(3)\Rightarrow(4)$ Assume $\forall x\in G$, $xN=Nx$. Let $x,y\in G$. We want to show $xy^{-1}\in N\Leftrightarrow y^{-1}x\in N$. So we must show this is true in both directions. Suppose $xy^{-1}\in N$. Then there exists an $n_1\in N$ such that $xy^{-1}=n_1$. Thus, $x=n_1y\in Ny=yN$ by assumption. So $x\in yN$. Thus there exists $n_2\in N$ such that $x=yn_2\Rightarrow y^{-1}x=n_2\in N$. Thus, $xy^{-1}\in N\Rightarrow y^{-1}x\in N$. Similarly, $y^{-1}x\in N\Rightarrow xy^{-1}\in N$.
+\end{bpf}
+
 \end{document}
