@@ -301,7 +301,7 @@ Choose a vertex $v$. Let $L_0$ be the line from the center of $P_n$ through $v$.
 \end{ex}
 
 \begin{defi}
-    If $\hmap{G}{G'}$ is a homomorphism, the \define{domain} of $\varphi$ is $\text{Dom}(\varphi)=G$, the \define{codomain} of $\varphi$ is $\text{Codom}(\varphi)=G'$, the \define{range} or \define{image} of $\varphi$ is $\varphi(G)=\{\varphi(g):g\in G\}\subseteq G'$ denoted $\text{Range}(\varphi)$ or $\text{Im}(\varphi)$.
+    If $\hmap{G}{G'}$ is a homomorphism, the \define{domain} of $\varphi$ is $\text{Dom}(\varphi)=G$, the \define{codomain} of $\varphi$ is $\text{Codom}(\varphi)=G'$, the \define{range} or \define{image} of $\varphi$ is $\varphi(G)=\{\varphi(g):g\in G\}\subseteq G'$ denoted $\text{Range}(\varphi)$ or $\im$.
 \end{defi}
 
 \begin{bdefi}
@@ -331,7 +331,7 @@ If $H\ne\emptyset$ and $H\subseteq G$, $H\le G$ or $H$ is a subgroup of $G$ if a
 For an arbitrary subset $A\subseteq G$, and $g\in G$,
 $$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
 
-\begin{bthm}
+\begin{bthm}[Subgroup Criterion]
     Let $\emptyset\ne H\subseteq G$, $H\le G$ if and only if $\forall x,y\in H$, $xy^{-1}\in H$.
 \end{bthm}
 
@@ -416,8 +416,8 @@ $$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:
 \end{bprop}
 
 \begin{bpf}
-    Let $\hmap{G}{G'}$ be a homomorphism, then $\varphi$ induces an equivalence relation on $G$. Let $x\sim y\Leftrightarrow\varphi(x)=\varphi(y)$. But $\varphi$ is a group homomorphism, so $\varphi(x)=\varphi(y)\Leftrightarrow\varphi(x)\varphi(y)^{-1}=1_{G'}\Leftrightarrow\varphi(x)\varphi(y^{-1})=1\Leftrightarrow\varphi(xy^{-1})=1$. So $x\sim y\Leftrightarrow\varphi(xy^{-1})=1$. Let $K=\{g\in G:\varphi(g)=1\}$. Then $x\sim y\Leftrightarrow xy^{-1}\in K$. Recall $K=\text{Ker}(\varphi)\le G$.\\\\
-    Let $G'$ be a quotient group of $G$. Then $x\sim y\Leftrightarrow[x]=[y]\Leftrightarrow\pi(x)=\pi(y)$ where $\hmap[\pi]{G}{G'}$ is the projection. But $\pi(x)=\pi(y)\Leftrightarrow xy^{-1}\in\text{Ker}(\varphi)$.
+    Let $\hmap{G}{G'}$ be a homomorphism, then $\varphi$ induces an equivalence relation on $G$. Let $x\sim y\Leftrightarrow\varphi(x)=\varphi(y)$. But $\varphi$ is a group homomorphism, so $\varphi(x)=\varphi(y)\Leftrightarrow\varphi(x)\varphi(y)^{-1}=1_{G'}\Leftrightarrow\varphi(x)\varphi(y^{-1})=1\Leftrightarrow\varphi(xy^{-1})=1$. So $x\sim y\Leftrightarrow\varphi(xy^{-1})=1$. Let $K=\{g\in G:\varphi(g)=1\}$. Then $x\sim y\Leftrightarrow xy^{-1}\in K$. Recall $K=\ker\le G$.\\\\
+    Let $G'$ be a quotient group of $G$. Then $x\sim y\Leftrightarrow[x]=[y]\Leftrightarrow\pi(x)=\pi(y)$ where $\hmap[\pi]{G}{G'}$ is the projection. But $\pi(x)=\pi(y)\Leftrightarrow xy^{-1}\in\ker$.
 \end{bpf}
 
 \begin{defi}
@@ -425,7 +425,7 @@ $$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:
 \end{defi}
 
 \begin{prop}
-    Let $\hmap{G}{G'}$ be a homomorphism and $K=\text{Ker}(\varphi)$. Then $xKx^{-1}\subseteq K$, $\forall x\in G$.
+    Let $\hmap{G}{G'}$ be a homomorphism and $K=\ker$. Then $xKx^{-1}\subseteq K$, $\forall x\in G$.
 \end{prop}
 
 \begin{pf}
@@ -437,7 +437,7 @@ $$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:
 \end{bdefi}
 
 \begin{prop}
-    $\text{Ker}(\varphi)\unlhd G$ for any homomorphism $\hmap{G}{G'}$.
+    $\ker\unlhd G$ for any homomorphism $\hmap{G}{G'}$.
 \end{prop}
 
 \begin{bthm}
