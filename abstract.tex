@@ -455,4 +455,273 @@ $$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:
     $(3)\Rightarrow(4)$ Assume $\forall x\in G$, $xN=Nx$. Let $x,y\in G$. We want to show $xy^{-1}\in N\Leftrightarrow y^{-1}x\in N$. So we must show this is true in both directions. Suppose $xy^{-1}\in N$. Then there exists an $n_1\in N$ such that $xy^{-1}=n_1$. Thus, $x=n_1y\in Ny=yN$ by assumption. So $x\in yN$. Thus there exists $n_2\in N$ such that $x=yn_2\Rightarrow y^{-1}x=n_2\in N$. Thus, $xy^{-1}\in N\Rightarrow y^{-1}x\in N$. Similarly, $y^{-1}x\in N\Rightarrow xy^{-1}\in N$.
 \end{bpf}
 
+\begin{prop}
+    Let $H\le G$. Then, $x\sim y\Leftrightarrow y^{-1}x\in H$ is an equivalence relation on $G$.
+\end{prop}
+
+\begin{pf}
+    We want to show $\sim$ is reflexive, symmetric, and transitive.
+    \begin{enumerate}
+        \item $x\sim x$: $x^{-1}x=1\in H$
+        \item $x\sim y\Rightarrow y\sim x$: $x\sim y\Leftrightarrow y^{-1}x\in H\Rightarrow x^{-1}y\in H\Leftrightarrow y\sim x$
+        \item $x\sim y$, $y\sim z\Rightarrow x\sim z$: $y^{-1}x\in H$, $z^{-1}y\in H\Rightarrow(z^{-1}y)(y^{-1}x)=z^{-1}x\in H\Leftrightarrow x\sim z$
+    \end{enumerate}
+    Thus, $\sim$ is an equivalence relation on $G$.
+\end{pf}
+
+Any subgroup gives an equivalence relation.
+
+\begin{defi}
+    An equivalence relation on a set $S$ is the same as a \define{partition} of $S$. $P=\{A_1,A_2,\ldots\}$, $A_i\subseteq S$ such that $S\cup_{i\in\mathbb{N}}A_i$, $A_i\cap A_j=\emptyset$, $i\ne j$. $a\sim b\Leftrightarrow a,b\in A_i$.
+\end{defi}
+
+\begin{prop}
+    For $H\le G$, $x\sim y\Leftrightarrow y^{-1}x\in H\Leftrightarrow xH=yH\ (Hx=Hy)$.
+\end{prop}
+
+\begin{pf}
+    Suppose $y^{-1}x\in H$. We want to show that $xH=yH$ or $xH\subseteq yH$ and $yH\subseteq xH$. $y^{-1}x\in H$ implies that there exists a $h_1\in H$ such that $y^{-1}x=h_1$. Thus, $x=yh_1\Rightarrow x\in yH$. $y^{-1}x\in H\Leftrightarrow x^{-1}y\in H$ which implies that there exists a $h_2\in H$ such that $x^{-1}y=h_2\Rightarrow y=xh_2\in xH$.
+\end{pf}
+
+\begin{note}
+    $[x]=xH$.
+\end{note}
+
+\begin{prop}
+    For $N\le G$, let $G/N=\{xN:x\in G\}$. Define $xN\cdot yN=(xy)N$. Then $G/N$ is a group if and only if $N\unlhd G$.
+\end{prop}
+
+$G/N=G$/$\sim$ ($x\sim y\Leftrightarrow xN=yN$)\\
+
+Every quotient group is $G/N$ for some $N$.\\
+
+$\pi:G\rightarrow G$/$\sim$, $\ker[(\pi)]\unlhd G$, $G$/$\sim\ =G/\ker[(\pi)]$.
+
+\begin{prop}
+    If $H\le G$ and $G$ is abelian, then $H\unlhd G$.
+\end{prop}
+
+If $G$ is a group and $\sim$ is an equivalence relation on $G$, then the quotient set $G$/$\sim$ is a quotient group if and only if the projection map $\pi:G\rightarrow G$/$\sim$, $\pi(x)=[x]$ is a homomorphism.\\
+
+If $N\unlhd G$, then $G/N$ is a quotient group, where $G/N=\{xN:x\in G\}$ and $xN\cdot yN=(xy)N$.\\
+
+These notions of quotient groups are equivalent.
+
+\begin{prop}
+    If $\sim$ is an equivalence relation and $G$/$\sim$ is a quotient group, then there exists a homomorphism $\pi:G\rightarrow G$/$\sim$ and $\ker[(\pi)]\unlhd G$.
+\end{prop}
+
+\begin{pf}
+    $x\sim y\Leftrightarrow \pi(x)=\pi(y)\Leftrightarrow \pi(y^{-1}x)=1\Leftrightarrow y^{-1}x\in\ker[(\pi)]\Leftrightarrow x\ker[(\pi)]=y\ker[(\pi)]$.
+\end{pf}
+
+If $N\unlhd G$, define $x\sim y\Leftrightarrow xN=yN\Leftrightarrow y^{-1}x\in N$. Then, $G$/$\sim=G/N$, $[x]=xN$, $\hmap[\pi]{G}{G/N}$, $\pi(x)=xN$, $\ker[(\pi)]=N$.
+
+\begin{prop}
+    Every subgroup of an abelian group is a normal subgroup.
+\end{prop}
+
+\begin{defi}
+    $S^n\subseteq\mathbb{R}^{n+1}$, $S^n=\{(x_1,x_2,\ldots,x_{n+1}):\sum x_i^2=1\}$
+\end{defi}
+
+For $H\le G$, the relation $x\sim y\Leftrightarrow xH=yH\Leftrightarrow y^{-1}x\in H$ is an equivalence relation and thus partitions $G$ into equivalence classes.
+
+$$G=\bigcup\limits_{x\in G}[x],\ [x]\cap[y]=\emptyset,\ [x]\ne[y]$$
+$$G=\bigcup\limits_{x\in G}xH,\ xH\cap yH=\emptyset,\ x\nsim y$$
+
+\begin{prop}
+    Let $H\le G$. The number of right cosets of $H$ equals the number of left cosets of $H$.
+\end{prop}
+
+\begin{pf}
+    Let $R=\{Hx:x\in G\}$ and $L=\{xH:x\in G\}$. We construct a bijection $L\rightarrow R$. Define $\hmap[f]{R}{L}$ by $f(Hx)=x^{-1}H$, and define $\hmap[g]{L}{R}$ by $g(xH)=Hx^{-1}$. Then $f$ and $g$ are mutually inverse. Hence $R\leftrightarrow L$.
+\end{pf}
+
+\begin{defi}
+    The number of distinct left cosets of $H$ in $G$ is called the \define{index} of $H$ in $G$, and is denoted $[G:H]$.
+\end{defi}
+
+\begin{bthm}[Lagrange's Theorem]
+    If $H$ is a subgroup of $G$, $|G|=|H|[G:H]$.
+\end{bthm}
+
+\begin{cor}
+    In a finite group, the order of every element divides the order of the group.
+\end{cor}
+
+\begin{cor}
+    A group of prime order is cyclic.
+\end{cor}
+
+\begin{cor}
+    Let $G$ be a finite group and let $a\in G$. Then, $a^{|G|}=1$.
+\end{cor}
+
+Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? How can $\varphi$ fail to be an isomorphism?
+\begin{enumerate}
+    \item $\varphi$ could fail to be injective. $(\ker\ne\{1\})$
+    \item $\varphi$ could fail to be surjective.
+\end{enumerate}
+
+\begin{bthm}[First Isomorphism Theorem]
+    Let $\hmap{G}{G'}$ be a homomorphism. Then $\ker\unlhd G$, $\im\le G'$ and
+    $$G/\ker\cong\im$$
+\end{bthm}
+
+\begin{prop}
+    There exists an isomorphism $\hmap[\theta]{G/\ker}{\im}$ such that
+    \begin{center}
+        \begin{tikzcd}[column sep=huge, row sep=huge, every matrix/.append style={name=m}, execute at end picture={
+                    \draw [<-] ([xshift=-4.6em, yshift=1.2em]m-2-2.north) arc[start angle=-90,delta angle=270,radius=0.25cm];
+            }]
+            G \arrow[r, "\varphi"] \arrow[d, "\pi"] & G' \arrow[d, hookleftarrow, "\iota"] \\
+            G/\ker \arrow[r, "\theta"] & \im
+        \end{tikzcd}
+    \end{center}
+    The curved arrow in the middle means the diagram is commutative, i.e. $\varphi=\iota\cdot\theta\cdot\pi$. The curved arrow means it is injective.
+\end{prop}
+
+\begin{pf}
+    Define $\hmap[\theta]{G/\ker}{\im}$ by $\theta(x\ker)=\varphi(x)$.\\\\
+    First we show that $\theta$ is well-defined. Suppose $x\ker=y\ker$. Then,
+    \begin{align*}
+        x\ker=y\ker&\Leftrightarrow y^{-1}x\ker=\ker\\
+                   &\Leftrightarrow y^{-1}x\in\ker\\
+                   &\Leftrightarrow \varphi(y^{-1}x)=1\\
+                   &\Leftrightarrow \varphi(y)^{-1}\varphi(x)=1\\
+                   &\Leftrightarrow \varphi(x)=\varphi(y)\\
+                   &\Leftrightarrow \theta(x\ker)=\theta(y\ker)
+    \end{align*}
+    Thus, $\theta$ is well-defined.\\\\
+    Then, we show that $\theta$ is a homomorphism. Let $K=\ker$.
+    \begin{align*}
+        \theta(xKyK)&=\theta(xyK)\\
+                    &=\varphi(xy)\\
+                    &=\varphi(x)\varphi(y)\\
+                    &=\theta(xK)\theta(yK)
+    \end{align*}
+    Thus, $\theta$ is a homomorphism.\\\\
+    Then, we show that $\theta$ is injective.
+    \begin{align*}
+        \theta(xK)=\theta(yK)&\Leftrightarrow\varphi(x)=\varphi(y)\\
+                             &\Leftrightarrow\varphi(y)^{-1}\varphi(x)=1\\
+                             &\Leftrightarrow\varphi(y^{-1}x)=1\\
+                             &\Leftrightarrow y^{-1}x\in K\\
+                             &\Leftrightarrow xK=yK
+    \end{align*}
+    Thus, $\theta$ is injective.\\\\
+    Then, we show that $\theta$ is surjective. Let $y\in\im$. There exists $xK\in G/K$ such that $\theta(xK)=y$. We know there exists an $x\in G$ such that $\varphi(x)=y$. $\theta(xK)=\varphi(x)=y$. Thus, $\theta$ is surjective and $\theta$ is an isomorphism.
+\end{pf}
+
+\begin{prop}
+    Let $a\in G$. If $|a|=\infty$, then $\langle a\rangle\cong(\mathbb{Z},+)$. If $|a|=n$, then $\langle a\rangle=\mathbb{Z}_n=\mathbb{Z}/n\mathbb{Z}$.
+\end{prop}
+
+\begin{pf}
+    Consider $\mathbb{Z}\xrightarrow{\pi} G$ defined by $\pi(k)=a^k$.
+\end{pf}
+
+\begin{defi}
+    Let $(A,\star)$ and $(B,\ast)$ be groups. The \define{direct product} or \define{direct sum} of $A$ and $B$ is $A\oplus B=\{(a,b):a\in A,b\in B\}$ where $(a_1,b_1)\cdot(a_2,b_2)=(a_1\star a_2,b_1\ast b_2)\in A\oplus B$.
+\end{defi}
+
+\begin{defi}
+    In a group $G$, define $a\sim b\Leftrightarrow\exists x\in G$ such that $b=xax^{-1}$. This is an equivalence relation and $a$ and $b$ are \define{conjugates}.
+\end{defi}
+
+\begin{defi}
+    For any $x\in G$, the \define{inner automorphism} of $G$ induced by $x$ is $\hmap[T_x]{G}{G}$ defined by $T_x(g)=xgx^{-1}$.
+\end{defi}
+
+\begin{defi}
+    The set of all inner automorphisms of $G$ is a group, called the \define{inner automorphism group}, and is denoted $\text{Inn}(G)=\{\hmap[T_x]{G}{G}\mid x\in G\}$.
+\end{defi}
+
+\begin{prop}
+    $G/Z(G)\cong\text{Inn}(G)$
+\end{prop}
+
+\begin{pf}
+    Consider $\hmap[\psi]{G}{\text{Inn}(G)}$ defined by $x\mapsto T_x$. Then, $\psi$ is surjective, i.e. $\im[(\psi)]=\text{Inn}(G)$. We then determine the kernel of the homomorphism.
+    \begin{align*}
+        \ker[(\psi)]&=\{x\in G:\psi(x)=1_G\}\\
+                    &=\{x\in G:T_x(g)=g,\ \forall g\in G\}\\
+                    &=\{x\in G:xgx^{-1}=g,\ \forall g\in G\}\\
+                    &=\{x\in G:xg=gx,\ \forall g\in G\}\\
+                    &=Z(G)
+    \end{align*}
+    By the first isomorphism theorem, $G/Z(G)\cong\text{Inn}(G)$.
+\end{pf}
+
+\begin{bthm}[Third Isomorphism Theorem]
+    Let $G$ be a group. Let $A\unlhd G$, $B\unlhd G$. If $A\subseteq B$, then $A\unlhd B$, $B/A\unlhd G/A$, and
+    $$(G/A)/(B/A)\cong(G/B)$$
+\end{bthm}
+
+\begin{bpf}
+    First we establish $A\unlhd B$. $A\le B$ because $A\le G$ and $A\subseteq B$.
+    $$A\unlhd B\Leftrightarrow bAb^{-1}\subseteq A,\ \forall b\in B$$
+    $$A\unlhd G\Leftrightarrow xAx^{-1}\subseteq A,\ \forall x\in G$$
+    But $B\subseteq G$ so $b\in G$. Thus, $bAb^{-1}\subseteq A$, $\forall b\in B$ and $A\unlhd B$. Thus, $A\unlhd B$ and we may construct $B/A$.\\\\
+    We first show $B/A\le G/A$. It is closed under multiplication since $(b_1A)(b_2A)=(b_1b_2)A\in B/A$ because $B$ is a group. It is also closed under inverses since $(bA)^{-1}=b^{-1}A\in B/A$.\\\\
+    We then show $B/A\unlhd G/A$ by showing $x(B/A)x^{-1}\subseteq B/A$, $\forall x\in G/A$. Let $x\in G/A\Leftrightarrow yA$, $y\in G$. We want to show $(yA)(B/A)(yA)^{-1}\subseteq B/A$. Let $z\in(yA)(B/A)(yA)^{-1}$. Then, there exist $a_1,a_2\in A$, $b_1\in B$ such that
+    \begin{align*}
+        z&=(ya_1)(b_1A)(y^{-1}a_2)\\
+         &=y(a_1b_1)Ay^{-1}a_2\\
+         &=y(a_1b_1)y^{-1}Aa_2
+    \end{align*}
+    We know $a_2\in A\Rightarrow Aa_2=A$ and $A\subseteq B\Rightarrow a_1\in A\subseteq B\Rightarrow a_1\in A\Rightarrow a_1b_1\in B$. Thus, there exists $b_2\in B$ such that $a_1b_1=b_2$. We substitute these in to get
+    $$z=yb_2y^{-1}A$$
+    We know $B\unlhd G\Rightarrow yBy^{-1}\subseteq B$. Thus, there exists a $b_3\in B$ such that $yb_2y^{-1}=b_3\in B$. We then get $z=b_3A$. Since $z=b_3A\in B/A$, $B/A\unlhd G/A$.\\\\
+    Now we prove $(G/A)/(B/A)\cong(G/B)$. We define the homomorphism $\hmap[\omega]{G/A}{B/A}$ such that $\omega(xA)=xB$. We show that $\omega$ is well-defined. If $xA=yA$, then
+    \begin{align*}
+        xA=yA&\Leftrightarrow y^{-1}x\in A\subseteq B\\
+             &\Rightarrow y^{-1}x\in B\\
+             &\Leftrightarrow xB=yB\\
+             &\Leftrightarrow\omega(xA)=\omega(yA)
+    \end{align*}
+    We may then determine the kernel and image of the homomorphism.
+    $$\im[(\omega)]=\{xB:x\in G\}=G/B$$
+    $$\ker[(\omega)]=\{xA:\omega(xA)=B\}=\{xA:xB=B\}=\{xA:x\in B\}=B/A$$
+    By the first isomorphism theorem, $(G/A)/\ker[(\omega)]\cong\im[(\omega)]$ so $(G/A)/(B/A)\cong(G/B)$.
+\end{bpf}
+
+\begin{prop}
+    There is an isomorphism $\hmap[\theta]{(G/A)/(B/A)}{G/B}$ such that this diagram commutes.
+    \begin{center}
+        \begin{tikzcd}[column sep=huge, row sep=huge]
+            & G/A \arrow[dl, "\pi"] \arrow[dr, "\sigma"] \arrow[dd, "\omega"]& \\
+            G \arrow[dr, "\rho"] & & (G/A)/(B/A) \arrow[dl, "\theta"] \\
+            & G/B &
+        \end{tikzcd}
+    \end{center}
+\end{prop}
+
+\begin{bthm}[Second Isomorphism Theorem]
+    Let $G$ be a group, $A\le G$, and $N\unlhd G$. Then $AN\le G$, $N\unlhd AN$, and $A\cap N\unlhd A$. Also,
+    $$(AN)/N\cong A/(A\cap N)$$
+\end{bthm}
+
+\begin{bpf}
+    Let $\hmap{A}{AN/N}$ such that $a\mapsto aN$. Then by the first isomorphism theorem, $(AN)/N\cong A/(A\cap N)$.
+\end{bpf}
+
+\begin{ex}
+    We look at an example of the third isomorphism theorem. Let $G=\mathbb{Z}$, $A=12\mathbb{Z}$, and $B=4\mathbb{Z}$. We observe that $A\unlhd B\unlhd G$ so the conditions for the third isomorphism theorem are satisfied.
+    $$G/A=\mathbb{Z}/12\mathbb{Z}=\{0,1,\ldots,11\}(\text{mod }12)$$
+    $$B/A=4\mathbb{Z}/12\mathbb{Z}=\{0,4,8\}(\text{mod }12)$$
+    $$(G/A)/(B/A)=\{0,1,2,3\}(\text{mod }4)=\mathbb{Z}/4\mathbb{Z}$$
+    $$(\mathbb{Z}/12\mathbb{Z})/(4\mathbb{Z}/12\mathbb{Z})\cong\mathbb{Z}/4\mathbb{Z}$$
+\end{ex}
+
+\begin{ex}
+    We look at an example of the second isomorphism theorem. Let $G=\mathbb{Z}$, $N=12\mathbb{Z}$, and $A=8\mathbb{Z}$.
+    $$A\cap N=\{0,\pn24,\pn48,\ldots\}=24\mathbb{Z}$$
+    $$AN=\{0,\pn4,\pn8,\ldots\}=4\mathbb{Z}$$
+    $$AN/A=4\mathbb{Z}/12\mathbb{Z}=\{0,4,8\}(\text{mod }12)$$
+    $$A/(A\cap N)=8\mathbb{Z}/24\mathbb{Z}=\{0,8,16\}(\text{mod }24)$$
+    $$AN/N\cong\mathbb{Z}/3\mathbb{Z}\cong A/(A\cap N)$$
+\end{ex}
+
 \end{document}
