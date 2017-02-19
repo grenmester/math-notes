@@ -5,6 +5,7 @@
 \usepackage{amsthm, thmtools}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{mathpazo}
+\usepackage{tikz-cd}
 
 \pagestyle{fancy}
 \lhead{Jacky Lee}
@@ -27,6 +28,8 @@
 \newcommand{\pn}[1]{\left( #1 \right)}
 \newcommand{\hmap}[3][\varphi]{%
     #1:#2\rightarrow#3}
+\renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
+\newcommand{\im}[1][(\varphi)]{\text{Im}#1}
 
 \DeclareMathOperator{\lcm}{lcm}
 
@@ -113,6 +116,7 @@ postheadspace={0pt},
 \declaretheorem[name=\color{Plum}\bfseries Proposition, numbered=no]{prop}
 \declaretheorem[style=thmpurplebox, name=Proposition, numbered=no]{bprop}
 \declaretheorem[name=\color{Blue}\bfseries Note, numbered=no]{note}
+\declaretheorem[name=\color{Gray}\bfseries Corollary, numbered=no]{cor}
 
 \begin{document}
 \begin{center}
