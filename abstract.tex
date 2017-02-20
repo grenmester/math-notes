@@ -572,8 +572,8 @@ Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? 
 \begin{prop}
     There exists an isomorphism $\hmap[\theta]{G/\ker}{\im}$ such that
     \begin{center}
-        \begin{tikzcd}[column sep=huge, row sep=huge, every matrix/.append style={name=m}, execute at end picture={
-                    \draw [<-] ([xshift=-4.6em, yshift=1.2em]m-2-2.north) arc[start angle=-90,delta angle=270,radius=0.25cm];
+        \begin{tikzcd}[column sep={8em,between origins}, row sep=6em, every matrix/.append style={name=m}, execute at end picture={
+                    \draw [<-] ([xshift=-4em, yshift=2.25em]m-2-2.north) arc[start angle=-90,delta angle=270,radius=0.25cm];
             }]
             G \arrow[r, "\varphi"] \arrow[d, "\pi"] & G' \arrow[d, hookleftarrow, "\iota"] \\
             G/\ker \arrow[r, "\theta"] & \im
@@ -690,7 +690,7 @@ Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? 
 \begin{prop}
     There is an isomorphism $\hmap[\theta]{(G/A)/(B/A)}{G/B}$ such that this diagram commutes.
     \begin{center}
-        \begin{tikzcd}[column sep=huge, row sep=huge]
+        \begin{tikzcd}[column sep={6em,between origins}, row sep=huge]
             & G/A \arrow[dl, "\pi"] \arrow[dr, "\sigma"] \arrow[dd, "\omega"]& \\
             G \arrow[dr, "\rho"] & & (G/A)/(B/A) \arrow[dl, "\theta"] \\
             & G/B &
