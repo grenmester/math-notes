@@ -125,7 +125,7 @@ Symmetries of $P_n$ consist of rotations and reflections.\\
 Choose a vertex $v$. Let $L_0$ be the line from the center of $P_n$ through $v$. Let $L_k$ be $L_0$ rotated by $\frac{\pi k}{n}$ for $1\le k\le n$. Let $\sigma_k$ be a reflection about $L_k$. Let $\rho_k$ be a rotation about $\frac{2\pi k}{n}$, $1\le k\le n$.
 
 \begin{defi}
-    A subset $S\subseteq G$ of a group $(G,\star)$ is a set of \define{generators}, denoted $\langle S\rangle=G$, if and only if every element of $G$ can be written as a product of elements of $S$ and their inverses.
+    A subset $S\subseteq G$ of a group $(G,\star)$ is a set of \define{generators}, denoted $\langle S\rangle=G$, if and only if every element of $G$ can be written as a finite product of elements of $S$ and their inverses.
 \end{defi}
 
 \begin{defi}
@@ -576,7 +576,7 @@ Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? 
     We know $a_2\in A\Rightarrow Aa_2=A$ and $A\subseteq B\Rightarrow a_1\in A\subseteq B\Rightarrow a_1\in A\Rightarrow a_1b_1\in B$. Thus, there exists $b_2\in B$ such that $a_1b_1=b_2$. We substitute these in to get
     $$z=yb_2y^{-1}A$$
     We know $B\unlhd G\Rightarrow yBy^{-1}\subseteq B$. Thus, there exists a $b_3\in B$ such that $yb_2y^{-1}=b_3\in B$. We then get $z=b_3A$. Since $z=b_3A\in B/A$, $B/A\unlhd G/A$.\\\\
-    Now we prove $(G/A)/(B/A)\cong(G/B)$. We define the homomorphism $\hmap[\omega]{G/A}{B/A}$ such that $\omega(xA)=xB$. We show that $\omega$ is well-defined. If $xA=yA$, then
+    Now we prove $(G/A)/(B/A)\cong(G/B)$. We define the homomorphism $\hmap[\omega]{G/A}{G/B}$ such that $\omega(xA)=xB$. We show that $\omega$ is well-defined. If $xA=yA$, then
     \begin{align*}
         xA=yA&\Leftrightarrow y^{-1}x\in A\subseteq B\\
              &\Rightarrow y^{-1}x\in B\\
