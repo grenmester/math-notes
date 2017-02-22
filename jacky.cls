@@ -20,15 +20,19 @@
 
 \DeclareMathOperator{\lcm}{lcm}
 
+\pgfdeclarehorizontalshading{mdgreenbg}{100bp}
+{color(0bp)=(SeaGreen!15); color(50bp)=(White); color(100bp)=(SeaGreen!15)}
+
 \mdfdefinestyle{mdgreenbox}{%
-	roundcorner=10pt,
+    topline=false,
+    bottomline=false,
+    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+    shading = mdgreenbg}}},
 	linewidth=1pt,
 	skipabove=12pt,
-	innerbottommargin=9pt,
 	skipbelow=2pt,
 	linecolor=PineGreen,
 	nobreak=true,
-	backgroundcolor=SeaGreen!5,
 }
 
 \declaretheoremstyle[
@@ -38,15 +42,19 @@ headpunct={\\[3pt]},
 postheadspace={0pt},
 ]{thmgreenbox}
 
+\pgfdeclarehorizontalshading{mdcyanbg}{100bp}
+{color(0bp)=(CornflowerBlue!15); color(50bp)=(White); color(100bp)=(CornflowerBlue!15)}
+
 \mdfdefinestyle{mdcyanbox}{%
-	roundcorner=10pt,
+    topline=false,
+    bottomline=false,
+    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+    shading = mdcyanbg}}},
 	linewidth=1pt,
 	skipabove=12pt,
-	innerbottommargin=9pt,
 	skipbelow=2pt,
 	linecolor=RoyalBlue,
 	nobreak=true,
-	backgroundcolor=CornflowerBlue!5,
 }
 
 \declaretheoremstyle[
@@ -56,15 +64,19 @@ headpunct={\\[3pt]},
 postheadspace={0pt},
 ]{thmcyanbox}
 
+\pgfdeclarehorizontalshading{mdbluebg}{100bp}
+{color(0bp)=(BlueViolet!15); color(50bp)=(White); color(100bp)=(BlueViolet!15)}
+
 \mdfdefinestyle{mdbluebox}{%
-	roundcorner=10pt,
+    topline=false,
+    bottomline=false,
+    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+    shading = mdbluebg}}},
 	linewidth=1pt,
 	skipabove=12pt,
-	innerbottommargin=9pt,
 	skipbelow=2pt,
 	linecolor=MidnightBlue,
 	nobreak=true,
-	backgroundcolor=BlueViolet!5,
 }
 
 \declaretheoremstyle[
@@ -74,15 +86,19 @@ headpunct={\\[3pt]},
 postheadspace={0pt},
 ]{thmbluebox}
 
+\pgfdeclarehorizontalshading{mdpurplebg}{100bp}
+{color(0bp)=(Orchid!15); color(50bp)=(White); color(100bp)=(Orchid!15)}
+
 \mdfdefinestyle{mdpurplebox}{%
-	roundcorner=10pt,
+    topline=false,
+    bottomline=false,
+    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+    shading = mdpurplebg}}},
 	linewidth=1pt,
 	skipabove=12pt,
-	innerbottommargin=9pt,
 	skipbelow=2pt,
 	linecolor=DarkOrchid,
 	nobreak=true,
-	backgroundcolor=Orchid!5,
 }
 
 \declaretheoremstyle[
