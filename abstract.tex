@@ -626,4 +626,134 @@ Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? 
     $$AN/N\cong\mathbb{Z}/3\mathbb{Z}\cong A/(A\cap N)$$
 \end{ex}
 
+\begin{bdefi}
+    A ring $(R,+,\cdot)$ is a set together with two binary operations, called addition and multiplication respectively, satisfying the following three axioms.
+    \begin{enumerate}[(a)]
+        \item The set $(R,+)$ together with addition is an abelian group.
+        \item The binary operation $\cdot$ is associative on $R$.
+        \item The distributive law holds in $R$; for all $a,b,c\in R$,
+            $$(a+b)\cdot c=(a\cdot c)+(b\cdot c)$$
+            $$a\cdot(b+c)=(a\cdot b)+(a\cdot c)$$
+    \end{enumerate}
+\end{bdefi}
+
+\begin{defi}
+    The ring $R$ is \define{commutative} if multiplication is commutative.
+\end{defi}
+
+\begin{defi}
+    The ring $R$ has an \define{identity}, or \define{unity} or contains a $1$ if there is an element $1\in R$ such that for all $a\in R$, $1\cdot a=a\cdot1=a$.
+\end{defi}
+
+\begin{note}
+    By abuse of notation, multiplication $\cdot$ may be denoted by simple juxtaposition, i.e. $a\cdot b=ab$.
+\end{note}
+
+\begin{note}
+    For a ring with 1, the condition of commutativity under addition is redundant. Note that for any $a,b\in R$,
+    $$(1+1)(a+b)=1(a+b)+1(a+b)=a+b+a+b$$
+    $$(1+1)(a+b)=(1+1)a+(1+1)b=a+a+b+b$$
+    Therefore, $a+b+a+b=a+a+b+b$ and therefore $a+b=b+a$. Thus $R$ is abelian.
+\end{note}
+
+\begin{defi}
+    A ring with identity is a \define{division ring} if every nonzero element has a multiplicative inverse.
+\end{defi}
+
+\begin{defi}
+    A \define{field} is a commutative division ring.
+\end{defi}
+
+\begin{ex}[The zero ring]
+    Let $R=\{0\}$. Then $R$ is a ring and is called the zero ring.
+\end{ex}
+
+\begin{ex}[trivial rings]
+    For any abelian group $(G,+)$, consider the ring $(G,+,\cdot)$, where multiplication is given by $a\cdot b=0$ for any $a,b\in G$.
+\end{ex}
+
+\begin{prop}
+    Let $R$ be a ring, and $a,b\in R$.
+    \begin{enumerate}[(a)]
+        \item $0a=a0=0$
+        \item $(-a)b=a(-b)=-(ab)$, where $-(a)$ is the additive inverse of $a$.
+        \item $(-a)(-b)=ab$
+        \item If $R$ has identity 1, then it is unique and $-a=(-1)a$.
+    \end{enumerate}
+\end{prop}
+
+\begin{defi}
+    A nonzero element element $a$ of a ring $R$ is a \define{zero divisor} if there is a nonzero $0\ne b\in R$ such that $ab=0$ or $ba=0$.
+\end{defi}
+
+\begin{defi}
+    Let $R$ be a ring with identity. An element $a$ of $R$ is a \define{unit} if it has a multiplicative inverse, i.e. there is some $b\in R$ such that $ab=ba=1$. The set of units of $R$ is denoted $R^\times$.
+\end{defi}
+
+\begin{defi}
+    An \define{integral domain} is a commutative ring with identity which has no zero divisors.
+\end{defi}
+
+\begin{prop}
+    Let $R$ be an integral domain, and let $a,b,c\in R$. If $ab=ac$, then $a=0$ or $b=c$.
+\end{prop}
+
+\begin{defi}
+    Let $R$ be a commutative ring with 1. For any $a_0,a_1,\ldots,a_n\in R$, the expression
+    $$p(x)=a_0+a_1x+a_2x^2+\ldots+a_nx^n$$
+    is a \define{polynomial} in $R$ with coefficients $a_0,a_1,\ldots,a_n$. If $a_n\ne0$, then $p(x)$ has \define{degree} $n$. The set of all polynomials in $R$ is denoted $R[x]$ or $R$ adjoin $x$.
+\end{defi}
+
+\begin{prop}
+    $R[x]$ is a ring (called the ring of polynomials in $R$ in one variable) under "usual" addition and multiplication. Let $p(x)=a_0+a_1x+\ldots+a_nx^n$ and $q(x)=b_0+b_1x+\ldots+b_mx^m$, and without loss of generality $n>m$. Then,
+    $$p(x)+q(x)=(a_0+b_0)+(a_1+b_1)x+\ldots+(a_n+b_n)x^n$$
+    where $b_k=0$ for $k>m$ and
+    $$p(x)q(x)=\sum_{k=0}^{m+n}(\sum_{i+j=k}a_ib_j)x^k$$
+\end{prop}
+
+\begin{note}
+    Polynomials are not determined by their values
+\end{note}
+
+The following is a formal construction of the ring of polynomials in $R$.\\
+
+Let $R$ be a commutative ring with 1. $R[x]$ is the set of all tuples $p(x)=(a_0,a_1,\ldots,a_n)\in R^\infty=\prod_{i\in\mathbb{N}}R=\oplus_{i\in\mathbb{N}}R$, i.e. $a_k\in R$ where $\exists n\in\mathbb{N}$ such that $a_k=0$ for $k>n$. The smallest such $n$ is the degree of $p(x)$. If $p=(a_0,a_1,\ldots,a_n,0,\ldots)$ and $q=(b_0,b_1,\ldots,b_m,0,\ldots)$, then
+$$p+q=(a_0+b_0,a_1+b_1,\ldots,a_n+b_n,0,\ldots)$$
+$$pq=(c_0,c_1,\ldots,c_k,0,\ldots),\ c_k=\sum_{i+j=k}a_ib_j$$
+
+\begin{defi}
+    Let $R$ be any ring $M_n(R)=\{n\times n\text{ matrices with entries in $R$}\}$, $A=(a_{ij})$, $B=(b_{ij})$, $(A+B)_{ij}=a_{ij}+b_{ij}$, $A\cdot B=C$, $c_{ij}=\sum_{k=1}^na_{ik}b_{kj}$. This is the ring of \define{$n\times n$ matrices over $R$} or with entries in $R$. If $R$ has 1, then
+    $$I=\begin{bmatrix}
+        1 & \ldots & 0 \\
+        \vdots & \ddots & \vdots \\
+        0 & \ldots & 1
+    \end{bmatrix}=1\in M_n(R)$$
+\end{defi}
+
+\begin{defi}
+    $GL_n(R)$ is the group of units of $M_n(R)$ and is called the \define{general linear group}.
+\end{defi}
+
+\begin{defi}
+    Let $R$ be commutative with 1. Let $G=\{g_1,\ldots,g_n\}$ be a finite group. The \define{group ring} $RG$ of $G$ with coefficients in $R$ is the set of all formal sums
+    $$a_1g_1+a_2g_2+\ldots+a_ng_n$$
+    where $a_i\in R$,
+    $$(a_1g_1+\ldots+a_ng_n)+(b_1g_1+\ldots+b_ng_n)=(a_1+b_1)g_1+\ldots+(a_n+b_n)g_n$$
+    $$(a_1g_1+\ldots+a_ng_n)\cdot(b_1g_1+\ldots+b_ng_n)=c_1g_1+\ldots+c_ng_n,\text{ where $c_k=\sum_{g_ig_j=g_k}a_ib_j$}$$
+\end{defi}
+
+\begin{note}
+    $1\cdot g_i=g_i$, $a_i\cdot1=a_i$, $(a_ig_i)(b_jg_j)=(a_ib_j)(g_ig_j)$
+\end{note}
+
+\begin{ex}
+    $G=S_4$, $R=\mathbb{Z}$.
+    $$x=2(1\ 2)+(2\ 3)+7(1\ 2\ 4)\hspace{50pt} y=3(1)+2(2\ 3)$$
+    \begin{align*}
+        x+y&=3(1)+2(1\ 2)+3(2\ 3)+7(1\ 2\ 4)\\
+        xy&=6(1\ 2)+4(1\ 2)(2\ 3)+3(2\ 3)+2(1)+21(1\ 2\ 4)+14(1\ 2\ 4)(2\ 3)\\
+          &=2(1)+6(1\ 2)+3(2\ 3)+4(1\ 2\ 3)+21(1\ 2\ 4)+14(1\ 2\ 3\ 4)
+    \end{align*}
+\end{ex}
+
 \end{document}
