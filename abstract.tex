@@ -660,9 +660,9 @@ Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? 
     A ring with identity is a \define{division ring} if every nonzero element has a multiplicative inverse.
 \end{defi}
 
-\begin{defi}
+\begin{bdefi}
     A \define{field} is a commutative division ring.
-\end{defi}
+\end{bdefi}
 
 \begin{ex}[The zero ring]
     Let $R=\{0\}$. Then $R$ is a ring and is called the zero ring.
@@ -690,9 +690,9 @@ Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? 
     Let $R$ be a ring with identity. An element $a$ of $R$ is a \define{unit} if it has a multiplicative inverse, i.e. there is some $b\in R$ such that $ab=ba=1$. The set of units of $R$ is denoted $R^\times$.
 \end{defi}
 
-\begin{defi}
+\begin{bdefi}
     An \define{integral domain} is a commutative ring with identity which has no zero divisors.
-\end{defi}
+\end{bdefi}
 
 \begin{prop}
     Let $R$ be an integral domain, and let $a,b,c\in R$. If $ab=ac$, then $a=0$ or $b=c$.
@@ -701,15 +701,11 @@ Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism? 
 \begin{defi}
     Let $R$ be a commutative ring with 1. For any $a_0,a_1,\ldots,a_n\in R$, the expression
     $$p(x)=a_0+a_1x+a_2x^2+\ldots+a_nx^n$$
-    is a \define{polynomial} in $R$ with coefficients $a_0,a_1,\ldots,a_n$. If $a_n\ne0$, then $p(x)$ has \define{degree} $n$. The set of all polynomials in $R$ is denoted $R[x]$ or $R$ adjoin $x$.
-\end{defi}
-
-\begin{prop}
-    $R[x]$ is a ring (called the ring of polynomials in $R$ in one variable) under "usual" addition and multiplication. Let $p(x)=a_0+a_1x+\ldots+a_nx^n$ and $q(x)=b_0+b_1x+\ldots+b_mx^m$, and without loss of generality $n>m$. Then,
+    is a \define{polynomial} in $R$ with coefficients $a_0,a_1,\ldots,a_n$. If $a_n\ne0$, then $p(x)$ has \define{degree} $n$. The set of all polynomials in $R$ is denoted $R[x]$ or $R$ adjoin $x$. $R[x]$ is a ring (called the ring of polynomials in $R$ in one variable) under "usual" addition and multiplication. Let $p(x)=a_0+a_1x+\ldots+a_nx^n$ and $q(x)=b_0+b_1x+\ldots+b_mx^m$, and without loss of generality $n>m$. Then,
     $$p(x)+q(x)=(a_0+b_0)+(a_1+b_1)x+\ldots+(a_n+b_n)x^n$$
     where $b_k=0$ for $k>m$ and
     $$p(x)q(x)=\sum_{k=0}^{m+n}(\sum_{i+j=k}a_ib_j)x^k$$
-\end{prop}
+\end{defi}
 
 \begin{note}
     Polynomials are not determined by their values
@@ -755,5 +751,75 @@ $$pq=(c_0,c_1,\ldots,c_k,0,\ldots),\ c_k=\sum_{i+j=k}a_ib_j$$
           &=2(1)+6(1\ 2)+3(2\ 3)+4(1\ 2\ 3)+21(1\ 2\ 4)+14(1\ 2\ 3\ 4)
     \end{align*}
 \end{ex}
+
+\begin{bdefi}
+    A \define{subring} $S$ of a ring $(R,+,\cdot)$ is a subgroup $S\le(R,+)$ which is closed under the multiplicative structure of $R$.
+\end{bdefi}
+
+\begin{prop}
+    A subset $S$ of the ring $R$ is a subring if and only if $S$ is closed under subtraction and multiplication.
+\end{prop}
+
+\begin{pf}
+    This follows immediately from the fact that a subset $H$ of an abelian group $G$ is a subgroup if and only if $H$ is closed under subtraction.
+\end{pf}
+
+\begin{defi}
+    The \define{center} of a ring $A$ is the set of elements $a\in A$ such that $ax=xa$ for all $x\in A$. The center of $A$ is a subring of $A$.
+\end{defi}
+
+\begin{bdefi}
+    Let $R$ and $S$ be rings. A \define{ring homomorphism} is a map of sets $\hmap{R}{S}$ such that for all $a,b\in R$,
+    $$\varphi(a+b)=\varphi(a)+\varphi(b)$$
+    $$\varphi(ab)=\varphi(a)\varphi(b)$$
+\end{bdefi}
+
+\begin{defi}
+    The \define{kernel} of the homomorphism $\hmap{R}{S}$ is given by
+    $$\ker=\{r\in R:\varphi(r)=0\in S\}$$
+\end{defi}
+
+\begin{defi}
+    A \define{ring isomorphism} is a bijective homomorphism.
+\end{defi}
+
+\begin{bdefi}
+    A subring $I$ of $R$ is a \define{left ideal} of $R$ if $I$ is closed under left multiplication by elements from $R$, i.e. $rI\subseteq I$ for all $r\in R$. Similarly, $I$ is a \define{right ideal} of $R$ if $I$ is closed under right multiplication by elements of $R$, i.e. $Ir\subseteq I$ for all $r\in R$. A subring which is both a left and right ideal is called a \define{two sided ideal}, or simply \define{ideal}.
+\end{bdefi}
+
+\begin{bdefi}
+    The \define{quotient ring} $R/I$ of the ring $R$ by the ideal $I\subseteq R$ is the quotient group of cosets $R/I$ under the operations
+    $$(r+I)+(s+I)=(r+s)+I\hspace{50pt}(r+I)\cdot(s+I)=(r\cdot s)+I$$a
+    for all $r,s\in R$.
+\end{bdefi}
+
+\begin{prop}
+    For any ring $R$ and ideal $I$, $R/I$ is a ring.
+\end{prop}
+
+\begin{prop}
+    If $I$ is any ideal of $R$, the map $\hmap{R}{R/I}$ defined by $r\mapsto r+I$ is a surjective ring homomorphism with kernel $I$.
+\end{prop}
+
+\begin{bthm}[First Isomorphism Theorem for Rings]
+    If $\hmap{R}{S}$ is homomorphism of rings, then $\ker$ is an ideal of $R$, $\im$ is a subring of $S$, and
+    $$R/\ker\cong\im$$
+\end{bthm}
+
+\begin{bthm}[Second Isomorphism Theorem for Rings]
+    Let $R$ be a ring, $A$ a subring and $B$ an ideal of $R$. Then $A+B=\{a+b:a\in A,b\in B\}$ is a subring of $R$, $A\cap B$ is an ideal of $A$ and
+    $$(A+B)/B\cong A/(A\cap B)$$
+\end{bthm}
+
+\begin{bthm}[Third Isomorphism Theorem for Rings]
+    Let $I$ and $J$ be ideals of the ring $R$ such that $I\subseteq J$. Then $J/I$ is an ideal of $R/I$ and
+    $$(R/I)(J/I)\cong(R/J)$$
+\end{bthm}
+
+\begin{bthm}[Fourth Isomorphism Theorem for Rings]
+    Let $I$ be an ideal of $R$. The correspondence
+    $$A\longleftrightarrow A/I$$
+    is an inclusion preserving bijection between the subring $A$ of $R$ containing $I$ and the set of subrings of $R/I$. Further, a subring $A$ containing $I$ is an ideal of $R$ if and only if $A/I$ is an ideal of $R/I$.
+\end{bthm}
 
 \end{document}
