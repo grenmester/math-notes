@@ -17,6 +17,9 @@
     #1:#2\rightarrow#3}
 \renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
 \newcommand{\im}[1][(\varphi)]{\text{Im}#1}
+\newcommand{\dom}[1]{\text{dom }#1}
+\newcommand{\cod}[1]{\text{cod }#1}
+\newcommand{\id}[1]{\text{id}_{#1}}
 
 \DeclareMathOperator{\lcm}{lcm}
 
