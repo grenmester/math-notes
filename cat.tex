@@ -1,12 +1,12 @@
 \documentclass[11pt,letterpaper]{jacky}
 \usepackage[margin=1in,headheight=14pt]{geometry}
-\usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage, mathtools}
-\usepackage{tikz-cd}
+\usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage,
+mathtools, scrextend, tikz-cd}
 
 \pagestyle{fancy}
 \lhead{Jacky Lee}
 \chead{Category Theory Notes}
-\rhead{December 18, 2017}
+\rhead{December 25, 2017}
 \lfoot{}
 \cfoot{}
 \rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
@@ -26,4 +26,66 @@
     \LARGE{Category Theory Notes}
 \end{center}
 
+\begin{defi}
+    A \define{metagraph} consists of \define{objects} $a, b, c, \ldots$,
+    \define{arrows} $f, g, h, \ldots$, and two operations as follows:
+    \begin{itemize}
+        \item \define{Domain}, which assigns to each arrow $f$ an object
+            $a=\dom{f}$
+        \item \define{Codomain}, which assigns to each arrow $f$ an object
+            $b=\cod{f}$
+    \end{itemize}
+    These operations on $f$ are usually indicated by
+    \[f:a\rightarrow b\hspace{10pt}\text{or}\hspace{10pt}a\xrightarrow{f}b\]
+\end{defi}
+
+\begin{defi}
+    A \define{metacategory} is a metagraph with two additional operations:
+    \begin{itemize}
+        \item \define{Identity}, which assigns to each object $a$ an arrow
+            $\id{a}=1_a:a\rightarrow a$
+        \item \define{Composition}, which assigns to each pair $\langle g,f
+            \rangle$ of arrows with $\dom{g}=\cod{f}$ an arrow $g\circ f$,
+            called their \define{composite}, with $g\circ
+            f:\dom{f}\rightarrow\cod{g}$
+    \end{itemize}
+    This operation may be pictured by the diagram
+    \begin{center}
+        \begin{tikzcd}
+            A\arrow[r, "f"]\arrow[dr, "g\circ f", swap] & B\arrow[d, "g"]\\
+            & C
+        \end{tikzcd}
+    \end{center}
+    These operations in a metacategory are subject to the two following axioms:
+    \begin{itemize}
+        \item \define{Associativity}. For given objects and arrow in the
+            configuration
+            \[a\xrightarrow{f}b\xrightarrow{g}c\xrightarrow{k}d\]
+            one always has the equality
+            \[k\circ\left(g\circ f\right)=\left(k\circ g\right)\circ f\]
+            This axiom is represented by the statement that the following
+            diagram is commutative.
+            \begin{center}
+                \begin{tikzcd}[column sep=3cm, row sep=huge]
+                    A\arrow[r, "k\circ (g\circ f) = (k\circ g)\circ f"]
+                    \arrow[d, "f"']\arrow[dr, "g\circ f", pos=0.2, swap] & D \\
+                    B\arrow[r, "g", swap]
+                    \arrow[ur, "k\circ g", pos=0.8, swap, crossing over]
+                    & C\arrow[u, "k"']
+                \end{tikzcd}
+            \end{center}
+        \item \define{Unit law}. For all arrows $f:a\rightarrow b$ and
+            $g:b\rightarrow c$, composition with the identity arrow $1_b$ gives
+            \[1_b\circ f=f\hspace{10pt}\text{and}\hspace{10pt}g\circ1_b=g\]
+            This axiom is represented by the statement that the following
+            diagram is commutative.
+            \begin{center}
+                \begin{tikzcd}
+                    A\arrow[r, "f"]\arrow[dr, "f", swap]
+                    & B\arrow[d, "1_b"]\arrow[dr, "g"', swap]\\
+                    & B\arrow[r, "g"'] & C
+                \end{tikzcd}
+            \end{center}
+    \end{itemize}
+\end{defi}
 \end{document}
