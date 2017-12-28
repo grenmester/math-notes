@@ -3,34 +3,28 @@
 
 \LoadClass[11pt]{book}
 
-\usepackage[margin=1in,headheight=14pt]{geometry}
-\usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage, mathtools}
+\usepackage{mathtools}
+% Colors
 \usepackage[usenames, dvipsnames, svgnames]{xcolor}
+% Theorem Environments
 \usepackage{amsthm, thmtools}
+% Boxed Environments
 \usepackage[framemethod=TikZ]{mdframed}
-\usepackage{mathpazo}
-\usepackage{tikz-cd}
-
-\newcommand{\pn}[1]{\left( #1 \right)}
-\newcommand{\hmap}[3][\varphi]{%
-    #1:#2\rightarrow#3}
-\renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
-\newcommand{\im}[1][(\varphi)]{\text{Im}#1}
+% if-Statments in Macros
+\usepackage{xparse}
 
 \newcommand{\define}[1]{\underline{\textbf{#1}}}
-\NewDocumentCommand{\dom}{o}{%
+\NewDocumentCommand{\dom}{o}{
   \IfNoValueTF{#1}
     {\text{dom}}
-    {\text{dom }#1}%
+    {\text{dom }#1}
 }
-\NewDocumentCommand{\cod}{o}{%
+\NewDocumentCommand{\cod}{o}{
   \IfNoValueTF{#1}
     {\text{cod}}
-    {\text{cod }#1}%
+    {\text{cod }#1}
 }
 \newcommand{\id}[1]{\text{id}_{#1}}
-
-\DeclareMathOperator{\lcm}{lcm}
 
 \pgfdeclarehorizontalshading{mdgreenbg}{100bp}
 {color(0bp)=(SeaGreen!15); color(50bp)=(White); color(100bp)=(SeaGreen!15)}
