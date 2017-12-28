@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{jacky}[2017/02/20]
+\ProvidesClass{jacky}[2017/12/28]
 
 \LoadClass[11pt]{book}
 
@@ -11,14 +11,23 @@
 \usepackage{mathpazo}
 \usepackage{tikz-cd}
 
-\newcommand{\define}[1]{\underline{\textbf{#1}}}
 \newcommand{\pn}[1]{\left( #1 \right)}
 \newcommand{\hmap}[3][\varphi]{%
     #1:#2\rightarrow#3}
 \renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
 \newcommand{\im}[1][(\varphi)]{\text{Im}#1}
-\newcommand{\dom}[1]{\text{dom }#1}
-\newcommand{\cod}[1]{\text{cod }#1}
+
+\newcommand{\define}[1]{\underline{\textbf{#1}}}
+\NewDocumentCommand{\dom}{o}{%
+  \IfNoValueTF{#1}
+    {\text{dom}}
+    {\text{dom }#1}%
+}
+\NewDocumentCommand{\cod}{o}{%
+  \IfNoValueTF{#1}
+    {\text{cod}}
+    {\text{cod }#1}%
+}
 \newcommand{\id}[1]{\text{id}_{#1}}
 
 \DeclareMathOperator{\lcm}{lcm}
