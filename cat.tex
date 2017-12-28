@@ -31,9 +31,9 @@ mathtools, scrextend, tikz-cd}
     \define{arrows} $f, g, h, \ldots$, and two operations as follows:
     \begin{itemize}
         \item \define{Domain}, which assigns to each arrow $f$ an object
-            $a=\dom{f}$
+            $a=\dom[f]$
         \item \define{Codomain}, which assigns to each arrow $f$ an object
-            $b=\cod{f}$
+            $b=\cod[f]$
     \end{itemize}
     These operations on $f$ are usually indicated by
     \[f:a\rightarrow b\hspace{10pt}\text{or}\hspace{10pt}a\xrightarrow{f}b\]
@@ -45,9 +45,9 @@ mathtools, scrextend, tikz-cd}
         \item \define{Identity}, which assigns to each object $a$ an arrow
             $\id{a}=1_a:a\rightarrow a$
         \item \define{Composition}, which assigns to each pair $\langle g,f
-            \rangle$ of arrows with $\dom{g}=\cod{f}$ an arrow $g\circ f$,
+            \rangle$ of arrows with $\dom[g]=\cod[f]$ an arrow $g\circ f$,
             called their \define{composite}, with $g\circ
-            f:\dom{f}\rightarrow\cod{g}$
+            f:\dom[f]\rightarrow\cod[g]$
     \end{itemize}
     This operation may be pictured by the diagram
     \begin{center}
@@ -88,4 +88,61 @@ mathtools, scrextend, tikz-cd}
             \end{center}
     \end{itemize}
 \end{defi}
+
+\begin{defi}
+    A \define{directed graph} is a set $O$ of objects, a set $A$ of arrows, and
+    two functions
+    \[A\xrightarrow{\dom}O\hspace{50pt}A\xrightarrow{\cod}O\]
+    The set of composable pairs of arrows is the set
+    \[A\times_OA=\{\langle g,f\rangle\ |\ g,f\in A
+        \text{ and }\dom[g]=\cod[f]\}\]
+\end{defi}
+
+\begin{defi}
+    A \define{category} is a directed graph with two additional functions
+    \[O\xrightarrow{\text{id}}A,\ A\times_OA\xrightarrow{\circ}A,\]
+    \[c\mapsto\text{id}_c,\ \langle g,f\rangle\mapsto g\circ f\]
+    called identity and composition (also written as $gf$), such that
+    \[\dom(\id\ a)=a=\cod(\id\ a),\hspace{20pt}\dom(g\circ
+    f)=\dom[f],\hspace{20pt}\cod(g\circ f)=\cod[g]\]
+    for all objects $a\in O$ and all composable pairs of arrows $\langle
+    g,f\rangle\in A\times_OA$, and such that the associativity and unit axioms
+    hold.
+\end{defi}
+
+\begin{note}
+    We usually drop the letters $A$ and $O$, and write
+    \[c\in C\hspace{50pt}f\text{ in }C\]
+    for ``$c$ is an object of $C$'' and ``$f$ is an arrow of $C$'',
+    respectively.
+\end{note}
+
+\begin{defi}
+    We write
+    \[\hom(b,c)=\{f\ |\ f\text{ in }C,\dom[f]=b, \cod[f]=c\}\]
+    for the set of arrows from $b$ to $c$.
+\end{defi}
+
+\begin{ex}
+    The following are simple examples of categories.
+    \begin{itemize}
+        \item \textbf{0} is the empty category with no objects or arrows.
+        \item \textbf{1} is the category with one object and one identity
+            arrow.
+        \item \textbf{2} is the category $A\rightarrow B$ with two objects and
+            one non-identity arrow.
+        \item \textbf{3} is the category with three objects whose non-identity
+            arrows are arranged as in the following triangle.
+            \begin{center}
+                \begin{tikzcd}
+                    A\arrow[r]\arrow[dr, swap] & B\arrow[d]\\
+                    & C
+                \end{tikzcd}
+            \end{center}
+        \item $\downdownarrows$ is the category $A\rightrightarrows B$ with two
+            objects and two non-identity arrows. We call two such arrows
+            \define{parallel arrows}.
+    \end{itemize}
+\end{ex}
+
 \end{document}
