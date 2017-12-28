@@ -1,7 +1,7 @@
 \documentclass[11pt,letterpaper]{jacky}
 \usepackage[margin=1in,headheight=14pt]{geometry}
 \usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage,
-mathtools, scrextend, tikz-cd}
+mathpazo, mathtools, scrextend, tikz-cd}
 
 \pagestyle{fancy}
 \lhead{Jacky Lee}
@@ -19,6 +19,18 @@ mathtools, scrextend, tikz-cd}
     \addtocounter{page}{-1}
     \newpage}
 \renewcommand\footrulewidth{0.4pt}
+
+\NewDocumentCommand{\dom}{o}{
+  \IfNoValueTF{#1}
+    {\text{dom}}
+    {\text{dom }#1}
+}
+\NewDocumentCommand{\cod}{o}{
+  \IfNoValueTF{#1}
+    {\text{cod}}
+    {\text{cod }#1}
+}
+\newcommand{\id}[1]{\text{id}_{#1}}
 
 \begin{document}
 \begin{center}

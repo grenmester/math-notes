@@ -14,17 +14,6 @@
 \usepackage{xparse}
 
 \newcommand{\define}[1]{\underline{\textbf{#1}}}
-\NewDocumentCommand{\dom}{o}{
-  \IfNoValueTF{#1}
-    {\text{dom}}
-    {\text{dom }#1}
-}
-\NewDocumentCommand{\cod}{o}{
-  \IfNoValueTF{#1}
-    {\text{cod}}
-    {\text{cod }#1}
-}
-\newcommand{\id}[1]{\text{id}_{#1}}
 
 \pgfdeclarehorizontalshading{mdgreenbg}{100bp}
 {color(0bp)=(SeaGreen!15); color(50bp)=(White); color(100bp)=(SeaGreen!15)}
