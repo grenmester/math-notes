@@ -6,7 +6,7 @@ mathpazo, mathtools, scrextend, tikz-cd}
 \pagestyle{fancy}
 \lhead{Jacky Lee}
 \chead{Category Theory Notes}
-\rhead{December 25, 2017}
+\rhead{January 5, 2018}
 \lfoot{}
 \cfoot{}
 \rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
@@ -31,6 +31,7 @@ mathpazo, mathtools, scrextend, tikz-cd}
     {\text{cod }#1}
 }
 \newcommand{\id}[1]{\text{id}_{#1}}
+\newcommand{\cat}[1]{\text{\textbf{#1}}}
 
 \begin{document}
 \begin{center}
@@ -110,7 +111,7 @@ mathpazo, mathtools, scrextend, tikz-cd}
         \text{ and }\dom[g]=\cod[f]\}\]
 \end{defi}
 
-\begin{defi}
+\begin{bdefi}
     A \define{category} is a directed graph with two additional functions
     \[O\xrightarrow{\text{id}}A,\ A\times_OA\xrightarrow{\circ}A,\]
     \[c\mapsto\text{id}_c,\ \langle g,f\rangle\mapsto g\circ f\]
@@ -120,7 +121,7 @@ mathpazo, mathtools, scrextend, tikz-cd}
     for all objects $a\in O$ and all composable pairs of arrows $\langle
     g,f\rangle\in A\times_OA$, and such that the associativity and unit axioms
     hold.
-\end{defi}
+\end{bdefi}
 
 \begin{note}
     We usually drop the letters $A$ and $O$, and write
@@ -156,5 +157,85 @@ mathpazo, mathtools, scrextend, tikz-cd}
             \define{parallel arrows}.
     \end{itemize}
 \end{ex}
+
+\begin{bdefi}
+    A \define{functor} is a morphism of categories. For categories $C$ and $B$,
+    a functor $T:C\rightarrow B$ consists of two related functions: The
+    \define{object function} $T$, which assigns to each object $c$ of $C$ an
+    object $Tc$ of $B$ and the \define{arrow function} (also written $T$) which
+    assigns to each arrow $f:c\rightarrow c'$ of $C$ an arrow $Tf:Tc\rightarrow
+    Tc'$ of $B$, in such a way that
+    \[T(1_c)=1_{Tc}\hspace{50pt} T(g\circ f)=Tg\circ Tf\]
+\end{bdefi}
+
+\begin{defi}
+    The \define{forgetful functor} (or \define{underlying functor}) is a
+    functor which ``forgets'' some of all of the structure of an algebraic
+    object.
+\end{defi}
+
+\begin{ex}
+    The functor $U: \cat{Rng}\rightarrow\cat{Grp}$ that assigns to each ring
+    $R$ the set $UR$ of its elements and assigns to each morphism
+    $f:R\rightarrow R'$ of rings the same function $f$, regarded just as a
+    group homomorphism rather than a ring homomorphism (thus ``forgetting'' the
+    multiplication).
+\end{ex}
+
+\begin{defi}
+    The \define{composite} of two functors $T:C\rightarrow B$ and
+    $S:B\rightarrow A$ is $S\circ T:C\rightarrow A$.
+\end{defi}
+
+\begin{defi}
+    An \define{isomorphism} $T:C\rightarrow B$ of categories is a functor $T$
+    from $C$ to $B$ which is a bijection, both on objects and on arrows.
+    Alternatively, a functor $T:C\rightarrow B$ is an isomorphism if and only
+    if there exists a functor $S:B\rightarrow C$ for which both composites
+    $S\circ T$ and $T\circ S$ are identity functors. Then, $S$ is the
+    \define{two-sided inverse} $S=T^{-1}$.
+\end{defi}
+
+\begin{defi}
+    A functor $T:C\rightarrow B$ is \define{full} when to every pair $c, c'$ of
+    objects of $C$ and to every arrow $g:Tc\rightarrow Tc'$ of $B$, there
+    exists an arrow $f:c\rightarrow c'$ of $C$ with $g=Tf$.
+\end{defi}
+
+\begin{defi}
+    A functor $T:C\rightarrow B$ is \define{faithful} when to every pair $c,
+    c'$ of objects of $C$ and to every pair $f_1,f_2:c\rightarrow c'$ of
+    parallel arrows of $C$, the equality $Tf_1=Tf_2:Tc\rightarrow Tc'$ implies
+    $f_1=f_2$.
+\end{defi}
+
+For a pair of objects $c,c'\in C$, the arrow function of $T:C\rightarrow B$
+assigns to each $f:c\rightarrow c'$ an arrow $Tf:Tc\rightarrow Tc'$ and so we
+can define
+\[T_{c,c'}:\hom(c,c')\rightarrow\hom(Tc,Tc'),\hspace{50pt}f\mapsto Tf\]
+Then $T$ is full when every such function is surjective, and faithful when
+every such function is injective. For a functor which is both full and
+faithful, every such function is a bijection, but this need not mean that the
+functor itself is an isomorphism of categories, for there may be objects of $B$
+not in the image of $T$.
+
+\begin{defi}
+    A \define{subcategory} $S$ of a category $C$ is a collection of some of the
+    objects and some of the arrows of $C$, which includes with each arrow $f$
+    both the object $\dom[f]$ and the object $\cod[f]$, with each object $s$
+    its identity arrow $1_s$ and with each pair of composable arrows
+    $s\rightarrow s'\rightarrow s''$ their composite.
+\end{defi}
+
+\begin{defi}
+    Given a subcategory $S$ of $C$, the \define{inclusion functor} is the
+    functor $T:S\rightarrow C$ which sends each object and each arrow of $S$ to
+    itself in $C$.
+\end{defi}
+
+\begin{defi}
+    $S$ is a \define{full subcategory} of $C$ when the inclusion functor
+    $T:S\rightarrow C$ is full.
+\end{defi}
 
 \end{document}
