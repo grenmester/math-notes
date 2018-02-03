@@ -1,0 +1,70 @@
+\documentclass[11pt,letterpaper]{jacky}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage, mathtools}
+\usepackage{tikz-cd}
+
+\pagestyle{fancy}
+\lhead{Jacky Lee}
+\chead{Real Analysis Notes}
+\rhead{February 3, 2018}
+\lfoot{}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+
+\linespread{1.1}
+\setlength{\parindent}{0pt}
+
+\newcommand\blankpage{
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage}
+\renewcommand\footrulewidth{0.4pt}
+
+\newcommand{\Zz}{\mathbb{Z}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\Cc}{\mathbb{C}}
+
+\newcommand{\sup}[1]{\text{sup}_{#1}}
+\newcommand{\inf}[1]{\text{inf}_{#1}}
+
+\begin{document}
+\begin{center}
+    \vspace*{20pt}
+    \LARGE{Real Analysis Notes}
+\end{center}
+
+If $\frac{a}{b},\frac{c}{d}\in\Qq$, then
+$$\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd} \hspace{50pt}
+\frac{a}{b}-\frac{c}{d}=\frac{ad-bc}{bd} \hspace{50pt}
+\frac{a}{b}\times\frac{c}{d}=\frac{ac}{bd} \hspace{50pt}
+\frac{a}{b}\div\frac{c}{d}=\frac{ad}{bc}$$
+provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
+
+Strictly speaking, we need to show that these operations are
+\define{well-defined} or that they don't depend on the choice of
+representatives from the equivalence classes.
+
+\begin{defi}
+    Suppose $S$ is an ordered set, and $E\subseteq S$. If there exists
+    $\beta\in S$ such that $x\leq \beta$ for every $x\in E$, we say $E$ is
+    \define{bounded above} and we call $\beta$ an \define{upper bound}. The
+    terms \define{bounded below} and \define{lower bound} are defined
+    similarly.
+\end{defi}
+
+\begin{defi}
+        Suppose $S$ is an ordered set, $E\subseteq S$, and $E$ is bounded
+        above. Suppose there exists $\alpha\in S$ such that $\alpha$ is an
+        upper bound for $E$ and if $\gamma<\alpha$, then $\gamma$ is not an
+        upper bound for $E$, then $\alpha$ is the \define{least upper bound} of
+        $E$ or the \define{supremum} of $E$, and we write $\alpha=\sup{E}$. The
+        \define{greatest lower bound} and \define{infimum} ($\inf{E}$) are
+        defined similarly.
+\end{defi}
+
+\begin{ex}
+    Consider the set $\{r\in\Qq:r^2<2\}$, which has no supremum in $\Qq$.
+\end{ex}
+
+\end{document}
