@@ -238,4 +238,29 @@ not in the image of $T$.
     $T:S\rightarrow C$ is full.
 \end{defi}
 
+\begin{bdefi}
+    Given two functors $S,T:C\rightarrow B$, a \define{natural transformation}
+    $\tau:S\xrightarrow{\bullet}T$ is a function which assign to each object
+    $c$ of $C$ an arrow $\tau_c=\tau c:Sc\rightarrow Tc$ of $B$ in such a way
+    that every arrow $f:c\rightarrow c'$ in $C$ yields a diagram
+    \begin{center}
+        \begin{tikzcd}
+            c\arrow[d, "f"] & Sc\arrow[r,"\tau c"]\arrow[d,"Sf"] &
+            Tc\arrow[d,"Tf"]\\
+            c'              & Sc'\arrow[r,"\tau c'"]             &
+            Tc'
+        \end{tikzcd}
+    \end{center}
+    which is commutative. When this holds, we say that $\tau_c:Sc\rightarrow Tc$
+    is \define{natural} in $c$. We call $\tau a,\tau b,\tau c,\ldots$ the
+    \define{components} of the natural transformation $\tau$.
+\end{bdefi}
+
+\begin{defi}
+    A natural transformation $\tau$ with every component $\tau c$ invertible in
+    $B$ is called a\\
+    \define{natural equivalence} or a \define{natural
+    isomorphism}. Symbolically, $\tau:S\cong T$.
+\end{defi}
+
 \end{document}
