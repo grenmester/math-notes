@@ -21,6 +21,7 @@
 \renewcommand\footrulewidth{0.4pt}
 
 \newcommand{\cc}{\mathbb{C}}
+\newcommand{\nn}{\mathbb{N}}
 \newcommand{\qq}{\mathbb{Q}}
 \newcommand{\rr}{\mathbb{R}}
 \newcommand{\zz}{\mathbb{Z}}
@@ -31,6 +32,8 @@
   \LARGE{Real Analysis Notes}
 \end{center}
 
+\section*{Rational Numbers and Bounds}
+
 If $\frac{a}{b},\frac{c}{d}\in\qq$, then
 $$\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd} \hspace{50pt}
 \frac{a}{b}-\frac{c}{d}=\frac{ad-bc}{bd} \hspace{50pt}
@@ -38,9 +41,11 @@ $$\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd} \hspace{50pt}
 \frac{a}{b}\div\frac{c}{d}=\frac{ad}{bc}$$
 provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 
-Strictly speaking, we need to show that these operations are
-\define{well-defined} or that they don't depend on the choice of
-representatives from the equivalence classes.
+\begin{note}
+  Strictly speaking, we need to show that these operations are
+  \define{well-defined} or that they don't depend on the choice of
+  representatives from the equivalence classes.
+\end{note}
 
 \begin{defi}
   Suppose $S$ is an ordered set, and $E\subseteq S$. If there exists $\beta\in
@@ -68,8 +73,10 @@ representatives from the equivalence classes.
   above, then $\sup{E}$ exists in $S$.
 \end{defi}
 
-If an ordered set has the least-upper-bound property, then it also has the
-greatest-lower-bound property.
+\begin{prop}
+  If an ordered set has the least-upper-bound property, then it also has the
+  greatest-lower-bound property.
+\end{prop}
 
 \begin{defi}
   There exists an ordered field $\rr$ (called the \define{real numbers}) which
@@ -77,8 +84,10 @@ greatest-lower-bound property.
   $\qq$.
 \end{defi}
 
-Finite ordered fields do not exist. Consider $0\leq1\leq1+1\leq\ldots$ which
-can't be a finite chain.
+\begin{note}
+  Finite ordered fields do not exist. Consider $0\leq1\leq1+1\leq\ldots$ which
+  can't be a finite chain.
+\end{note}
 
 \section*{Dedekind Cuts}
 
@@ -86,7 +95,7 @@ can't be a finite chain.
   \item Define the elements of $\rr$ as subsets of $\qq$ called \define{cuts},
     where a cut is a subset $\alpha$ of $\qq$ such that
     \begin{enumerate}
-      \item $\alpha$ is a nonempty proper subset of $\qq$ ($\alpha\ne\empty$
+      \item $\alpha$ is a nonempty proper subset of $\qq$ ($\alpha\ne\varnothing$
         and $\alpha\ne\qq$).
       \item If $p\in\alpha$, $q\in\qq$, and $q<p$, then $q\in\alpha$.
       \item If $p\in\alpha$, then $p<r$ for some $r\in\alpha$ (can't be in the
@@ -106,9 +115,9 @@ can't be a finite chain.
     $\alpha+\beta<\alpha+\gamma$. This is part of showing that $\rr$ is an
     ordered field.
   \item For $\alpha,\beta\in\rr$, where $\alpha>0^*$ and $\beta>0^*$, define
-    the product $\alpha\beta$ to be $\{p\in\qq:q\le rs, r\in\alpha, s\in\beta,
-    r>0, s>0\}$. Note that $\alpha\beta>0^*$ if $\alpha>0^*$ and $\beta>0^*$,
-    which is part of showing that $\rr$ is an ordered field.
+    the product $\alpha\beta$ to be $\{p\in\qq:q\le rs,\ r\in\alpha,\
+    s\in\beta,\ r>0,\ s>0\}$. Note that $\alpha\beta>0^*$ if $\alpha>0^*$ and
+    $\beta>0^*$, which is part of showing that $\rr$ is an ordered field.
   \item Extend the definition of multiplication to all of $\rr$ by setting, for
     all $\alpha,\beta\in\rr$, $\alpha0^*=0^*\alpha=0^*$ and
     $$\alpha\beta=\begin{cases}
@@ -122,7 +131,11 @@ can't be a finite chain.
   \item Show that $\qq$ is isomorphic to $\qq^*$ as ordered fields.
 \end{enumerate}
 
-Any two ordered fields with the least upper-bound-property are isomorphic.
+\section*{Properties of Real Numbers}
+
+\begin{thm}
+  Any two ordered fields with the least upper-bound-property are isomorphic.
+\end{thm}
 
 \begin{thm}
   If $x,y\in\rr$, and $x>0$, then there is a positive integer $n$ such that
@@ -155,6 +168,82 @@ Any two ordered fields with the least upper-bound-property are isomorphic.
   $E$ is bounded above since $t>1+x\implies t^n>t>x\implies t\notin E$ and $t$
   is an upper bound. Define $y=\sup E$. We can then show that $y^n<x$ and
   $y^n>x$ each lead to contradictions.
+\end{pf}
+
+\begin{ques}
+  Given a real number in decimal form, what is its associated Dedekind cut?
+\end{ques}
+
+\section*{Cardinality of Sets}
+
+\begin{defi}
+  Let $A$ and $B$ be sets. If there is a bijection from $A$ to $B$, then we say
+  $A$ and $B$ have the same \define{cardinality} (or `size') and write $A\sim
+  B$.  We also write $|A|=|B|$ where $|A|$ denotes the cardinality of $A$.
+\end{defi}
+
+\begin{defi}
+  Let $\nn$ denote the natural numbers $\{1,2,3,\ldots\}$, also denoted
+  $\zz^+$. For $n\in\nn$, let $J_n=\{1,2,\ldots,n\}$ and $J_0=\varnothing$. For
+  any set $A$,
+  \begin{enumerate}
+    \item $A$ is \define{finite} if $A\sim J_n$ for some $n\in\nn\cup\{0\}$.
+    \item $A$ is \define{infinite} if it is not finite.
+    \item $A$ is \define{countable} if $A\sim\nn$.
+    \item $A$ is \define{uncountable} if $A$ is neither finite nor countable.
+    \item $A$ is \define{at most countable} if $A$ is finite or countable.
+  \end{enumerate}
+\end{defi}
+
+\begin{note}
+  We can put an order on the cardinalities where $|A|\le|B|$ if and only if
+  there exists an injection from $A$ to $B$.
+\end{note}
+
+\begin{prop}
+  Every infinite subset of a countable set is countable.
+\end{prop}
+
+\begin{prop}
+  Let $\{E_n\}$ where $n\in\zz^+$ be a sequence of countable sets. If
+  $S=\cup_{n=1}^\infty E_n$, then $S$ is countable.
+\end{prop}
+
+\begin{pf}
+  Let the elements of $E_i$ be as follows
+  \begin{align*}
+    E_1&=\{x_{11},x_{12},x_{13},\ldots\}\\
+    E_2&=\{x_{21},x_{22},x_{23},\ldots\}\\
+       &\ldots\\
+    E_i&=\{x_{i1},x_{i2},x_{i3},\ldots\}\\
+       &\ldots
+  \end{align*}
+  We can traverse these elements diagonally to get
+  $S=\{x_{11},x_{21},x_{12},x_{31},x_{22},x_{13},x_{41},\ldots\}$. Since $S$ is
+  at most countable and $E_1\subseteq S$ is countable, we have that $S$ is
+  countable.
+\end{pf}
+
+\begin{prop}
+  Let $A$ be a countable set and $B_n$ be the set of all $n$-tuples
+  $(a_1,a_2,\ldots,a_n)$ where $a_k\in A$ for $k=1,2,\ldots,n$. Then $B_n$ is
+  countable for all $n\in\nn$.
+\end{prop}
+
+\begin{thm}
+  Let $A$ be the set of all sequences of 0's and 1's. Then $A$ is uncountable.
+\end{thm}
+
+\begin{pf}
+  Let $E=\{e_1,e_2,\ldots\}$ be a countable subset of $A$. For each $e_i$, we analyze its $i$th digit. We then construct $e\in A$ such that the $i$th digit of $e$ is the opposite of the $i$th digit of $e_i$. For example, if we have
+  \begin{align*}
+    e_1&=(\boxed{0},1,0,1,1,1,0,1,\ldots)\\
+    e_2&=(1,\boxed{1},0,1,0,1,1,0,\ldots)\\
+    e_3&=(0,0,\boxed{1},1,0,0,1,1,\ldots)\\
+    e_4&=(1,0,1,\boxed{0},1,0,1,1,\ldots)\\
+       &\ldots
+  \end{align*}
+  Then $e=(1,0,0,1,\ldots)$. Since $e\notin E$ but $e\in A$, every countable subset of $A$ is a proper subset of $A$. Thus, $A$ is uncountable.
 \end{pf}
 
 \end{document}
