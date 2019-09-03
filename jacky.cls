@@ -109,6 +109,7 @@ postheadspace={0pt},
 ]{thmpurplebox}
 
 \theoremstyle{definition}
+\declaretheorem[name=\color{Red}\bfseries Question, numbered=no]{ques}
 \declaretheorem[name=\color{Emerald}\bfseries Definition, numbered=no]{defi}
 \declaretheorem[style=thmgreenbox, name=Definition, numbered=no]{bdefi}
 \declaretheorem[name=\color{NavyBlue}\bfseries Theorem, numbered=no]{thm}
