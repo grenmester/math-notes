@@ -80,6 +80,48 @@ greatest-lower-bound property.
 Finite ordered fields do not exist. Consider $0\leq1\leq1+1\leq\ldots$ which
 can't be a finite chain.
 
+\section*{Dedekind Cuts}
+
+\begin{enumerate}
+  \item Define the elements of $\rr$ as subsets of $\qq$ called \define{cuts},
+    where a cut is a subset $\alpha$ of $\qq$ such that
+    \begin{enumerate}
+      \item $\alpha$ is a nonempty proper subset of $\qq$ ($\alpha\ne\empty$
+        and $\alpha\ne\qq$).
+      \item If $p\in\alpha$, $q\in\qq$, and $q<p$, then $q\in\alpha$.
+      \item If $p\in\alpha$, then $p<r$ for some $r\in\alpha$ (can't be in the
+        set and be an upper bound).
+    \end{enumerate}
+  \item Define an order on $\rr$ where $\alpha<\beta$ if and only if $\alpha$
+    is a proper subset of $\beta$.
+  \item Show that the ordered set $\rr$ has the least-upper-bound property. To
+    do this, suppose $A$ is a nonempty subset of $\rr$ that is bounded above.
+    Let $\gamma$ be the union of all $\alpha\in A$. Then show $\gamma\in\rr$
+    and $\gamma=\sup A$.
+  \item For $\alpha,\beta\in\rr$, define the sum $\alpha+\beta$ to be the set
+    of all sums $r+s$ where $r\in\alpha$ and $s\in\beta$. Define
+    $0^*=\{t\in\qq:t<0\}$ then show axioms for addition in fields hold for
+    $\rr$, and that $0^*$ is the additive identity.
+  \item Show that if $\alpha,\beta,\gamma\in\rr$ and $\beta<\gamma$, then
+    $\alpha+\beta<\alpha+\gamma$. This is part of showing that $\rr$ is an
+    ordered field.
+  \item For $\alpha,\beta\in\rr$, where $\alpha>0^*$ and $\beta>0^*$, define
+    the product $\alpha\beta$ to be $\{p\in\qq:q\le rs, r\in\alpha, s\in\beta,
+    r>0, s>0\}$. Note that $\alpha\beta>0^*$ if $\alpha>0^*$ and $\beta>0^*$,
+    which is part of showing that $\rr$ is an ordered field.
+  \item Extend the definition of multiplication to all of $\rr$ by setting, for
+    all $\alpha,\beta\in\rr$, $\alpha0^*=0^*\alpha=0^*$ and
+    $$\alpha\beta=\begin{cases}
+      (-\alpha)(-\beta) & \alpha<0^*, \beta<0^*\\
+      -[(-\alpha)(\beta)] & \alpha<0^*, \beta>0^*\\
+      -[(\alpha)(-\beta)] & \alpha>0^*, \beta<0^*
+    \end{cases}$$
+    then prove the distributive law.
+  \item Associate to each $r\in\qq$ the real number $r^*=\{t\in\qq:t<r\}$ and
+    let $\qq^*=\{r^*:r\in\qq\}$. These are the rational cuts in $\rr$.
+  \item Show that $\qq$ is isomorphic to $\qq^*$ as ordered fields.
+\end{enumerate}
+
 Any two ordered fields with the least upper-bound-property are isomorphic.
 
 \begin{thm}
