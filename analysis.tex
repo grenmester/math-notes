@@ -235,7 +235,9 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{thm}
 
 \begin{pf}
-  Let $E=\{e_1,e_2,\ldots\}$ be a countable subset of $A$. For each $e_i$, we analyze its $i$th digit. We then construct $e\in A$ such that the $i$th digit of $e$ is the opposite of the $i$th digit of $e_i$. For example, if we have
+  Let $E=\{e_1,e_2,\ldots\}$ be a countable subset of $A$. For each $e_i$, we
+  analyze its $i$th digit. We then construct $e\in A$ such that the $i$th digit
+  of $e$ is the opposite of the $i$th digit of $e_i$. For example, if we have
   \begin{align*}
     e_1&=(\boxed{0},1,0,1,1,1,0,1,\ldots)\\
     e_2&=(1,\boxed{1},0,1,0,1,1,0,\ldots)\\
@@ -243,7 +245,278 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
     e_4&=(1,0,1,\boxed{0},1,0,1,1,\ldots)\\
        &\ldots
   \end{align*}
-  Then $e=(1,0,0,1,\ldots)$. Since $e\notin E$ but $e\in A$, every countable subset of $A$ is a proper subset of $A$. Thus, $A$ is uncountable.
+  Then $e=(1,0,0,1,\ldots)$. Since $e\notin E$ but $e\in A$, every countable
+  subset of $A$ is a proper subset of $A$. Thus, $A$ is uncountable.
 \end{pf}
+
+\section*{Metric Spaces}
+
+\begin{defi}
+  A set $X$, whose elements we will call \define{points}, is a \define{metric
+  space} if there is a function $d:X\times X\to\rr$ such that $\forall p,q\in
+  X$
+  \begin{enumerate}
+    \item $d(p,q)>0$ if $p\ne q$, and $d(p,p)=0$.
+    \item $d(p,q)=d(q,p)$.
+    \item $d(p,q)\le d(p,r)+d(r,q)$, $\forall r\in X$ (triangle inequality).
+  \end{enumerate}
+\end{defi}
+
+\begin{defi}
+  The number $d(p,q)$ is the \define{distance} from $p$ to $q$, and $d$ is a
+  \define{metric}.
+\end{defi}
+
+\begin{note}
+  $\rr^k$ is a metric space with the usual metric $d(x,y)=|x-y|$,
+  $x,y\in\rr^k$.
+\end{note}
+
+\begin{prop}
+  Every subset $Y$ of a metric space $X$ is also a metric space where we
+  restrict the metric of $X$ to points in $Y$.
+\end{prop}
+
+\section*{Open and Closed Sets}
+
+\begin{defi}
+  Let $X$ be a metric space, $p\in X$, and $E\subseteq X$.
+  \begin{enumerate}
+    \item Let $r\in\rr^+$. The \define{neighborhood} of $p$ with
+      \define{radius} $r$ is the set $N_r(p)=\{q\in X:d(p,q)<r\}$.
+    \item The point $p$ is a \define{limit point} of $E$ if every neighborhood
+      of $p$ contains a point $q\in E$ and $q\ne p$.
+    \item If $p\in E$ and $p$ is not a limit point of $E$, then $p$ is an
+      \define{isolated point} of $E$.
+    \item $E$ is \define{closed} if every limit point of $E$ is in $E$.
+    \item If $p\in E$ and there is an $r\in\rr^+$ such that $N_r(p)\subseteq
+      E$, then $p$ is an \define{interior point} of $E$.
+    \item $E$ is \define{open} if every point of $E$ is an interior point of
+      $E$.
+    \item The \define{complement} of $E$ in $X$ is the set $E^c=\{x\in
+      X:x\notin E\}$.
+    \item $E$ is \define{perfect} if it is closed and if every point of $E$ is
+      a limit point of $E$.
+    \item $E$ is \define{bounded} if there exists a number $M\in\rr^+$ and a
+      point $q\in X$ such that $d(p,q)<M$ for all $p\in E$.
+    \item $E$ is \define{dense} in $X$ if every point of $X$ is in $E$ or a
+      limit of $E$ (or both).
+  \end{enumerate}
+\end{defi}
+
+\begin{prop}
+  Every neighborhood is an open set.
+\end{prop}
+
+\begin{pf}
+  Consider the neighborhood $E=N_r(p)$, and let $q\in E$. Then
+  $r-d(p,q)\in\rr^+$. For all points $s$ such that $d(q,s)<r-d(p,q)$, we have
+  $d(p,s)\le d(p,q)+d(q,s)<d(p,q)+(r-d(p,q))=r$, implying $s\in N_r(p)$. Thus,
+  $q$ is an interior point of $E$, and the result follows.
+\end{pf}
+
+\begin{prop}
+  If $p$ is a limit point of $E$, then every neighborhood of $p$ contains
+  infinitely many points of $E$.
+\end{prop}
+
+\begin{prop}
+  Let $X$ be a metric space and suppose $E\subseteq X$. The set $E$ is open in
+  $X$ if and only if its complement is closed.
+\end{prop}
+
+\begin{pf}
+  We first prove the forward direction then the backward direction.\\
+  $(\Rightarrow)$ Suppose $E$ is open. If $x$ is a limit point of $E^c$, then
+  every neighborhood of $x$ contains a point of $E^c$. In this case, $x$ can't
+  be an interior point of $E$, and because $E$ is open, $x\in E^c$. Thus, $E^c$
+  is closed.\\
+  $(\Leftarrow)$ Now suppose $E^c$ is closed. If $x\in E$ then $x\notin E^c$
+  and is thus not a limit point of $E^c$. In this case, there is a neighborhood
+  $N(x)$ such that $N(x)\cap E^c=\varnothing$, implying that $N(x)\subseteq E$.
+  Thus, $x$ is an interior point and $E$ is open.
+\end{pf}
+
+\begin{thm}
+  Consider the following statements regarding unions and intersections of open
+  and closed sets.
+  \begin{enumerate}
+    \item For any collection $\{G_\alpha\}$ of open sets, $\cup_\alpha
+      G_\alpha$ is open.
+    \item For any collection $\{F_\alpha\}$ of closed sets, $\cap_\alpha
+      F_\alpha$ is closed.
+    \item For any finite collection $G_1,G_2,\ldots,G_n$ of open sets,
+      $\cap_{i=1}^nG_i$ is open.
+    \item For any finite collection $F_1,F_2,\ldots,F_n$ of closed sets,
+      $\cup_{i=1}^nF_i$ is closed.
+  \end{enumerate}
+\end{thm}
+
+\begin{defi}
+  Let $X$ be a metric space. If $E\subseteq X$, let $E'$ be the set of limit
+  points of $E$. The \define{closure} of $E$ is the set $\overline{E}=E\cup
+  E'$.
+\end{defi}
+
+\begin{prop}
+  If $X$ is a metric space and $E\subseteq X$, then
+  \begin{enumerate}
+    \item $\overline{E}$ is closed.
+    \item $E=\overline{E}$ if and only if $E$ is closed.
+    \item $\overline{E}\subseteq F$ for every closed subset $F$ of $X$ such
+      that $E\subseteq F$.
+  \end{enumerate}
+\end{prop}
+
+\begin{note}
+  $\overline{E}$ is the smallest closed set that contains $E$.
+\end{note}
+
+\section*{Compactness}
+
+\begin{defi}
+  Let $X$ be a metric space, and let $E\subseteq X$. An \define{open cover} of
+  $E$ is a collection $\{G_\alpha\}$ of open subsets of $X$ such that
+  $E\subseteq\cup_\alpha G_\alpha$.
+\end{defi}
+
+\begin{defi}
+  If $\{G_\alpha\}$ is an open cover of $E$, then a subset of $\{G_\alpha\}$
+  that is also an open cover of $E$ is called a \define{subcover} of
+  $\{G_\alpha\}$.
+\end{defi}
+
+\begin{defi}
+  A subset $K$ of a metric space is \define{compact} if every open cover of $K$
+  contains a finite subcover.
+\end{defi}
+
+\begin{prop}
+  Every finite set in a metric space is compact.
+\end{prop}
+
+\begin{prop}
+  Compact subsets are closed.
+\end{prop}
+
+\begin{pf}
+  Let $K$ be a compact subset of a metric space $X$. We will show that $K$ is
+  closed by showing that $K^c$ is open. Suppose $p\in K^c$. We will show that
+  $K^c$ is open by showing that $p$ is an interior point of $K^c$. For each
+  $q\in K$, let $V_q$ and $W_q$ be neighborhoods of $p$ and $q$, of radius less
+  than half the distance between $p$ and $q$. Since $K$ is compact, there are
+  finitely many points, say $q_1,\ldots,q_n$ in $K$ such that if $W=W_{q_1}\cup
+  W_{q_2}\cup\ldots\cup W_{q_n}$, then $K\subseteq W$. If $V=V_{q_1}\cap
+  V_{q_2}\cap\ldots\cap V_{q_n}$, then $V$ is a neighborhood of $p$ that does
+  not intersect $W$, which covers $K$. Thus, $V\subseteq K^c$, and $p$ is
+  therefore an interior point of $K^c$.
+\end{pf}
+
+\begin{prop}
+  Suppose $K\subseteq X\subseteq Y$. Then $K$ is compact relative to $X$ if and
+  only if $K$ is compact relative to $Y$.
+\end{prop}
+
+\begin{prop}
+  Closed subsets of compact sets are compact.
+\end{prop}
+
+\begin{prop}
+  If $F$ is closed and $K$ is compact, then $F\cap K$ is compact.
+\end{prop}
+
+\begin{prop}
+  If $E$ is an infinite subset of a compact set $K$, then $E$ has a limit point
+  in $K$.
+\end{prop}
+
+\begin{pf}
+  Suppose no point of $K$ is a limit point of $E$. Then each point $q\in K$
+  would have a neighborhood $V_q$ that contains at most one point of $E$
+  (namely $q$, if $q\in E$). But then no finite subset of $\{V_q\}$ can cover
+  $E$, and the same is true for $K$ because $E\subseteq K$. This contradicts
+  the fact that $K$ is compact. Thus, the theorem follows.
+\end{pf}
+
+\begin{bthm}
+  Let $E$ be a subset of $\rr^k$ (viewed as a metric space with the usual
+  metric). The following are equivalent.
+  \begin{enumerate}
+    \item $E$ is closed and bounded.
+    \item $E$ is compact.
+    \item Every infinite subset of $E$ has a limit point in $E$.
+  \end{enumerate}
+\end{bthm}
+
+\begin{note}
+  The Heine-Borel Theorem is ``(1) if and only if (2)'' for $\rr^k$.
+\end{note}
+
+\begin{note}
+  For all metric spaces, ``(2) if and only if (3)'' holds.
+\end{note}
+
+\section*{Perfect Sets}
+
+\begin{defi}
+  Let $X$ be a metric space, and $E$ be a subset of $X$. We say $E$ is
+  \define{perfect} if
+  \begin{enumerate}
+    \item $E$ is closed and
+    \item Every point of $E$ is a limit point of $E$.
+  \end{enumerate}
+\end{defi}
+
+\begin{prop}
+  If $P$ is a nonempty perfect set in $\rr^k$, then $P$ is uncountable.
+\end{prop}
+
+\begin{pf}
+  Since $P$ has limit points, we know $P$ is infinite. Suppose $P$ is countable
+  and define the points of $P$ by $x_1,x_2,\ldots$. Let $V_1$ be any
+  neighborhood of $x_1$. If $V_1$ has radius $r$, note that
+  $\overline{V_1}=\{y\in\rr^k:|y-x_1|\le r\}$. We will use $V_1$ to recursively
+  construct a sequence $\{V_n\}$ of neighborhoods as follows. Suppose $V_n$ has
+  been constructed so that $V_n\cap P$ is not empty. Since every point of $P$
+  is a limit point of $P$, there is a neighborhood $V_{n+1}$ such that
+  $\overline{V_{n+1}}\subseteq V_n$, $x_n\notin\overline{V_{n+1}}$, and
+  $V_{n+1}\cap P\neq\{\}$. By the last condition, our recursive construction
+  can proceed to give us a sequence $\{V_n\}$ of neighborhoods. Let
+  $K_n=\overline{V_n}\cap P$. Since $\overline{V_n}$ is closed and bounded,
+  $\overline{V_n}$ is compact and $K_n$ is compact. Since
+  $x_n\notin\overline{V_{n+1}}$, no point of $P$ is contained in
+  $\cap_{n=1}^\infty K_n$. But since $K_n\subseteq P$, this implies that
+  $\cap_{n=1}^\infty K_n$ is empty. But each $K_n$ is not empty by the fact
+  that $V_{n+1}\cap P\neq\{\}$ and $K_n\supseteq K_{n+1}$. But this contradicts
+  the corollary that if $\{K_n\}$ is a sequence of nonempty compact sets such
+  that $K_n\supseteq K_{n+1}$, then $\cap_{n=1}^\infty K_n$ is not empty. The
+  theorem follows.
+\end{pf}
+
+\begin{prop}
+  Let $a,b\in\rr$ and $a<b$. Then the interval $[a,b]$ is uncountable. Also,
+  $\rr$ is uncountable.
+\end{prop}
+
+\begin{note}
+  There are, however, perfect sets in $\rr$ that contain no intervals.
+\end{note}
+
+\begin{ex}
+  Let $E_0$ be the interval $[0,1]$. Remove the segment
+  $(\frac{1}{3},\frac{2}{3})$ and let $E_1=[0,\frac{1}{3}]
+  \cup[\frac{2}{3},1]$. Removing the middle thirds from these intervals yields
+  $E_2=[0,\frac{1}{9}] \cup[\frac{2}{9},\frac{3}{9}]
+  \cup[\frac{6}{9},\frac{7}{9}] \cup[\frac{8}{9},1]$. Continuing gives us a
+  sequence $\{E_n\}$ of compact sets such that
+  \begin{enumerate}
+    \item $E_1\supseteq E_2\supseteq E_3\supseteq\ldots$ and
+    \item $E_n$ is the union of $2^n$ disjoint intervals, each of length
+      $\frac{1}{3^n}$.
+  \end{enumerate}
+  Then the set $P=\cap_{n=1}^\infty E_n$ is called the \define{Cantor set}.
+  Note that $P$ is compact. Also, it is not empty. $P$ contains no intervals
+  and $P$ is perfect.
+\end{ex}
 
 \end{document}
