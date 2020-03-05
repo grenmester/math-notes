@@ -1,0 +1,1477 @@
+\documentclass[11pt,letterpaper]{jacky}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage, mathtools}
+\usepackage{tikz-cd}
+
+\pagestyle{fancy}
+\lhead{Jacky Lee}
+\chead{Abstract Algebra Notes}
+\rhead{Last Updated: \today}
+\lfoot{}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+
+\linespread{1.1}
+\setlength{\parindent}{0pt}
+
+\newcommand\blankpage{
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage}
+\renewcommand\footrulewidth{0.4pt}
+
+\begin{document}
+\begin{center}
+    \vspace*{20pt}
+    \LARGE{Abstract Algebra Notes}
+\end{center}
+
+\begin{defi}
+    A \define{map} $f:A \rightarrow B$ is a subset $f\subset A\times B$ such
+    that for all $a\in A$, there exists a $b\in B$ such that $b$ is unique with
+    $(a,b)\in f$.
+\end{defi}
+
+\begin{defi}
+    We write $f(a)=b$ if $(a,b)\in f$. $A$ is the \define{domain} of $f$ and
+    $B$ is the \define{codomain}.
+\end{defi}
+
+\begin{defi}
+    A \define{binary operation} on $A$ is a map $\star:A\times A\rightarrow A$
+    such that $\star(a_1,a_2)=a_1\star a_2$ for $a_1,a_2\in A$.
+\end{defi}
+
+\begin{defi}
+    A binary operation $\star$ is \define{associative} on $A$ if for all
+    $a,b,c\in A$, $a\star(b\star c)=(a\star b)\star c$.
+\end{defi}
+
+\begin{defi}
+    An element $e\in A$ is an \define{identity} element of $\star$ if for each
+    $a\in A$, $e\star a=a\star e=a$.
+\end{defi}
+
+\begin{defi}
+    An element $a\in A$ has an \define{inverse} under $\star$ if there exists a
+    $b\in A$ such that $a\star b=b\star a=e$.
+\end{defi}
+
+\begin{defi}
+    A set $A$ with an associative binary operation $\star$ is a \define{group}
+    if $A$ has an identity element under $\star$ and every $a\in A$ has an
+    inverse.
+\end{defi}
+
+\begin{bdefi}
+    A group is a pair $(G,\star)$ where $G$ is a set and $\star$ is a binary
+    operation on $G$ such that
+    \begin{enumerate}
+        \item For all $a,b,c\in A$, $a\star(b\star c)=(a\star b)\star c$.
+        \item There exists an $e\in G$ such that $a\star e=e\star a=a$ for all
+          $a\in G$.
+        \item For all $a\in G$, there exists a $b\in G$ such that $a\star
+          b=b\star a=e$.
+    \end{enumerate}
+\end{bdefi}
+
+\begin{defi}
+    A group $(G,\star)$ is \define{abelian} or commutative if for all $g,h\in
+    G$, $g\star h=h\star g$.
+\end{defi}
+
+\begin{bthm}
+    Let $(G,\star)$ be a group.
+    \begin{enumerate}
+        \item $e$ is unique.
+        \item $g^{-1}$ is unique.
+        \item $\forall g\in G, \pn{g^{-1}}^{-1}=g$.
+        \item $\forall g,h\in G, (g\star h)^{-1}=h^{-1}\star g^{-1}$.
+    \end{enumerate}
+\end{bthm}
+
+\begin{bpf}
+    We may prove each part separately.
+    \begin{enumerate}
+        \item Suppose $e,e'$ are identity elements. Then for all $a\in G$,
+            \begin{align*}
+                a\star e&=e\star a=a\tag*{(i)}\\
+                a\star e'&=e'\star a=a\tag*{(ii)}
+            \end{align*}
+            By (i), $e'=e\star e'$ and by (ii), $e=e\star e'$. Therefore,
+            $e=e'$.
+        \item Supposed $a\star b=b\star a=e$, then
+            \begin{align*}
+                b&=b\star e\\
+                 &=b\star(a\star a^{-1})\\
+                 &=(b\star a)\star a^{-1}\\
+                 &=e\star a^{-1}\\
+                 &=a^{-1}
+            \end{align*}
+            Thus, $b=a^{-1}$.
+        \item $g^{-1}\star \pn{g^{-1}}^{-1}=e=g^{-1}\star g$. By (ii),
+          $g=\pn{g^{-1}}^{-1}$.
+        \item Consider $(a\star b)\star(b^{-1}\star a^{-1})$.
+            \begin{align*}
+                (a\star b)\star(b^{-1}\star a^{-1})&=a\star(b\star b^{-1})\star
+                a^{-1}\\
+                                                   &=a\star e\star a^{-1}\\
+                                                   &=a\star a^{-1}\\
+                                                   &=e
+            \end{align*}
+            Thus, $(b^{-1}\star a^{-1})=(a\star b)^{-1}$.
+    \end{enumerate}
+\end{bpf}
+
+\begin{defi}
+    Let $[n]=\{1,2,\ldots,n\}$. The \define{symmetric group} denoted $S_n$ of
+    degree $n$ is the set of all bijections on $[n]$ under the operation of
+    composition.
+    $$S_n=\{\sigma:[n]\rightarrow[n]\mid\sigma\text{ is a bijection}\}$$
+\end{defi}
+
+\begin{defi}
+    The \define{order} of $(G,\star)$ is the number of elements in $G$ denoted
+    $|G|$.
+\end{defi}
+
+\begin{defi}
+    Let $n\ge 2$. The \define{dihedral group} of index $n$ is the group of all
+    symmetries of a regular polygon $P_n$ with $n$ vertices in the Euclidean
+    plane.
+\end{defi}
+
+Symmetries of $P_n$ consist of rotations and reflections.\\
+
+Choose a vertex $v$. Let $L_0$ be the line from the center of $P_n$ through
+$v$. Let $L_k$ be $L_0$ rotated by $\frac{\pi k}{n}$ for $1\le k\le n$. Let
+$\sigma_k$ be a reflection about $L_k$. Let $\rho_k$ be a rotation about
+$\frac{2\pi k}{n}$, $1\le k\le n$.
+
+\begin{defi}
+    A subset $S\subseteq G$ of a group $(G,\star)$ is a set of
+    \define{generators}, denoted $\langle S\rangle=G$, if and only if every
+    element of $G$ can be written as a finite product of elements of $S$ and
+    their inverses.
+\end{defi}
+
+\begin{defi}
+    Any equation satisfied by generators is called a \define{relation}.
+\end{defi}
+
+\begin{defi}
+    A \define{presentation} of $G$, denoted $\langle S\mid R\rangle$, is a set
+    of generators of $G$ and relations such that any other relation can be
+    derived by those given.
+\end{defi}
+
+\begin{ex}
+    $$D_{2n}=\langle r,s\mid r^n=s^2=1,rs=sr^{-1}\rangle$$
+\end{ex}
+
+\begin{defi}
+    The cycles $\sigma=(\sigma_1\ \sigma_2\ \ldots\ \sigma_n)$ and
+    $\tau=(\tau_1\ \tau_2\ \ldots\ \tau_n)$ are \define{disjoint} if
+    $\sigma_i\ne\tau_j$ for $1\le i\le n$ and $1\le j\le m$.
+\end{defi}
+
+\begin{defi}
+    A cycle of length 2 is called a \define{transposition}.
+\end{defi}
+
+\begin{defi}
+    An expression of the form $(a_1\ a_2\ \ldots\ a_m)$ is called a
+    \define{cycle of length m} or an \define{m-cycle}.
+\end{defi}
+
+\begin{prop}
+    Let $\alpha=(a_1\ a_2\ \ldots\ a_m)$ and $\beta=(b_1\ b_2\ \ldots\ b_n)$.
+    If $a_i\ne b_j$ for any $i,j$, then $\alpha\beta=\beta\alpha$.
+\end{prop}
+
+\begin{prop}
+    Every permutation can be written as a product of disjoint cycles.
+\end{prop}
+
+\begin{prop}
+    A cycle of length $n$ has order $n$.
+\end{prop}
+
+\begin{prop}
+    Let $\alpha_1,\alpha_2,\ldots,\alpha_n$ be disjoint cycles. Then,
+    $$|\alpha_1\alpha_2\ldots\alpha_n|=
+    \lcm(|\alpha_1|,|\alpha_2|,\ldots,|\alpha_n|)$$
+\end{prop}
+
+\begin{prop}
+    Every permutation is $S_n$ is a product of 2-cycles (which are not
+    necessarily disjoint).
+\end{prop}
+
+\begin{prop}
+    If $\alpha=\beta_1\beta_2\ldots\beta_r=\gamma_1\gamma_2\ldots\gamma_s$
+    where $\beta_i,\gamma_j$ are transpositions, then $r$ and $s$ have the same
+    parity.
+\end{prop}
+
+\begin{defi}
+    If $r$ and $s$ are both odd, $\alpha$ is called an \define{odd
+    permutation}. If $r$ and $s$ are both even, $\alpha$ is called an
+    \define{even permutation}.
+\end{defi}
+
+\begin{defi}
+    The set of even permutations in $S_n$ form a group called the
+    \define{alternating group}, denoted $A_n$.
+\end{defi}
+
+\begin{note}
+    $|A_n|=\frac{n!}{2}$ for $n>1$.
+\end{note}
+
+\begin{bdefi}
+    Let $(G,\star)$ and $(G',\ast)$ be groups. A map of sets $\hmap{G}{G'}$ is
+    a \define{group homomorphism} if for all $a,b\in G$,
+    $$\varphi(a\star b)=\varphi(a)\ast\varphi(b)$$
+\end{bdefi}
+
+\begin{ex}
+    The following are two very simple examples of homomorphisms.\\\\
+    \textbf{Trivial Homomorphism}
+    $$\hmap{G}{G'},\varphi(g)=e,\forall g\in G$$
+    \textbf{Identity Homomorphism}
+    $$\hmap{G}{G'},\varphi(g)=g,\forall g\in G$$
+\end{ex}
+
+\begin{defi}
+    If $\hmap{G}{G'}$ is a homomorphism, the \define{domain} of $\varphi$ is
+    $\text{Dom}(\varphi)=G$, the \define{codomain} of $\varphi$ is
+    $\text{Codom}(\varphi)=G'$, the \define{range} or \define{image} of
+    $\varphi$ is $\varphi(G)=\{\varphi(g):g\in G\}\subseteq G'$ denoted
+    $\text{Range}(\varphi)$ or $\im$.
+\end{defi}
+
+\begin{bdefi}
+    A homomorphism which is bijective is called an \define{isomorphism}.
+\end{bdefi}
+
+$\hmap{G}{G'}$ is an isomorphism if and only if there exists
+$\hmap[\psi]{G'}{G}$ such that $\psi$ is a homomorphism and
+$\varphi\circ\psi=1_{G'}$, $\psi\circ\varphi=1_{G}$, i.e. $\psi$ is an inverse
+homomorphism to $\varphi$. We say $G$ is isomorphic to $G'$ by $G\cong G'$ or
+$\phi:G\xrightarrow{\sim}G'$.
+
+\begin{bdefi}
+    Let $(G,\star)$ be a group. A subset $H\subseteq G$ is a \define{subgroup}
+    if $(H,\ast)$ is also a group.
+\end{bdefi}
+
+If $H\ne\emptyset$ and $H\subseteq G$, $H\le G$ or $H$ is a subgroup of $G$ if
+and only if
+\begin{enumerate}
+    \item $H$ is closed under $\star$ ($\forall h_1,h_2\in H$,\ $h_1\star
+      h_2\in H$).
+    \item $H$ is closed under inverses ($h\in H\Rightarrow h^{-1}\in H$).
+\end{enumerate}
+
+\begin{note}
+    The following is notation for arbitrary and abelian groups.
+    \begin{center}
+        $x\star y\rightarrow xy$ for arbitrary $G$, $x+y$ for abelian $G$\\
+        $e\rightarrow1$ for arbitrary $G$, 0 for abelian $G$
+    \end{center}
+\end{note}
+
+For an arbitrary subset $A\subseteq G$, and $g\in G$,
+$$gA=\{ga:a\in A\}\hspace{50pt}Ag=\{ag:a\in
+A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
+
+\begin{bthm}[Subgroup Criterion]
+    Let $\emptyset\ne H\subseteq G$, $H\le G$ if and only if $\forall x,y\in
+    H$, $xy^{-1}\in H$.
+\end{bthm}
+
+\begin{defi}
+    Let $A\subseteq G$ be any subset. The \define{centralizer} of $A$ in $G$ is
+    $C_G(A)=\{g\in G:gag^{-1}=a\}$ and it is the set of elements in $G$ which
+    commute with all elements of $A$.
+\end{defi}
+
+\begin{prop}
+    $C_G(A)\le G$
+\end{prop}
+
+\begin{pf}
+    First we show that the centralizer is not empty. $1a=a1=a$, $\forall a\in
+    A$ $\Rightarrow$ $1\in C_G(A)$ $\Rightarrow$ $C_G(A)\ne0$ so the
+    centralizer of $A$ is not empty. Let $x,y\in C_G(A)$. We want to show that
+    $xy^{-1}\in C_G(A)$ or that $xy^{-1}\in C_G(A)$. We do this by showing that
+    $\pn{xy^{-1}}a\pn{xy^{-1}}^{-1}=a$.
+    \begin{align*}
+        \pn{xy^{-1}}a\pn{xy^{-1}}^{-1}&=xy^{-1}ayx^{-1}\\
+        &=x\pn{y^{-1}ay}x^{-1}\\
+        &=xax^{-1}\tag*{($y\in C_G(A)$)}\\
+        &=a\tag*{($x\in C_G(A)$)}
+    \end{align*}
+    Since this subset satisfies the Subgroup Criterion, the centralizer
+    $C_G(A)$ is a subgroup of $G$.
+\end{pf}
+
+\begin{defi}
+    The \define{center} of a group $G$ is denoted $Z(G)=\{g\in G:gx=xg,\
+    \forall x\in G\}$. $Z(G)=C_G(G)\le G$. $Z(G)$ is the set of elements of $G$
+    which commute with all elements in $G$. If $G$ is abelian, $Z(G)=G$.
+\end{defi}
+
+\begin{defi}
+    The \define{normalizer} of $A$ in $G$ is $N_G(A)=\{g\in G:gAg^{-1}=A\}$ or
+    $\{g\in G:gag^{-1}=a'\in A\}$.
+\end{defi}
+
+\begin{prop}
+    $C_G(A)\le N_G(A)\le G$
+\end{prop}
+
+\begin{defi}
+    A \define{group action} of a group $G$ on a set $A$ is a map $G\times
+    A\rightarrow A$ such that $(g_1g_2)\cdot a=g_1\cdot\pn{g_2\cdot a}$,
+    $\forall g_1,g_2\in G$, $\forall a\in A$ and $1\cdot a=a$, $\forall a\in
+    A$. It is denoted $G\circlearrowleft A$.
+\end{defi}
+
+\begin{defi}
+    Suppose $G\circlearrowleft A$, the stabilizer of $a\in A$ in $G$ is
+    $G_a=\{g\in G:g\cdot a=a\}$. $G_a\le G$.
+\end{defi}
+
+\begin{bdefi}
+    An \define{equivalence relation} $\mathcal{E}$ on a set $S$ is a subset
+    $\mathcal{E}\subseteq S\times S$ which is reflexive, symmetric, and
+    transitive. We write $(a,b)\in\mathcal{E}\Leftrightarrow
+    a\mathrel\mathcal{E}b$ or $a\sim b$.
+    \begin{enumerate}
+        \item $a\sim a$
+        \item $a\sim b\Leftrightarrow b\sim a$
+        \item $a\sim b$, $b\sim c\Rightarrow a\sim c$
+    \end{enumerate}
+\end{bdefi}
+
+\begin{defi}
+    The \define{equivalence class} of $a\in S$ is $[a]=\{b\in S:a\sim b\}$
+\end{defi}
+
+\begin{defi}
+    The \define{quotient set} of $S$ under $\sim$ is $S$/$\sim=\{[a]:a\in S\}$.
+\end{defi}
+
+\begin{ex}
+    $\mathbb{Q}=\{(a,b)\in\mathbb{Z}\times\mathbb{Z}:b\ne 0\}$/$\sim$,
+    $(a,b)\sim(c,d)\Rightarrow ad=bc$.
+\end{ex}
+
+\begin{defi}
+    The quotient set comes equipped with the \define{projection map}
+    $\pi:S\rightarrow S$/$\sim$ where $a\mapsto[a]=\pi(a)$. This map is
+    surjective by definition.
+\end{defi}
+
+\begin{bdefi}
+    A group $G'$ is a \define{quotient group} of a group $G$ if
+    \begin{enumerate}
+        \item $G'=G$/$\sim$, $G'$ is the quotient set of $G$ under an
+          equivalence relation $\sim$.
+        \item The projection map $\hmap[\pi]{G}{G'}=G$/$\sim$ is a group
+          homomorphism.
+    \end{enumerate}
+\end{bdefi}
+
+\begin{defi}
+    Let $\hmap{G}{G'}$ be a homomorphism and let $g'\in G'$. The \define{fiber}
+    over $g'$ is $\varphi^{-1}(g')=\{g\in G:\varphi(g)=g'\}$.
+\end{defi}
+
+\begin{bprop}
+    All quotient groups come from subgroups.
+\end{bprop}
+
+\begin{bpf}
+    Let $\hmap{G}{G'}$ be a homomorphism, then $\varphi$ induces an equivalence
+    relation on $G$. Let $x\sim y\Leftrightarrow\varphi(x)=\varphi(y)$. But
+    $\varphi$ is a group homomorphism, so
+    $\varphi(x)=\varphi(y)\Leftrightarrow\varphi(x)\varphi(y)^{-1}
+    =1_{G'}\Leftrightarrow\varphi(x)\varphi(y^{-1})=1\Leftrightarrow
+    \varphi(xy^{-1})=1$.
+    So $x\sim y\Leftrightarrow\varphi(xy^{-1})=1$. Let $K=\{g\in
+    G:\varphi(g)=1\}$. Then $x\sim y\Leftrightarrow xy^{-1}\in K$. Recall
+    $K=\ker\le G$.\\\\
+    Let $G'$ be a quotient group of $G$. Then $x\sim
+    y\Leftrightarrow[x]=[y]\Leftrightarrow\pi(x)=\pi(y)$ where
+    $\hmap[\pi]{G}{G'}$ is the projection. But $\pi(x)=\pi(y)\Leftrightarrow
+    xy^{-1}\in\ker$.
+\end{bpf}
+
+\begin{defi}
+    The \define{right coset} of a subgroup $H$ of a group $G$ by the element
+    $x\in G$ is $Hx=\{hx:h\in H\}$. The \define{left coset}, denoted $xH$ is
+    denoted similarly.
+\end{defi}
+
+\begin{prop}
+    Let $\hmap{G}{G'}$ be a homomorphism and $K=\ker$. Then $xKx^{-1}\subseteq
+    K$, $\forall x\in G$.
+\end{prop}
+
+\begin{pf}
+    We must show $\varphi(xkx^{-1})=1_{G'}$ for $x\in G$, $k\in K$. Then,
+    $\varphi(xkx^{-1})=\varphi(x)\varphi(k)\varphi(x^{-1})
+    =\varphi(x)\varphi(x)^{-1}=1_{G'}$.
+\end{pf}
+
+\begin{bdefi}
+    The subgroup $N\le G$ is \define{normal} if $xNx^{-1}\subseteq N$ for all
+    $x\in G$. It is denoted $N\unlhd G$.
+\end{bdefi}
+
+\begin{prop}
+    $\ker\unlhd G$ for any homomorphism $\hmap{G}{G'}$.
+\end{prop}
+
+\begin{bthm}
+    Let $N\le G$. Then the following are equivalent.
+    \begin{enumerate}
+        \item $N\unlhd G$ ($xNx^{-1}\subseteq N,\ \forall x\in G$)
+        \item $xNx^{-1}=N$
+        \item $xN=Nx$
+        \item $\forall x,y\in G,\ xy^{-1}\in N\Leftrightarrow y^{-1}x\in N$
+    \end{enumerate}
+\end{bthm}
+
+\begin{bpf}
+    $(1)\Rightarrow(2)$ Assume $\forall x\in G$, $xNx^{-1}\subseteq N$. We want
+    to show $xNx^{-1}=N$. We do this by showing $N\subseteq xNx^{-1}$. Let
+    $x\in G$, $n_0\in N$. We show $n_0\in xNx^{-1}$. Note that $x\in
+    G\Rightarrow x^{-1}\in G$. Thus, $x^{-1}N\pn{x^{-1}}^{-1}\subseteq N$ since
+    $N\unlhd G$. Thus there exists $n$ such that $x^{-1}nx=n_1\in N$.
+    $n_0=x\pn{x^{-1}n_0x}x^{-1}=xn_1x^{-1}\in xNx^{-1}$.\\\\
+    $(3)\Rightarrow(4)$ Assume $\forall x\in G$, $xN=Nx$. Let $x,y\in G$. We
+    want to show $xy^{-1}\in N\Leftrightarrow y^{-1}x\in N$. So we must show
+    this is true in both directions. Suppose $xy^{-1}\in N$. Then there exists
+    an $n_1\in N$ such that $xy^{-1}=n_1$. Thus, $x=n_1y\in Ny=yN$ by
+    assumption. So $x\in yN$. Thus there exists $n_2\in N$ such that
+    $x=yn_2\Rightarrow y^{-1}x=n_2\in N$. Thus, $xy^{-1}\in N\Rightarrow
+    y^{-1}x\in N$. Similarly, $y^{-1}x\in N\Rightarrow xy^{-1}\in N$.
+\end{bpf}
+
+\begin{prop}
+    Let $H\le G$. Then, $x\sim y\Leftrightarrow y^{-1}x\in H$ is an equivalence
+    relation on $G$.
+\end{prop}
+
+\begin{pf}
+    We want to show $\sim$ is reflexive, symmetric, and transitive.
+    \begin{enumerate}
+        \item $x\sim x$: $x^{-1}x=1\in H$
+        \item $x\sim y\Rightarrow y\sim x$: $x\sim y\Leftrightarrow y^{-1}x\in
+          H\Rightarrow x^{-1}y\in H\Leftrightarrow y\sim x$
+        \item $x\sim y$, $y\sim z\Rightarrow x\sim z$: $y^{-1}x\in H$,
+          $z^{-1}y\in H\Rightarrow(z^{-1}y)(y^{-1}x)=z^{-1}x\in
+          H\Leftrightarrow x\sim z$
+    \end{enumerate}
+    Thus, $\sim$ is an equivalence relation on $G$.
+\end{pf}
+
+Any subgroup gives an equivalence relation.
+
+\begin{defi}
+    An equivalence relation on a set $S$ is the same as a \define{partition} of
+    $S$. $P=\{A_1,A_2,\ldots\}$, $A_i\subseteq S$ such that
+    $S\cup_{i\in\mathbb{N}}A_i$, $A_i\cap A_j=\emptyset$, $i\ne j$. $a\sim
+    b\Leftrightarrow a,b\in A_i$.
+\end{defi}
+
+\begin{prop}
+    For $H\le G$, $x\sim y\Leftrightarrow y^{-1}x\in H\Leftrightarrow xH=yH\
+    (Hx=Hy)$.
+\end{prop}
+
+\begin{pf}
+    Suppose $y^{-1}x\in H$. We want to show that $xH=yH$ or $xH\subseteq yH$
+    and $yH\subseteq xH$. $y^{-1}x\in H$ implies that there exists a $h_1\in H$
+    such that $y^{-1}x=h_1$. Thus, $x=yh_1\Rightarrow x\in yH$. $y^{-1}x\in
+    H\Leftrightarrow x^{-1}y\in H$ which implies that there exists a $h_2\in H$
+    such that $x^{-1}y=h_2\Rightarrow y=xh_2\in xH$.
+\end{pf}
+
+\begin{note}
+    $[x]=xH$.
+\end{note}
+
+\begin{prop}
+    For $N\le G$, let $G/N=\{xN:x\in G\}$. Define $xN\cdot yN=(xy)N$. Then
+    $G/N$ is a group if and only if $N\unlhd G$.
+\end{prop}
+
+$G/N=G$/$\sim$ ($x\sim y\Leftrightarrow xN=yN$)\\
+
+Every quotient group is $G/N$ for some $N$.\\
+
+$\pi:G\rightarrow G$/$\sim$, $\ker[(\pi)]\unlhd G$, $G$/$\sim\ =G/\ker[(\pi)]$.
+
+\begin{prop}
+    If $H\le G$ and $G$ is abelian, then $H\unlhd G$.
+\end{prop}
+
+If $G$ is a group and $\sim$ is an equivalence relation on $G$, then the
+quotient set $G$/$\sim$ is a quotient group if and only if the projection map
+$\pi:G\rightarrow G$/$\sim$, $\pi(x)=[x]$ is a homomorphism.\\
+
+If $N\unlhd G$, then $G/N$ is a quotient group, where $G/N=\{xN:x\in G\}$ and
+$xN\cdot yN=(xy)N$.\\
+
+These notions of quotient groups are equivalent.
+
+\begin{prop}
+    If $\sim$ is an equivalence relation and $G$/$\sim$ is a quotient group,
+    then there exists a homomorphism $\pi:G\rightarrow G$/$\sim$ and
+    $\ker[(\pi)]\unlhd G$.
+\end{prop}
+
+\begin{pf}
+    $x\sim y\Leftrightarrow \pi(x)=\pi(y)\Leftrightarrow
+    \pi(y^{-1}x)=1\Leftrightarrow y^{-1}x\in\ker[(\pi)]\Leftrightarrow
+    x\ker[(\pi)]=y\ker[(\pi)]$.
+\end{pf}
+
+If $N\unlhd G$, define $x\sim y\Leftrightarrow xN=yN\Leftrightarrow y^{-1}x\in
+N$. Then, $G$/$\sim=G/N$, $[x]=xN$, $\hmap[\pi]{G}{G/N}$, $\pi(x)=xN$,
+$\ker[(\pi)]=N$.
+
+\begin{prop}
+    Every subgroup of an abelian group is a normal subgroup.
+\end{prop}
+
+\begin{defi}
+    $S^n\subseteq\mathbb{R}^{n+1}$, $S^n=\{(x_1,x_2,\ldots,x_{n+1}):\sum
+    x_i^2=1\}$
+\end{defi}
+
+For $H\le G$, the relation $x\sim y\Leftrightarrow xH=yH\Leftrightarrow
+y^{-1}x\in H$ is an equivalence relation and thus partitions $G$ into
+equivalence classes.
+
+$$G=\bigcup\limits_{x\in G}[x],\ [x]\cap[y]=\emptyset,\ [x]\ne[y]$$
+$$G=\bigcup\limits_{x\in G}xH,\ xH\cap yH=\emptyset,\ x\nsim y$$
+
+\begin{prop}
+    Let $H\le G$. The number of right cosets of $H$ equals the number of left
+    cosets of $H$.
+\end{prop}
+
+\begin{pf}
+    Let $R=\{Hx:x\in G\}$ and $L=\{xH:x\in G\}$. We construct a bijection
+    $L\rightarrow R$. Define $\hmap[f]{R}{L}$ by $f(Hx)=x^{-1}H$, and define
+    $\hmap[g]{L}{R}$ by $g(xH)=Hx^{-1}$. Then $f$ and $g$ are mutually inverse.
+    Hence $R\leftrightarrow L$.
+\end{pf}
+
+\begin{defi}
+    The number of distinct left cosets of $H$ in $G$ is called the
+    \define{index} of $H$ in $G$, and is denoted $[G:H]$.
+\end{defi}
+
+\begin{bthm}[Lagrange's Theorem]
+    If $H$ is a subgroup of $G$, $|G|=|H|[G:H]$.
+\end{bthm}
+
+\begin{cor}
+    In a finite group, the order of every element divides the order of the
+    group.
+\end{cor}
+
+\begin{cor}
+    A group of prime order is cyclic.
+\end{cor}
+
+\begin{cor}
+    Let $G$ be a finite group and let $a\in G$. Then, $a^{|G|}=1$.
+\end{cor}
+
+Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism?
+How can $\varphi$ fail to be an isomorphism?
+\begin{enumerate}
+    \item $\varphi$ could fail to be injective. $(\ker\ne\{1\})$
+    \item $\varphi$ could fail to be surjective.
+\end{enumerate}
+
+\begin{bthm}[First Isomorphism Theorem]
+    Let $\hmap{G}{G'}$ be a homomorphism. Then $\ker\unlhd G$, $\im\le G'$ and
+    $$G/\ker\cong\im$$
+\end{bthm}
+
+\begin{prop}
+    There exists an isomorphism $\hmap[\theta]{G/\ker}{\im}$ such that
+    \begin{center}
+        \begin{tikzcd}[column sep={8em,between origins}, row sep=6em, every
+          matrix/.append style={name=m}, execute at end picture={
+                    \draw [<-] ([xshift=-4em, yshift=2.25em]m-2-2.north)
+                    arc[start angle=-90,delta angle=270,radius=0.25cm];
+            }]
+            G \arrow[r, "\varphi"] \arrow[d, "\pi"] & G' \arrow[d,
+            hookleftarrow, "\iota"] \\
+            G/\ker \arrow[r, "\theta"] & \im
+        \end{tikzcd}
+    \end{center}
+    The curved arrow in the middle means the diagram is commutative, i.e.
+    $\varphi=\iota\cdot\theta\cdot\pi$. The curved arrow means it is injective.
+\end{prop}
+
+\begin{pf}
+    Define $\hmap[\theta]{G/\ker}{\im}$ by $\theta(x\ker)=\varphi(x)$.\\\\
+    First we show that $\theta$ is well-defined. Suppose $x\ker=y\ker$. Then,
+    \begin{align*}
+        x\ker=y\ker&\Leftrightarrow y^{-1}x\ker=\ker\\
+                   &\Leftrightarrow y^{-1}x\in\ker\\
+                   &\Leftrightarrow \varphi(y^{-1}x)=1\\
+                   &\Leftrightarrow \varphi(y)^{-1}\varphi(x)=1\\
+                   &\Leftrightarrow \varphi(x)=\varphi(y)\\
+                   &\Leftrightarrow \theta(x\ker)=\theta(y\ker)
+    \end{align*}
+    Thus, $\theta$ is well-defined.\\\\
+    Then, we show that $\theta$ is a homomorphism. Let $K=\ker$.
+    \begin{align*}
+        \theta(xKyK)&=\theta(xyK)\\
+                    &=\varphi(xy)\\
+                    &=\varphi(x)\varphi(y)\\
+                    &=\theta(xK)\theta(yK)
+    \end{align*}
+    Thus, $\theta$ is a homomorphism.\\\\
+    Then, we show that $\theta$ is injective.
+    \begin{align*}
+        \theta(xK)=\theta(yK)&\Leftrightarrow\varphi(x)=\varphi(y)\\
+                             &\Leftrightarrow\varphi(y)^{-1}\varphi(x)=1\\
+                             &\Leftrightarrow\varphi(y^{-1}x)=1\\
+                             &\Leftrightarrow y^{-1}x\in K\\
+                             &\Leftrightarrow xK=yK
+    \end{align*}
+    Thus, $\theta$ is injective.\\\\
+    Then, we show that $\theta$ is surjective. Let $y\in\im$. There exists
+    $xK\in G/K$ such that $\theta(xK)=y$. We know there exists an $x\in G$ such
+    that $\varphi(x)=y$. $\theta(xK)=\varphi(x)=y$. Thus, $\theta$ is
+    surjective and $\theta$ is an isomorphism.
+\end{pf}
+
+\begin{prop}
+    Let $a\in G$. If $|a|=\infty$, then $\langle a\rangle\cong(\mathbb{Z},+)$.
+    If $|a|=n$, then $\langle a\rangle=\mathbb{Z}_n=\mathbb{Z}/n\mathbb{Z}$.
+\end{prop}
+
+\begin{pf}
+    Consider $\mathbb{Z}\xrightarrow{\pi} G$ defined by $\pi(k)=a^k$.
+\end{pf}
+
+\begin{defi}
+    Let $(A,\star)$ and $(B,\ast)$ be groups. The \define{direct product} or
+    \define{direct sum} of $A$ and $B$ is $A\oplus B=\{(a,b):a\in A,b\in B\}$
+    where $(a_1,b_1)\cdot(a_2,b_2)=(a_1\star a_2,b_1\ast b_2)\in A\oplus B$.
+\end{defi}
+
+\begin{defi}
+    In a group $G$, define $a\sim b\Leftrightarrow\exists x\in G$ such that
+    $b=xax^{-1}$. This is an equivalence relation and $a$ and $b$ are
+    \define{conjugates}.
+\end{defi}
+
+\begin{defi}
+    For any $x\in G$, the \define{inner automorphism} of $G$ induced by $x$ is
+    $\hmap[T_x]{G}{G}$ defined by $T_x(g)=xgx^{-1}$.
+\end{defi}
+
+\begin{defi}
+    The set of all inner automorphisms of $G$ is a group, called the
+    \define{inner automorphism group}, and is denoted
+    $\text{Inn}(G)=\{\hmap[T_x]{G}{G}\mid x\in G\}$.
+\end{defi}
+
+\begin{prop}
+    $G/Z(G)\cong\text{Inn}(G)$
+\end{prop}
+
+\begin{pf}
+    Consider $\hmap[\psi]{G}{\text{Inn}(G)}$ defined by $x\mapsto T_x$. Then,
+    $\psi$ is surjective, i.e. $\im[(\psi)]=\text{Inn}(G)$. We then determine
+    the kernel of the homomorphism.
+    \begin{align*}
+        \ker[(\psi)]&=\{x\in G:\psi(x)=1_G\}\\
+                    &=\{x\in G:T_x(g)=g,\ \forall g\in G\}\\
+                    &=\{x\in G:xgx^{-1}=g,\ \forall g\in G\}\\
+                    &=\{x\in G:xg=gx,\ \forall g\in G\}\\
+                    &=Z(G)
+    \end{align*}
+    By the first isomorphism theorem, $G/Z(G)\cong\text{Inn}(G)$.
+\end{pf}
+
+\begin{bthm}[Third Isomorphism Theorem]
+    Let $G$ be a group. Let $A\unlhd G$, $B\unlhd G$. If $A\subseteq B$, then
+    $A\unlhd B$, $B/A\unlhd G/A$, and
+    $$(G/A)/(B/A)\cong(G/B)$$
+\end{bthm}
+
+\begin{bpf}
+    First we establish $A\unlhd B$. $A\le B$ because $A\le G$ and $A\subseteq
+    B$.
+    $$A\unlhd B\Leftrightarrow bAb^{-1}\subseteq A,\ \forall b\in B$$
+    $$A\unlhd G\Leftrightarrow xAx^{-1}\subseteq A,\ \forall x\in G$$
+    But $B\subseteq G$ so $b\in G$. Thus, $bAb^{-1}\subseteq A$, $\forall b\in
+    B$ and $A\unlhd B$. Thus, $A\unlhd B$ and we may construct $B/A$.\\\\
+    We first show $B/A\le G/A$. It is closed under multiplication since
+    $(b_1A)(b_2A)=(b_1b_2)A\in B/A$ because $B$ is a group. It is also closed
+    under inverses since $(bA)^{-1}=b^{-1}A\in B/A$.\\\\
+    We then show $B/A\unlhd G/A$ by showing $x(B/A)x^{-1}\subseteq B/A$,
+    $\forall x\in G/A$. Let $x\in G/A\Leftrightarrow yA$, $y\in G$. We want to
+    show $(yA)(B/A)(yA)^{-1}\subseteq B/A$. Let $z\in(yA)(B/A)(yA)^{-1}$. Then,
+    there exist $a_1,a_2\in A$, $b_1\in B$ such that
+    \begin{align*}
+        z&=(ya_1)(b_1A)(y^{-1}a_2)\\
+         &=y(a_1b_1)Ay^{-1}a_2\\
+         &=y(a_1b_1)y^{-1}Aa_2
+    \end{align*}
+    We know $a_2\in A\Rightarrow Aa_2=A$ and $A\subseteq B\Rightarrow a_1\in
+    A\subseteq B\Rightarrow a_1\in A\Rightarrow a_1b_1\in B$. Thus, there
+    exists $b_2\in B$ such that $a_1b_1=b_2$. We substitute these in to get
+    $$z=yb_2y^{-1}A$$
+    We know $B\unlhd G\Rightarrow yBy^{-1}\subseteq B$. Thus, there exists a
+    $b_3\in B$ such that $yb_2y^{-1}=b_3\in B$. We then get $z=b_3A$. Since
+    $z=b_3A\in B/A$, $B/A\unlhd G/A$.\\\\
+    Now we prove $(G/A)/(B/A)\cong(G/B)$. We define the homomorphism
+    $\hmap[\omega]{G/A}{G/B}$ such that $\omega(xA)=xB$. We show that $\omega$
+    is well-defined. If $xA=yA$, then
+    \begin{align*}
+        xA=yA&\Leftrightarrow y^{-1}x\in A\subseteq B\\
+             &\Rightarrow y^{-1}x\in B\\
+             &\Leftrightarrow xB=yB\\
+             &\Leftrightarrow\omega(xA)=\omega(yA)
+    \end{align*}
+    We may then determine the kernel and image of the homomorphism.
+    $$\im[(\omega)]=\{xB:x\in G\}=G/B$$
+    $$\ker[(\omega)]=\{xA:\omega(xA)=B\}=\{xA:xB=B\}=\{xA:x\in B\}=B/A$$
+    By the first isomorphism theorem, $(G/A)/\ker[(\omega)]\cong\im[(\omega)]$
+    so $(G/A)/(B/A)\cong(G/B)$.
+\end{bpf}
+
+\begin{prop}
+    There is an isomorphism $\hmap[\theta]{(G/A)/(B/A)}{G/B}$ such that this
+    diagram commutes.
+    \begin{center}
+        \begin{tikzcd}[column sep={6em,between origins}, row sep=huge]
+            & G/A \arrow[dl, leftarrow, "\pi"] \arrow[dr, "\sigma"] \arrow[dd,
+          "\omega"]& \\
+            G \arrow[dr, "\rho"] & & (G/A)/(B/A) \arrow[dl, "\theta"] \\
+            & G/B &
+        \end{tikzcd}
+    \end{center}
+\end{prop}
+
+\begin{bthm}[Second Isomorphism Theorem]
+    Let $G$ be a group, $A\le G$, and $N\unlhd G$. Then $AN\le G$, $N\unlhd
+    AN$, and $A\cap N\unlhd A$. Also,
+    $$(AN)/N\cong A/(A\cap N)$$
+\end{bthm}
+
+\begin{bpf}
+    Let $\hmap{A}{AN/N}$ such that $a\mapsto aN$. Then by the first isomorphism
+    theorem, $(AN)/N\cong A/(A\cap N)$.
+\end{bpf}
+
+\begin{ex}
+    We look at an example of the third isomorphism theorem. Let $G=\mathbb{Z}$,
+    $A=12\mathbb{Z}$, and $B=4\mathbb{Z}$. We observe that $A\unlhd B\unlhd G$
+    so the conditions for the third isomorphism theorem are satisfied.
+    $$G/A=\mathbb{Z}/12\mathbb{Z}=\{0,1,\ldots,11\}(\text{mod }12)$$
+    $$B/A=4\mathbb{Z}/12\mathbb{Z}=\{0,4,8\}(\text{mod }12)$$
+    $$(G/A)/(B/A)=\{0,1,2,3\}(\text{mod }4)=\mathbb{Z}/4\mathbb{Z}$$
+    $$(\mathbb{Z}/12\mathbb{Z})/(4\mathbb{Z}/12\mathbb{Z})
+    \cong\mathbb{Z}/4\mathbb{Z}$$
+\end{ex}
+
+\begin{ex}
+    We look at an example of the second isomorphism theorem. Let
+    $G=\mathbb{Z}$, $N=12\mathbb{Z}$, and $A=8\mathbb{Z}$.
+    $$A\cap N=\{0,\pn24,\pn48,\ldots\}=24\mathbb{Z}$$
+    $$AN=\{0,\pn4,\pn8,\ldots\}=4\mathbb{Z}$$
+    $$AN/A=4\mathbb{Z}/12\mathbb{Z}=\{0,4,8\}(\text{mod }12)$$
+    $$A/(A\cap N)=8\mathbb{Z}/24\mathbb{Z}
+    =\{0,8,16\}(\text{mod }24)$$
+    $$AN/N\cong\mathbb{Z}/3\mathbb{Z}\cong A/(A\cap N)$$
+\end{ex}
+
+\begin{bdefi}
+    A ring $(R,+,\cdot)$ is a set together with two binary operations, called
+    addition and multiplication respectively, satisfying the following three
+    axioms.
+    \begin{enumerate}[(a)]
+        \item The set $(R,+)$ together with addition is an abelian group.
+        \item The binary operation $\cdot$ is associative on $R$.
+        \item The distributive law holds in $R$; for all $a,b,c\in R$,
+            $$(a+b)\cdot c=(a\cdot c)+(b\cdot c)$$
+            $$a\cdot(b+c)=(a\cdot b)+(a\cdot c)$$
+    \end{enumerate}
+\end{bdefi}
+
+\begin{defi}
+    The ring $R$ is \define{commutative} if multiplication is commutative.
+\end{defi}
+
+\begin{defi}
+    The ring $R$ has an \define{identity}, or \define{unity} or contains a $1$
+    if there is an element $1\in R$ such that for all $a\in R$, $1\cdot
+    a=a\cdot1=a$.
+\end{defi}
+
+\begin{note}
+    By abuse of notation, multiplication $\cdot$ may be denoted by simple
+    juxtaposition, i.e. $a\cdot b=ab$.
+\end{note}
+
+\begin{note}
+    For a ring with 1, the condition of commutativity under addition is
+    redundant. Note that for any $a,b\in R$,
+    $$(1+1)(a+b)=1(a+b)+1(a+b)=a+b+a+b$$
+    $$(1+1)(a+b)=(1+1)a+(1+1)b=a+a+b+b$$
+    Therefore, $a+b+a+b=a+a+b+b$ and therefore $a+b=b+a$. Thus $R$ is abelian.
+\end{note}
+
+\begin{defi}
+    A ring with identity is a \define{division ring} if every nonzero element
+    has a multiplicative inverse.
+\end{defi}
+
+\begin{bdefi}
+    A \define{field} is a commutative division ring.
+\end{bdefi}
+
+\begin{ex}
+    The following are two very simple examples of rings.\\\\
+    \textbf{The Zero Ring}\\
+    Let $R=\{0\}$. Then $R$ is a ring and is called the zero ring.\\
+    \textbf{Trivial Rings}\\
+    For any abelian group $(G,+)$, consider the ring $(G,+,\cdot)$, where
+    multiplication is given by $a\cdot b=0$ for any $a,b\in G$.
+\end{ex}
+
+\begin{prop}
+    Let $R$ be a ring, and $a,b\in R$.
+    \begin{enumerate}[(a)]
+        \item $0a=a0=0$
+        \item $(-a)b=a(-b)=-(ab)$, where $-(a)$ is the additive inverse of $a$.
+        \item $(-a)(-b)=ab$
+        \item If $R$ has identity 1, then it is unique and $-a=(-1)a$.
+    \end{enumerate}
+\end{prop}
+
+\begin{defi}
+    A nonzero element element $a$ of a ring $R$ is a \define{zero divisor} if
+    there is a nonzero $0\ne b\in R$ such that $ab=0$ or $ba=0$.
+\end{defi}
+
+\begin{defi}
+    Let $R$ be a ring with identity. An element $a$ of $R$ is a \define{unit}
+    if it has a multiplicative inverse, i.e. there is some $b\in R$ such that
+    $ab=ba=1$. The set of units of $R$ is denoted $R^\times$.
+\end{defi}
+
+\begin{bdefi}
+    An \define{integral domain} is a commutative ring with identity which has
+    no zero divisors.
+\end{bdefi}
+
+\begin{prop}
+    Let $R$ be an integral domain, and let $a,b,c\in R$. If $ab=ac$, then $a=0$
+    or $b=c$.
+\end{prop}
+
+\begin{defi}
+    Let $R$ be a commutative ring with 1. For any $a_0,a_1,\ldots,a_n\in R$,
+    the expression
+    $$p(x)=a_0+a_1x+a_2x^2+\ldots+a_nx^n$$
+    is a \define{polynomial} in $R$ with coefficients $a_0,a_1,\ldots,a_n$. If
+    $a_n\ne0$, then $p(x)$ has \define{degree} $n$. The set of all polynomials
+    in $R$ is denoted $R[x]$ or $R$ adjoin $x$. $R[x]$ is a ring (called the
+    ring of polynomials in $R$ in one variable) under "usual" addition and
+    multiplication. Let $p(x)=a_0+a_1x+\ldots+a_nx^n$ and
+    $q(x)=b_0+b_1x+\ldots+b_mx^m$, and without loss of generality $n>m$. Then,
+    $$p(x)+q(x)=(a_0+b_0)+(a_1+b_1)x+\ldots+(a_n+b_n)x^n$$
+    where $b_k=0$ for $k>m$ and
+    $$p(x)q(x)=\sum_{k=0}^{m+n}(\sum_{i+j=k}a_ib_j)x^k$$
+\end{defi}
+
+\begin{note}
+    Polynomials are not determined by their values
+\end{note}
+
+The following is a formal construction of the ring of polynomials in $R$.\\
+
+Let $R$ be a commutative ring with 1. $R[x]$ is the set of all tuples
+$p(x)=(a_0,a_1,\ldots,a_n)\in
+R^\infty=\prod_{i\in\mathbb{N}}R=\oplus_{i\in\mathbb{N}}R$, i.e. $a_k\in R$
+where $\exists n\in\mathbb{N}$ such that $a_k=0$ for $k>n$. The smallest such
+$n$ is the degree of $p(x)$. If $p=(a_0,a_1,\ldots,a_n,0,\ldots)$ and
+$q=(b_0,b_1,\ldots,b_m,0,\ldots)$, then
+$$p+q=(a_0+b_0,a_1+b_1,\ldots,a_n+b_n,0,\ldots)$$
+$$pq=(c_0,c_1,\ldots,c_k,0,\ldots),\ c_k=\sum_{i+j=k}a_ib_j$$
+
+\begin{defi}
+    Let $R$ be any ring $M_n(R)=\{n\times n\text{ matrices with entries in
+    $R$}\}$, $A=(a_{ij})$, $B=(b_{ij})$, $(A+B)_{ij}=a_{ij}+b_{ij}$, $A\cdot
+    B=C$, $c_{ij}=\sum_{k=1}^na_{ik}b_{kj}$. This is the ring of
+    \define{$n\times n$ matrices over $R$} or with entries in $R$. If $R$ has
+    1, then
+    $$I=\begin{bmatrix}
+        1 & \ldots & 0 \\
+        \vdots & \ddots & \vdots \\
+        0 & \ldots & 1
+    \end{bmatrix}=1\in M_n(R)$$
+\end{defi}
+
+\begin{defi}
+    $GL_n(R)$ is the group of units of $M_n(R)$ and is called the
+    \define{general linear group}.
+\end{defi}
+
+\begin{defi}
+    Let $R$ be commutative with 1. Let $G=\{g_1,\ldots,g_n\}$ be a finite
+    group. The \define{group ring} $RG$ of $G$ with coefficients in $R$ is the
+    set of all formal sums
+    $$a_1g_1+a_2g_2+\ldots+a_ng_n$$
+    where $a_i\in R$,
+    $$(a_1g_1+\ldots+a_ng_n)+(b_1g_1+\ldots+b_ng_n)
+    =(a_1+b_1)g_1+\ldots+(a_n+b_n)g_n$$
+    $$(a_1g_1+\ldots+a_ng_n)\cdot(b_1g_1+\ldots+b_ng_n)
+    =c_1g_1+\ldots+c_ng_n,\text{ where $c_k=\sum_{g_ig_j=g_k}a_ib_j$}$$
+\end{defi}
+
+\begin{note}
+    $1\cdot g_i=g_i$, $a_i\cdot1=a_i$, $(a_ig_i)(b_jg_j)=(a_ib_j)(g_ig_j)$
+\end{note}
+
+\begin{ex}
+    $G=S_4$, $R=\mathbb{Z}$.
+    $$x=2(1\ 2)+(2\ 3)+7(1\ 2\ 4)\hspace{50pt} y=3(1)+2(2\ 3)$$
+    \begin{align*}
+        x+y&=3(1)+2(1\ 2)+3(2\ 3)+7(1\ 2\ 4)\\
+        xy&=6(1\ 2)+4(1\ 2)(2\ 3)+3(2\ 3)+2(1)+21(1\ 2\ 4)+14(1\ 2\ 4)(2\ 3)\\
+          &=2(1)+6(1\ 2)+3(2\ 3)+4(1\ 2\ 3)+21(1\ 2\ 4)+14(1\ 2\ 3\ 4)
+    \end{align*}
+\end{ex}
+
+\begin{bdefi}
+    A \define{subring} $S$ of a ring $(R,+,\cdot)$ is a subgroup $S\le(R,+)$
+    which is closed under the multiplicative structure of $R$.
+\end{bdefi}
+
+\begin{prop}
+    A subset $S$ of the ring $R$ is a subring if and only if $S$ is closed
+    under subtraction and multiplication.
+\end{prop}
+
+\begin{pf}
+    This follows immediately from the fact that a subset $H$ of an abelian
+    group $G$ is a subgroup if and only if $H$ is closed under subtraction.
+\end{pf}
+
+\begin{defi}
+    The \define{center} of a ring $A$ is the set of elements $a\in A$ such that
+    $ax=xa$ for all $x\in A$. The center of $A$ is a subring of $A$.
+\end{defi}
+
+\begin{bdefi}
+    Let $R$ and $S$ be rings. A \define{ring homomorphism} is a map of sets
+    $\hmap{R}{S}$ such that for all $a,b\in R$,
+    $$\varphi(a+b)=\varphi(a)+\varphi(b)$$
+    $$\varphi(ab)=\varphi(a)\varphi(b)$$
+\end{bdefi}
+
+\begin{defi}
+    The \define{kernel} of the homomorphism $\hmap{R}{S}$ is given by
+    $$\ker=\{r\in R:\varphi(r)=0\in S\}$$
+\end{defi}
+
+\begin{defi}
+    A \define{ring isomorphism} is a bijective homomorphism.
+\end{defi}
+
+\begin{bdefi}
+    A subring $I$ of $R$ is a \define{left ideal} of $R$ if $I$ is closed under
+    left multiplication by elements from $R$, i.e. $rI\subseteq I$ for all
+    $r\in R$. Similarly, $I$ is a \define{right ideal} of $R$ if $I$ is closed
+    under right multiplication by elements of $R$, i.e. $Ir\subseteq I$ for all
+    $r\in R$. A subring which is both a left and right ideal is called a
+    \define{two sided ideal}, or simply \define{ideal}.
+\end{bdefi}
+
+\begin{bdefi}
+    The \define{quotient ring} $R/I$ of the ring $R$ by the ideal $I\subseteq
+    R$ is the quotient group of cosets $R/I$ under the operations
+    $$(r+I)+(s+I)=(r+s)+I\hspace{50pt}(r+I)\cdot(s+I)=(r\cdot s)+I$$a
+    for all $r,s\in R$.
+\end{bdefi}
+
+\begin{prop}
+    For any ring $R$ and ideal $I$, $R/I$ is a ring.
+\end{prop}
+
+\begin{prop}
+    If $I$ is any ideal of $R$, the map $\hmap{R}{R/I}$ defined by $r\mapsto
+    r+I$ is a surjective ring homomorphism with kernel $I$.
+\end{prop}
+
+\begin{thm}[First Isomorphism Theorem for Rings]
+    If $\hmap{R}{S}$ is homomorphism of rings, then $\ker$ is an ideal of $R$,
+    $\im$ is a subring of $S$, and
+    $$R/\ker\cong\im$$
+\end{thm}
+
+\begin{thm}[Second Isomorphism Theorem for Rings]
+    Let $R$ be a ring, $A$ a subring and $B$ an ideal of $R$. Then
+    $A+B=\{a+b:a\in A,b\in B\}$ is a subring of $R$, $A\cap B$ is an ideal of
+    $A$ and
+    $$(A+B)/B\cong A/(A\cap B)$$
+\end{thm}
+
+\begin{thm}[Third Isomorphism Theorem for Rings]
+    Let $I$ and $J$ be ideals of the ring $R$ such that $I\subseteq J$. Then
+    $J/I$ is an ideal of $R/I$ and
+    $$(R/I)(J/I)\cong(R/J)$$
+\end{thm}
+
+\begin{thm}[Fourth Isomorphism Theorem for Rings]
+    Let $I$ be an ideal of $R$. The correspondence
+    $$A\longleftrightarrow A/I$$
+    is an inclusion preserving bijection between the subring $A$ of $R$
+    containing $I$ and the set of subrings of $R/I$. Further, a subring $A$
+    containing $I$ is an ideal of $R$ if and only if $A/I$ is an ideal of
+    $R/I$.
+\end{thm}
+
+\begin{bdefi}
+    Let $A\subseteq R$ be a subset. Then the \define{ideal generated by $A$} is
+    the smallest ideal of $R$ containing $A$, and is denoted $(A)$.
+\end{bdefi}
+
+\begin{note}
+    In this context, "smallest" means all other ideals containing $A$ also
+    contain $(A)$. In other words, $A\subseteq J\implies(A)\subseteq J$.
+\end{note}
+
+\begin{prop}
+    $(A)$ is the intersection of all ideal $I$ containing $A$, or
+    $$(A)=\bigcap_{A\subseteq I}I$$
+\end{prop}
+
+\begin{pf}
+    $R$ is an ideal of itself containing $A$ and the intersection of nonempty
+    ideals is an ideal. By definition the intersection contains $A$. Therefore,
+    $\bigcap_{A\subseteq I}I$ is an ideal containing $A$. Since $(A)$ is the
+    smallest ideal containing $A$, $(A)\subseteq\bigcap_{A\subseteq I}I$.\\\\
+    On the other hand, suppose $x\in\bigcap_{A\subseteq I}I$. Then for any
+    ideal $I$ containing $A$, $x\in I$. But $(A)$ is an ideal containing $A$.
+    Thus $x\in(A)$. Therefore, $\bigcap_{A\subseteq I}I\subseteq(A)$. Thus,
+    $(A)=\bigcap_{A\subseteq I} I$.
+\end{pf}
+
+\begin{prop}
+    If $R$ is commutative, then
+    $$(A)=RA=AR$$
+    where
+    $$RA=\{r_1a_1+r_2a_2+\ldots+r_na_n:r_i\in R, a_i\in A, n\in\mathbb{Z}\}$$
+    and $AR$ is define similarly.
+\end{prop}
+
+\begin{defi}
+    An ideal generated by a single element is called a \define{principal
+    ideal}.
+\end{defi}
+
+\begin{defi}
+    An ideal generated by a finite set is called a \define{finitely generated
+    ideal}.
+\end{defi}
+
+\begin{defi}
+    An ideal $I$ of a ring $R$ is \define{proper} if it is a proper subset,
+    i.e. $I\ne R$ and $I\subsetneq R$.
+\end{defi}
+
+\begin{defi}
+    A proper ideal $M$ of a ring $R$ is \define{maximal} if whenever $I$ is an
+    ideal of $R$ and $M\subseteq I\subseteq R$, then $M=I$ or $M=R$.
+\end{defi}
+
+\begin{ex}
+    Consider $(x-4)\in\mathbb{R}[x]$.
+    $$(x-4)=(\{x-4\})=\{f(x)(x-4):f\in\mathbb{R}[x]\}$$
+    We claim $(x-4)$ is maximal in $\mathbb{R}[x]$. Suppose $(x-4)\subsetneq
+    I\subseteq R$. We want to show $I=R=\mathbb{R}[x]$. There exists $f(x)\in
+    I$ with $f(x)\notin(x-4)$. Recall polynomial long division. $\forall
+    f(x),g(x)\in\mathbb{R}[x],\exists q(x),r(x)\in\mathbb{R}[x]$ such that
+    $$f(x)=q(x)g(x)+r(x),\deg r(x)<\deg g(x)$$
+    In our case, $g(x)=(x-4)$, with $\deg r(x)<1$. This implies that
+    $r(x)=r\in\mathbb{R}$ so we can rewrite our expression as
+    $$f(x)=q(x)(x-4)+r$$
+    Since $(x-4)\subsetneq I$, we know $x-4\in I$ and $q(x)(x-4)\in I$. Since
+    $I$ is a subring, $f(x)-q(x)(x-4)=r\in I$. Since $f(x)\notin(x-4)$ and
+    $q(x)(x-4)\in(x-4)$, $r\ne0$. Since $0\ne r\in\mathbb{R}$, $r$ is a unit in
+    $\mathbb{R}[x]$. If $r\in I$ is a unit, then $I=R$ because $r$ being a unit
+    $\implies u^{-1}\in R\implies u^{-1}u\in I\implies1\in I\implies\forall
+    r\in R, r1\in I\implies I=R$. Therefore, $I=\mathbb{R}[x]$ and $(x-4)$ is
+    maximal.
+\end{ex}
+
+\begin{defi}
+    A proper ideal $P$ of a commutative ring $R$ is \define{prime} if $ab\in P$
+    implies $a\in P$ or $b\in P$ for any $a,b\in R$.
+\end{defi}
+
+\begin{ex}
+    Consider $2\mathbb{Z}\subseteq\mathbb{Z}$. We claim $2\mathbb{Z}$ is a
+    prime ideal. Let $a,b\in\mathbb{Z}$. Suppose $ab\in2\mathbb{Z}$. Then $a$
+    or $b$ is even, i.e. $a\in2\mathbb{Z}$ or $b\in2\mathbb{Z}$. Therefore,
+    $2\mathbb{Z}$ is prime.\\\\
+    \textbf{Alternate Proof:} $ab\in2\mathbb{Z}\Leftrightarrow\exists
+    n\in\mathbb{Z}$ such that $ab=2n$. Using prime factorization, there exist
+    primes $p_1,\ldots,p_l,q_1,\ldots,q_s$ such that $a=p_1\ldots p_l$ and
+    $b=q_1\ldots q_s$. Thus, $p_1\ldots p_lq_1\ldots q_s=2n$ and there exists
+    $i$ or $j$ such that $p_i=2$ or $q_j=2$. Thus, $a\in2\mathbb{Z}$ or
+    $b\in2\mathbb{Z}$ and $2\mathbb{Z}$ is prime.
+\end{ex}
+
+\begin{bthm}
+    Let $R$ be a commutative ring with identity and let $A\subseteq R$ be an
+    ideal. Then $R/A$ is an integral domain if and only if $A$ is prime.
+\end{bthm}
+
+\begin{bpf}
+    Suppose $R/A$ is an integral domain. Let $a,b\in R$ and suppose that $ab\in
+    A$. We must show $a\in A$ or $b\in A$. We compute $(a+A)(b+A)=ab+A=A=0+A$,
+    which is the additive identity in $R/A$. But $R/A$ is an integral domain so
+    $a+A=A$ or $b+A=A$. Therefore, $a\in A$ or $b\in A$.\\\\
+    Conversely, supposed that $A$ is prime and let $a+A,b+A\in R/A$ such that
+    $(a+A)(b+A)=ab+A=A$. Then $ab\in A$. But $A$ is prime so $a\in A$ or $b\in
+    A$. Thus, $a+A=0\in R/A$ or $b+A=0\in R/A$ and $R/A$ is an integral domain.
+\end{bpf}
+
+\begin{bthm}
+    Let $R$ be a commutative ring with identity and let $A$ be an ideal of $R$.
+    Then $R/A$ is a field if and only if $A$ is maximal.
+\end{bthm}
+
+\begin{bpf}
+    Suppose $R/A$ is a field. Let $B$ be an ideal of $R$ that properly contains
+    $A$, $A\subsetneq B\subseteq R$. We want to show that $B=R$. There exists
+    $b\in B$ such that $b\notin A$. Then $b+A$ is a nonzero element of $R/A$.
+    But $R/A$ is a field, hence $b+A$ must have a multiplicative inverse, i.e.
+    there exists $c\in R$ such that $(b+A)(c+A)=bc+A=1+A$. Therefore, $1-bc\in
+    A\subsetneq B$. But $bc\in B$ since $B$ is an ideal so $(1-bc)+bc=1\in B$.
+    Since $1\in B$, $B=R$.\\\\
+    Conversely, suppose that $A$ is maximal. We want to show that $R/A$ is a
+    field. Since $R$ is commutative and has an identity, $R/A$ is also
+    commutative and has an identity. We want to show that every nonzero element
+    of $R/A$ has a multiplicative inverse. Every nonzero element of $R/A$ is of
+    the form $b+A$, $b\in R-A$. Choose and fix such an element $b$. Consider
+    the subset $B\subseteq R$ such that
+    $$B=\{br+a:r\in R,a\in A\}$$
+    We want to show that $B$ is an ideal of $R$ properly containing $A$. Since
+    $$(br+a)-(br'+a')=b(r-r')+(a-a')\in B$$
+    we know that $B$ is a subgroup of $(R,+)$. We also know that is it closed
+    under multiplication since
+    $$(br+a)(br'+a')=brbr'+bra'+br'a+aa'=b(rbr'+ra'+r'a)+(aa')\in B$$
+    so $B$ is a subring. Also for any $s\in R$,
+    $$s(br+a)=sbr+sa=b(sr)+(sa)$$
+    Because $A$ is an ideal, $sa\in A$ so $B$ is an ideal of $R$. Also for any
+    $a\in A$, $a=b0+a\in B$ and $b=b1+0\in B-A$ so $B$ is an ideal that
+    properly contains $A$. However, $A$ is maximal so $B=R$. Because $R$
+    contains 1, there exists $c\in R$ and $a'\in A$ such that $1=bc+a'$. If we
+    consider the coset of $R/A$ this element is in, we see that $1+A=bc+a'+A$.
+    Since $a'\in A$, we can rewrite our equation as $1+A=(b+A)(c+A)$.
+    Therefore, for any $b+A\in R/A$, there exists a multiplicative inverse and
+    $R/A$ is a field.
+\end{bpf}
+
+\begin{prop}
+    In a commutative ring $R$ with identity, every maximal ideal is prime.
+\end{prop}
+
+\begin{defi}
+  A \define{norm} $N$ on the integral domain $R$ is a map of set
+  $N:R\to\mathbb{N}\cup\{0\}$. If $N(a)>0$, $\forall a\in R$, we say $N$ is a
+  \define{positive norm}.
+\end{defi}
+
+\begin{note}
+  Some texts require for nonzero $a,b\in R$, $N(a)\le N(ab)$. Also, it is not
+  required that $N(a+b)\le N(a)+N(b)$ or $N(ab)\le N(a)N(b)$.
+\end{note}
+
+\begin{defi}
+  The integral domain $R$ is called a \define{Euclidean domain} if there is a
+  norm $N$ on $R$ such that if $a,b\in R$, $b\neq 0$, then $\exists q,r\in R$
+  such that $a=qb+r$ where $r=0$ or $N(r)<N(b)$. Here, $q$ is the
+  \define{quotient} and $r$ is the \define{remainder}.
+\end{defi}
+
+\begin{defi}
+  The \define{Euclidean algorithm} for two elements $a,b$ in a Euclidean domain
+  $R$ is a list of divisions
+  \begin{align*}
+    a&=q_0b+r_0\\
+    b&=q_1r_0+r_1\\
+    r_0&=q_2r_1+r_2\\
+    &\ldots\\
+    r_{n-1}&=q_{n+1}r_n
+  \end{align*}
+  where $r_n$ is the last nonzero remainder. Such an $r_n$ exists as
+  $N(r_1)>N(r_2)>\ldots>N(r_n)\ge0$ is a decreasing sequence of nonnegative
+  integers.
+\end{defi}
+
+\begin{ex}
+  If $K$ is a field, then $K[x]$ is a Euclidean domain with norm
+  $N(f(x))=\deg(f(x))$. The division algorithm is polynomial long divison. Let
+  $f,g\in\mathbb{Z}_5[x]$, $f=3x^4+x^3+2x^2+1$, and $g=x^2+4x+2$. Then we have
+  $3x^4+x^3+2x^2+1=(3x^2+4x)(x^2+4x+2)+(2x+1)$.
+\end{ex}
+
+\begin{ex}
+  Gaussian integers $\mathbb{Z}[i]=\{a+bi:a,b\in \mathbb{Z}\}$, $ii=-1$, with
+  norm $N(a+bi)=a^2+b^2$.
+\end{ex}
+
+\begin{defi}
+  Let $a,b\in R$, $b\ne0$. Then $a$ is a \define{multiple} of $b$ if $a=qb$ for
+  some $q\in R$. We also say $b$ \define{divides} $a$ or $b$ is a
+  \define{divisor} of $a$, or $b\vert a$.
+\end{defi}
+
+\begin{defi}
+  The \define{greatest common divisor} of $a$ and $b$ is a nonzero element
+  $d\in R$ such that
+  \begin{enumerate}
+    \item $d\vert a$ and $d\vert b$.
+    \item If $c\vert a$ and $c\vert b$, then $c\vert d$.
+  \end{enumerate}
+\end{defi}
+
+\begin{note}
+  Suppose $d\vert d'$ and $d'\vert d$. Then $d'=qd$ and $d=q'd'$. This becomes
+  $d=q'qd$ or $(1-qq')d=0$. Since this is an integral domain, either $d=0$ or
+  $qq'=1$, meaning $q$ and $q'$ are units. Thus, GCDs are unique only up to
+  units.
+\end{note}
+
+\begin{prop}
+  If $0\ne a,b\in R$ and $(a,b)=(d)$, then $d=\gcd(a,b)$.
+\end{prop}
+
+\begin{defi}
+  An integral domain such that every ideal generated by two elements is
+  principal is called a \define{Bezout domain}.
+\end{defi}
+
+\begin{prop}
+  Let $R$ be an integral domain. If $(d)=(d')$ then there exists a unit $u\in
+  R$ such that $d'=ud$.
+\end{prop}
+
+\begin{prop}
+  Let $R$ be a Euclidean domain and $0\ne a,b\in R$. Let $d=r_n$ be the last
+  nonzero remainder in the Euclidean algorithm. Then $d=\gcd(a,b)$ and
+  $(d)=(a,b)$.
+\end{prop}
+
+\begin{prop}
+  If $(d)=(a,b)$, then there exists $x,y\in R$ such that $d=ax+by$.
+\end{prop}
+
+\begin{prop}
+  Consider $R=\mathbb{Z}$. If $ax+by=c$, then $c\in(d)$ so $c$ is a multiple of
+  $\gcd(a,b)$.
+\end{prop}
+
+\begin{prop}
+  Every ideal in a Euclidean domain is principal.
+\end{prop}
+
+\begin{pf}
+  Let $I\subseteq R$ be an ideal and $R$ a Euclidean domain with norm $N$. If
+  $I=\{0\}$, then $I=(0)$ is principal. Otherwise, consider $\{N(a):a\ne0,a\in
+  I\}\subseteq\mathbb{N}\cup\{0\}$ as a subset of nonnegative integers. This
+  set has a least element. Let $d\ne0$, $d\in I$ be an element of minimal norm.
+  We show $(d)=I$. First, $d\in I$ implies that $rd\in I$ for all $r\in R$ so
+  $(d)\subseteq I$. We show $I\subseteq(d)$. Let $a\in I$. Since $R$ is a
+  Euclidean domain, there exists $q$ and $r$ such that $a=qd+r$, with $r=0$ or
+  $N(r)<N(d)$. But $d$ has minimal norm so $r=0$. Thus, $a=qd$ and $a\in(d)$.
+  Therefore, $I=(d)$ and $I$ is principal.
+\end{pf}
+
+\begin{defi}
+  A \define{principal ideal domain} is an integral domain such that every ideal
+  is principal.
+\end{defi}
+
+\begin{prop}
+  Every Euclidean domain is a PID. This containment is proper, i.e. not every
+  PID is a Euclidean domain.
+\end{prop}
+
+\begin{ex}
+  $\mathbb{Z}$ is a PID. Every ideal is a subring, hence a subgroup, and hence
+  is cyclic.
+\end{ex}
+
+\begin{prop}
+  Let $R$ be a PID, $I\subseteq R$ a nonzero ideal. If $I$ is prime, then $I$
+  is maximal.
+\end{prop}
+
+\begin{pf}
+  Suppose $I\subseteq J\subseteq R$ for some ideal $J$. We show $I=J$ or $J=R$.
+  Since $R$ is a PID, $I$ and $J$ are principal, so there exists $a,b\in R$
+  such that $I=(a)$ and $J=(b)$. First, $I\subseteq J$, i.e. $(a)\subseteq(b)$
+  so $a\in(b)$ and there exists $x\in R$ such that $a=bx$. Thus, $bx\in(a)=I$.
+  But $I$ is prime, hence $b\in(a)$ or $x\in(a)$. If $b\in(a)$, then
+  $(b)\subseteq(a)$ and $(a)=(b)$, i.e. $I=J$. If $x\in(a)$, there exists $y\in
+  R$ such that $x=ay$. Then $x=ay=bxy=xby$. Thus, $x(by-1)=0$. Since $R$ is an
+  integral domain, $x=0$ or $by-1=0$. If $x=0$, then $I=0$ but $I\ne0$ by
+  assumption. Thus, $1=by$ and $b$ is a unit. Thus, $(b)=R$, i.e. $J=R$.
+  Therefore, $I$ is maximal.
+\end{pf}
+
+\begin{prop}
+  If $R[x]$ is a PID, then $R$ is a field.
+\end{prop}
+
+\begin{pf}
+  Since $R\subseteq R[x]$, $R$ is also an integral domain. Note that
+  $R[x]/(x)\cong R$ so $(x)$ is prime. Thus, $(x)$ is maximal since $R[x]$ is a
+  PID. Thus, $R[x]/(x)$ is a field. But $R[x]/(x)\cong R$ so $R$ is a field.
+\end{pf}
+
+\begin{thm}[Ascending Chain Condition]
+  In a PID, any strictly ascending chain of ideals is finite in length, i.e.
+  $I_1\subsetneq I_2\subsetneq\ldots$ must be finite.
+\end{thm}
+
+\begin{pf}
+  Let $I=\cup_n\in\mathbb{N}I_n$. This is an ideal. We are in a PID, hence $I$
+  is principal, i.e. there exists $b\in R$ such that $I=(b)$. Thus, $b\in
+  I=\cup_n\in\mathbb{N}I_n$. So there exists $k\in\mathbb{N}$ such that $b\in
+  I_k$. Thus, $I_1, I_2,\ldots,I_{k-1}\subseteq I_k$ and $I_{k+1}\subseteq
+  I_k$. Thus our chain is finite.
+\end{pf}
+
+\begin{defi}
+  Let $R$ be an integral domain.
+  \begin{enumerate}
+    \item Let $r\in R$, $r\ne0$, and $r$ be not a unit. We say $r$ is
+      \define{irreducible} in $R$ if $r=ab$ implies $a$ or $b$ is a unit in
+      $R$. Otherwise, $r$ is \define{reducible}.
+    \item An element $0\ne p\in R$ is called \define{prime} if $(p)$ is a prime
+      ideal of $R$, i.e. $p$ is not a unit and $p\vert ab$ implies $p\vert a$
+      or $p\vert b$.
+    \item $a$ and $b$ are \define{associate in $R$} if there exists a unit
+      $u\in R$ such that $a=ub$.
+  \end{enumerate}
+\end{defi}
+
+\begin{prop}
+  In an integral domain, prime elements are irreducible.
+\end{prop}
+
+\begin{pf}
+  Let $p\in R$ and $(p)$ be prime. Suppose $p=ab$ where $a,b\in R$. We want to
+  show that $a$ or $b$ is a unit. Note that $p\in(p)$ so $ab\in(p)$ and either
+  $a\in(p)$ or $b\in(p)$. Without loss of generality, let $a\in(p)$. Then there
+  exists $r\in R$ such that $a=pr$. Thus, $p=ab=prb$ so $p(1-rb)=0$. Since
+  $p\ne0$ by assumption, $1=rb$ since $R$ is an integral domain so $b$ is a
+  unit.
+\end{pf}
+
+\begin{note}
+  Irreducible elements are not necessarily prime.
+\end{note}
+
+\begin{ex}
+  Consider $3\in\mathbb{Z}[\sqrt{-5}]$. Suppose we can factor 3. Let
+  $3=a(1+b\sqrt{-5})(1+c\sqrt{-5})$. Expanding gives $a(1-5bc)+5abc\sqrt{-5}$
+  so $abc=0$ and $a-5abc=3$. Thus $a=3$ and $bc=0$. This means that
+  $1=(1+b\sqrt{-5})(1+c\sqrt{-5})=1-5bc+bc\sqrt{-5}$ and $5bc=bc\sqrt{-5}$ so 3
+  is not irreducible. However, note that $3|(1+\sqrt{-5})(1-\sqrt{-5})$.
+  Another way to see this is by using norms where $N(a+b\sqrt{-5})=a^2+5b^2$
+  and $N(3)=9=f^2+5g^2$.
+\end{ex}
+
+\begin{prop}
+  In a PID, a nonzero element is prime if and only if it is irreducible.
+\end{prop}
+
+\begin{pf}
+  The forward direction is trivial so we prove the reverse direction. Let $p\in
+  R$ be irreducible. We want to show that $(p)$ is prime. But in a PID, maximal
+  ideals are prime so we show that $(p)$ is maximal. Suppose $(p)\subseteq
+  M\subseteq R$. Since $R$ is a PID, there exists $m\in R$ such that $M=(m)$.
+  This means that $p\in(m)$ and there exists $r\in R$ such that $p=mr$. But $p$
+  is irreducible so $m$ or $r$ is a unit in $R$. Thus, $(m)=R$ or $(m)=(p)$ so
+  $(p)$ is maximal and therefore prime.
+\end{pf}
+
+\begin{defi}
+  A \define{unique factorization domain} is an integral domain $R$ such that
+  for a nonzero nonunit $r$,
+  \begin{enumerate}
+    \item There exists irreducible elements $p_1,\ldots,p_n\in R$ such that
+      $r=p_1p_2\ldots p_n$.
+    \item If $r=q_1q_2\ldots q_m$ for irreducible $q_i$, then $m=n$ and there
+      exists $\sigma\in S_n$ such that $p_i$ and $q_{\sigma(i)}$ are associate.
+      The $p_i$ are not necessarily distinct.
+  \end{enumerate}
+\end{defi}
+
+\begin{ex}
+  The following are examples and non-examples of UFDs.
+  \begin{enumerate}
+    \item Fields are UFDs.
+    \item If $R$ is a UFD, then $R[x]$ is a UFD.
+    \item $\mathbb{Z}[2i]$ is not a UFD. Note that $4=2\cdot2=(2i)(-2i)$ and
+      $i\notin\mathbb{Z}[2i]=\{a+b2i:a,b\in\mathbb{Z}\}$.
+  \end{enumerate}
+\end{ex}
+
+\begin{prop}
+  PIDs are UFDs.
+\end{prop}
+
+\begin{pf}
+  Let $r\in R$ be a nonzero nonunit. If $r$ is irreducible then we are done.
+  Otherwise, $r=r_1r_2$. If $r_i$ is irreducible, we are done. Otherwise,
+  $r=r_{11}r_{12}\ldots$. We then have
+  $(r)\subseteq(r_1)\subseteq(r_{11})\subseteq\ldots$. This is an ascending
+  chain of ideals in a PID. Thus, there exists $n\in\mathbb{N}$ such that
+  $I_m=I_n$ for $m\ge n$. Then $r=r_1\ldots r_{1\ldots1}$. Uniqueness can be
+  proved by induction on $n$.
+\end{pf}
+
+\begin{cor}[Fundamental Theorem of Arithmetic]
+  $\mathbb{Z}$ is a UFD.
+\end{cor}
+
+\begin{note}
+  There is a chain of proper containment of types of rings as follows.
+  \begin{align*}
+    \text{field}&\subsetneq\text{Euclidean domain: }\mathbb{Z}\\
+    &\subsetneq\text{principal ideal domain: }\mathbb{Z}[(1+\sqrt{-19})/2]\\
+    &\subsetneq\text{unique factorization domain: }\mathbb{Z}[x]\\
+    &\subsetneq\text{integral domain: }\mathbb{Z}[\sqrt{-5}]\\
+    &\subsetneq\text{commutative ring with 1: }\mathbb{Z}_6
+  \end{align*}
+\end{note}
+
+\end{document}

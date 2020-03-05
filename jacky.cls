@@ -14,6 +14,13 @@
 \usepackage{xparse}
 
 \newcommand{\define}[1]{\underline{\textbf{#1}}}
+\newcommand{\pn}[1]{\left( #1 \right)}
+\newcommand{\hmap}[3][\varphi]{%
+    #1:#2\rightarrow#3}
+\renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
+\newcommand{\im}[1][(\varphi)]{\text{Im}#1}
+
+\DeclareMathOperator{\lcm}{lcm}
 
 \pgfdeclarehorizontalshading{mdgreenbg}{100bp}
 {color(0bp)=(SeaGreen!15); color(50bp)=(White); color(100bp)=(SeaGreen!15)}
@@ -104,6 +111,7 @@ postheadspace={0pt},
 ]{thmpurplebox}
 
 \theoremstyle{definition}
+\declaretheorem[name=\color{Red}\bfseries Question, numbered=no]{ques}
 \declaretheorem[name=\color{Emerald}\bfseries Definition, numbered=no]{defi}
 \declaretheorem[style=thmgreenbox, name=Definition, numbered=no]{bdefi}
 \declaretheorem[name=\color{NavyBlue}\bfseries Theorem, numbered=no]{thm}
