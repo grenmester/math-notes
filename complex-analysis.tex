@@ -1,0 +1,177 @@
+\documentclass[11pt,letterpaper]{jacky}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, enumerate, fancyhdr, gensymb, lastpage, mathtools}
+\usepackage{tikz-cd}
+
+\pagestyle{fancy}
+\lhead{Jacky Lee}
+\chead{Complex Analysis Notes}
+\rhead{\today}
+\lfoot{}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+
+\linespread{1.1}
+\setlength{\parindent}{0pt}
+
+\newcommand\blankpage{
+  \thispagestyle{empty}
+  \addtocounter{page}{-1}
+  \newpage}
+\renewcommand\footrulewidth{0.4pt}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\pder}[2][]{\frac{\partial#1}{\partial#2}}
+\newcommand{\ipder}[2][]{\partial#1/\partial#2}
+
+\begin{document}
+\begin{center}
+  \vspace*{20pt}
+  \LARGE{Complex Analysis Notes}
+\end{center}
+
+\begin{bdefi}
+  A function $f:\Omega\to\CC$ is \define{holomorphic} at $z_0\in\Omega$ if
+  $$\lim_{h\to0}\frac{f(z_0+h)-f(z_0)}{h}$$
+  exists. This limit, if it exists, is denoted by $f'(z_0)$ and is called the
+  \define{derivative} of $f$ at $z_0$.
+\end{bdefi}
+
+\begin{defi}
+  A function $f:\Omega\to\CC$ is \define{entire} if it is holomorphic on all of
+  $\CC$.
+\end{defi}
+
+\begin{defi}
+  The terms \define{regular} and \define{complex differentiable} are sometimes
+  also used to refer to holomorphic functions.
+\end{defi}
+
+\begin{prop}
+  A function $f$ is holomorphic at $z_0\in\Omega$ if and only if there exists a
+  complex number $a$ such that
+  $$f(z_0+h)-f(z_0)-ah=h\psi(h)$$
+  where $\psi$ is a function defined for all small $h$ and
+  $\lim_{h\to0}\psi(h)=0$. Note that $a=f'(z_0)$.
+\end{prop}
+
+\begin{prop}
+  Let $f$ and $g$ be holomorphic in $\Omega$.
+  \begin{enumerate}
+    \item $f+g$ is holomorphic in $\Omega$ and
+      $$(f+g)'=f'+g'$$
+    \item $fg$ is holomorphic in $\Omega$ and
+      $$(fg)'=f'g+fg'$$
+    \item If $g(z_0)\ne0$, then $f/g$ is holomorphic at $z_0$ and
+      $$(f/g)'=(f'g+fg')/g^2$$
+    \item If $f:\Omega\to U$ and $g:U\to\CC$ are holomorphic, then $g\circ f$
+      is holomorphic in $\Omega$ and $$(g\circ f)'(z)=g'(f(z))f'(z),\ \forall
+      z\in\Omega$$.
+  \end{enumerate}
+\end{prop}
+
+\begin{ex}
+  Consider the function $f(z)=\bar z$. This function is not holomorphic since
+  $$\frac{f(z_0+h)-f(z_0)}{h}=\frac{\bar h}{h}$$
+  which has no limit as $h\to0$. This can be seen by first setting $h$ real in
+  contrast to first setting $h$ imaginary.
+\end{ex}
+
+\begin{note}
+  Note $f$ corresponds to the function $F:(x,y)\mapsto(x,-y)$ in
+  $\RR^2$. This function is real differentiable and its Jacobian is constant.
+  Furthermore, it is infinitely differentiable. Thus, real differentiability
+  does not imply complex differentiability. Also, note that in real
+  differentiation, the derivative is a matrix (the Jacobian) whereas in complex
+  differentiation, the derivative is a complex number.
+\end{note}
+
+\begin{bprop}[Cauchy-Riemann Equations]
+  Let $f$ be a complex-valued function. Suppose we decompose $f$ into a real
+  and imaginary component, i.e. $f(x,y)=u(x,y)+iv(x,y)$, and the partial
+  derivatives of $u$ and $v$ exist. Then they satisfy the equations
+  $$\pder[u]{x}=\pder[v]{y}\hspace{50pt}\pder[u]{y}=-\pder[v]{x}$$
+\end{bprop}
+
+\begin{defi}
+  We define the following two differential operators.
+  $$\pder{z}=\frac{1}{2}\left(\pder{x}+\frac{1}{i}\pder{y}\right) \hspace{50pt}
+  \pder{\bar z}=\frac{1}{2}\left(\pder{x}-\frac{1}{i}\pder{y}\right)$$
+\end{defi}
+
+\begin{prop}
+  Let $f$ be a function that is holomorphic at $z_0$, then
+  $$\pder[f]{\bar z}(z_0)=0\hspace{50pt}
+  f'(z_0)=\pder[f]{z}(z_0)=2\pder[u]{z}(z_0)$$
+\end{prop}
+
+\begin{prop}
+  Let $f$ be a function that is holomorphic at $z_0=x_0+iy_0$. If we let
+  $F(x,y)=f(z)$ where $z=x+iy$, then $F$ is real differentiable and
+  $$\det J_F(x_0,y_0)=|f'(z_0)|^2$$
+\end{prop}
+
+\begin{thm}
+  Suppose $f=u+iv$ is a complex-valued function defined on an open set
+  $\Omega$. If $u$ and $v$ are continuously differentiable and satisfy the
+  Cauchy-Riemann equations on $\Omega$, then $f$ is holomorphic on $\Omega$ and
+  $f'(z)=\ipder[f]{z}$.
+\end{thm}
+
+\begin{thm}
+  Given a power series $\sum_{n=0}^\infty a_nz^n$, there exists $0<R<\infty$ such that
+  \begin{enumerate}
+    \item if $|z|<R$, the series converges absolutely
+    \item if $|z|>R$, the series diverges
+  \end{enumerate}
+  Moreover, if we use the convention that $1/0=\infty$ and $1/\infty=0$, then
+  $R$ is given by Hadamard's formula
+  $$\frac{1}{R}=\lim\sup|a_n|^{1/n}$$
+\end{thm}
+
+\begin{defi}
+  The number $R$ is called the \define{radius of convergence} of the power
+  series, and the region $|z|<R$ the \define{disc of convergence}.
+\end{defi}
+
+\begin{note}
+  On the boundary of the disc of convergence, $|z|=R$, one can have either
+  convergence or divergence.
+\end{note}
+
+\begin{thm}
+  The power series $f(z)=\sum_{n=0}^\infty a_nz^n$ defines a holomorphic
+  function in its disc of convergence. The derivative of $f$ is also a power
+  series obtained by differentiating term by term the series for $f$, that is,
+  $$f'(z)=\sum_{n=0}^\infty na_nz^{n-1}$$
+  Moreover, $f'$ has the same radius of convergence as $f$.
+\end{thm}
+
+\begin{cor}
+  A power series is infinitely complex differentiable in its disc of
+  convergence, and the higher derivatives are also power series obtained by
+  termwise differentiation.
+\end{cor}
+
+\begin{note}
+  A power series centered at $z_0\in\CC$ is an expression of the form
+  $$f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n$$
+  The disc of convergence is now centered at $z_0$ and its radius is still
+  given by Hadamard's formula. In fact, if
+  $$g(z)=\sum_{n=0}^\infty a_nz^n$$
+  then $f(z)=g(z-z_0)$.
+\end{note}
+
+\begin{defi}
+  A function $f$ defined on an open set $\Omega$ is said to be
+  \define{analytic} at a point $z_0\in\Omega$ if there exists a power series
+  $\sum a_n(z-z_0)^n$ centered at $z_0$, with positive radius of convergence,
+  such that
+  $$f(z)=\sum_{n=0}^\infty a_n(z-z_0)^n$$
+  for all $z$ in a neighborhood of $z_0$.
+\end{defi}
+
+\end{document}
