@@ -1,25 +1,33 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{jacky}[2017/12/28]
+\ProvidesClass{jacky}[2020/03/09]
 
 \LoadClass[11pt]{book}
 
-\usepackage{mathtools}
-% Colors
+% Font
+\usepackage{mathpazo}
+% Enable colors
 \usepackage[usenames, dvipsnames, svgnames]{xcolor}
-% Theorem Environments
-\usepackage{amsthm, thmtools}
-% Boxed Environments
+% Boxed environments
 \usepackage[framemethod=TikZ]{mdframed}
-% if-Statments in Macros
+% Theorem environments
+\usepackage{amsthm, thmtools}
+% Useful math mode tools
+\usepackage{mathtools} % also loads amsmath
+% Additional math mode symbols
+\usepackage{amssymb}
+% If-statments in macros
 \usepackage{xparse}
+% Enable optional argument to enumerate environment which determines counter
+% style
+\usepackage{enumerate}
 
 \newcommand{\define}[1]{\underline{\textbf{#1}}}
+
 \newcommand{\pn}[1]{\left( #1 \right)}
 \newcommand{\hmap}[3][\varphi]{%
     #1:#2\rightarrow#3}
 \renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
 \newcommand{\im}[1][(\varphi)]{\text{Im}#1}
-
 \DeclareMathOperator{\lcm}{lcm}
 
 \pgfdeclarehorizontalshading{mdgreenbg}{100bp}
@@ -117,6 +125,7 @@ postheadspace={0pt},
 \declaretheorem[name=\color{NavyBlue}\bfseries Theorem, numbered=no]{thm}
 \declaretheorem[style=thmbluebox, name=Theorem, numbered=no]{bthm}
 \declaretheorem[name=\color{Cerulean}\bfseries Proof, numbered=no]{pf}
+\declaretheorem[name=\color{Cerulean}\bfseries Proof Idea, numbered=no]{pfi}
 \declaretheorem[style=thmcyanbox, name=Proof, numbered=no]{bpf}
 \declaretheorem[name=\color{Dandelion}\bfseries Example, numbered=no]{ex}
 \declaretheorem[name=\color{Plum}\bfseries Proposition, numbered=no]{prop}
