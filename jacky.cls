@@ -1,8 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{jacky}[2020/03/09]
-
 \LoadClass[11pt]{book}
 
+% Set document dimensions
+\usepackage[margin=1in, headheight=14pt]{geometry}
+% Header and footer
+\usepackage{fancyhdr}
+% Reference last page number
+\usepackage{lastpage}
 % Font
 \usepackage{mathpazo}
 % Enable colors
@@ -21,22 +26,52 @@
 % style
 \usepackage{enumerate}
 
+% User options
+\newcommand*{\name}[1]{\def\@name{#1}}
+\newcommand*{\notetitle}[1]{\def\@notetitle{#1}}
+\newcommand*{\notedate}[1]{\def\@notedate{#1}}
+
+% Header and footer configuration
+\pagestyle{fancy}
+\lhead{\@name}
+\chead{\@notetitle}
+\rhead{\@notedate}
+\lfoot{}
+\cfoot{}
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+% Add footer line
+\renewcommand\footrulewidth{0.4pt}
+% No paragraph indentation
+\setlength{\parindent}{0pt}
+% Spacing between lines
+\linespread{1.1}
+
+% Command for inserting blank page
+\newcommand\blankpage{
+  \thispagestyle{empty}
+  \addtocounter{page}{-1}
+  \newpage}
+
+% Word definitions
 \newcommand{\define}[1]{\underline{\textbf{#1}}}
 
+% Other shortcuts
 \newcommand{\pn}[1]{\left( #1 \right)}
 \newcommand{\hmap}[3][\varphi]{%
-    #1:#2\rightarrow#3}
+  #1:#2\rightarrow#3}
 \renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
 \newcommand{\im}[1][(\varphi)]{\text{Im}#1}
 \DeclareMathOperator{\lcm}{lcm}
+
+%% Context environment definitions
 
 \pgfdeclarehorizontalshading{mdgreenbg}{100bp}
 {color(0bp)=(SeaGreen!15); color(50bp)=(White); color(100bp)=(SeaGreen!15)}
 
 \mdfdefinestyle{mdgreenbox}{%
-    topline=false,
-    bottomline=false,
-    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+  topline=false,
+  bottomline=false,
+  apptotikzsetting={\tikzset{mdfbackground/.append style ={%
     shading = mdgreenbg}}},
 	linewidth=1pt,
 	skipabove=12pt,
@@ -46,76 +81,76 @@
 }
 
 \declaretheoremstyle[
-headfont=\bfseries\color{Emerald},
-mdframed={style=mdgreenbox},
-headpunct={\\[3pt]},
-postheadspace={0pt},
+  headfont=\bfseries\color{Emerald},
+  mdframed={style=mdgreenbox},
+  headpunct={\\[3pt]},
+  postheadspace={0pt},
 ]{thmgreenbox}
 
 \pgfdeclarehorizontalshading{mdcyanbg}{100bp}
 {color(0bp)=(CornflowerBlue!15); color(50bp)=(White); color(100bp)=(CornflowerBlue!15)}
 
 \mdfdefinestyle{mdcyanbox}{%
-    topline=false,
-    bottomline=false,
-    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+  topline=false,
+  bottomline=false,
+  apptotikzsetting={\tikzset{mdfbackground/.append style ={%
     shading = mdcyanbg}}},
-	linewidth=1pt,
-	skipabove=12pt,
-	skipbelow=2pt,
-	linecolor=RoyalBlue,
-	nobreak=true,
+  linewidth=1pt,
+  skipabove=12pt,
+  skipbelow=2pt,
+  linecolor=RoyalBlue,
+  nobreak=true,
 }
 
 \declaretheoremstyle[
-headfont=\bfseries\color{Cerulean},
-mdframed={style=mdcyanbox},
-headpunct={\\[3pt]},
-postheadspace={0pt},
+  headfont=\bfseries\color{Cerulean},
+  mdframed={style=mdcyanbox},
+  headpunct={\\[3pt]},
+  postheadspace={0pt},
 ]{thmcyanbox}
 
 \pgfdeclarehorizontalshading{mdbluebg}{100bp}
 {color(0bp)=(BlueViolet!15); color(50bp)=(White); color(100bp)=(BlueViolet!15)}
 
 \mdfdefinestyle{mdbluebox}{%
-    topline=false,
-    bottomline=false,
-    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+  topline=false,
+  bottomline=false,
+  apptotikzsetting={\tikzset{mdfbackground/.append style ={%
     shading = mdbluebg}}},
-	linewidth=1pt,
-	skipabove=12pt,
-	skipbelow=2pt,
-	linecolor=MidnightBlue,
-	nobreak=true,
+  linewidth=1pt,
+  skipabove=12pt,
+  skipbelow=2pt,
+  linecolor=MidnightBlue,
+  nobreak=true,
 }
 
 \declaretheoremstyle[
-headfont=\bfseries\color{NavyBlue},
-mdframed={style=mdbluebox},
-headpunct={\\[3pt]},
-postheadspace={0pt},
+  headfont=\bfseries\color{NavyBlue},
+  mdframed={style=mdbluebox},
+  headpunct={\\[3pt]},
+  postheadspace={0pt},
 ]{thmbluebox}
 
 \pgfdeclarehorizontalshading{mdpurplebg}{100bp}
 {color(0bp)=(Orchid!15); color(50bp)=(White); color(100bp)=(Orchid!15)}
 
 \mdfdefinestyle{mdpurplebox}{%
-    topline=false,
-    bottomline=false,
-    apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+  topline=false,
+  bottomline=false,
+  apptotikzsetting={\tikzset{mdfbackground/.append style ={%
     shading = mdpurplebg}}},
-	linewidth=1pt,
-	skipabove=12pt,
-	skipbelow=2pt,
-	linecolor=DarkOrchid,
-	nobreak=true,
+  linewidth=1pt,
+  skipabove=12pt,
+  skipbelow=2pt,
+  linecolor=DarkOrchid,
+  nobreak=true,
 }
 
 \declaretheoremstyle[
-headfont=\bfseries\color{Plum},
-mdframed={style=mdpurplebox},
-headpunct={\\[3pt]},
-postheadspace={0pt},
+  headfont=\bfseries\color{Plum},
+  mdframed={style=mdpurplebox},
+  headpunct={\\[3pt]},
+  postheadspace={0pt},
 ]{thmpurplebox}
 
 \theoremstyle{definition}
