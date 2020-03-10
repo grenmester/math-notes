@@ -235,7 +235,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 
 \section*{Metric Spaces}
 
-\begin{defi}
+\begin{bdefi}
   A set $X$, whose elements we will call \define{points}, is a \define{metric
   space} if there is a function $d:X\times X\to\rr$ such that $\forall p,q\in
   X$
@@ -244,7 +244,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
     \item $d(p,q)=d(q,p)$.
     \item $d(p,q)\le d(p,r)+d(r,q)$, $\forall r\in X$ (triangle inequality).
   \end{enumerate}
-\end{defi}
+\end{bdefi}
 
 \begin{defi}
   The number $d(p,q)$ is the \define{distance} from $p$ to $q$, and $d$ is a
@@ -370,10 +370,10 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
   $\{G_\alpha\}$.
 \end{defi}
 
-\begin{defi}
+\begin{bdefi}
   A subset $K$ of a metric space is \define{compact} if every open cover of $K$
   contains a finite subcover.
-\end{defi}
+\end{bdefi}
 
 \begin{prop}
   Every finite set in a metric space is compact.
@@ -501,6 +501,340 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
   Then the set $P=\cap_{n=1}^\infty E_n$ is called the \define{Cantor set}.
   Note that $P$ is compact. Also, it is not empty. $P$ contains no intervals
   and $P$ is perfect.
+\end{ex}
+
+\section*{Convergence and Limits}
+
+\begin{bdefi}
+  A sequence $\{p_n\}$ in a metric space $X$ is said to \define{converge} if
+  there is a point $p\in X$ such that for every $\epsilon>0$, there is an
+  integer $N$ such that $n\ge N$ implies that $d(p_n,p)<\epsilon$. In this
+  case, we say $\{p_n\}$ \define{converges to $p$}, or that $p$ is the
+  \define{limit} of $\{p_n\}$, and we write
+  $$\lim_{n\to\infty}p_n=p$$
+\end{bdefi}
+
+\begin{defi}
+  We say $\{p_n\}$ is \define{bounded} if the set of all $p_n$ is bounded.
+\end{defi}
+
+\begin{defi}
+  If $\{p_n\}$ does not converge, then it \define{diverges}.
+\end{defi}
+
+\begin{prop}
+  Let $\{p_n\}$ be a sequence in a metric space $X$.
+  \begin{enumerate}
+    \item $\{p_n\}$ converges to $p\in X$ if and only if every neighborhood of
+      $p$ contains $p_n$ for all but finitely many $n$.
+    \item If $\{p_n\}$ converges to $p$ and $p'$, then $p=p'$.
+    \item If $\{p_n\}$ converges, then $\{p_n\}$ is bounded.
+    \item If $E\subseteq X$ and $p$ is a limit point of $E$, then there is a
+      sequence $\{p_n\}$ in $E$ such that $\lim_n\to\infty p_n=p$.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  Suppose $\{s_n\}$ and $\{t_n\}$ are complex sequences, and
+  $\lim_{n\to\infty}s_n=s$ and $\lim_{n\to\infty}t_n=t$. Then,
+  \begin{enumerate}
+    \item $\lim_{n\to\infty}(s_n+t_n)=s+t$.
+    \item $\lim_{n\to\infty}(c+s_n)=c+s$ and $\lim_{n\to\infty}cs_n=cs$.
+    \item $\lim_{n\to\infty}s_nt_n=st$.
+    \item $\lim_{n\to\infty}\frac{1}{s_n}=\frac{1}{s}$, provided that
+      $s_n\neq0$ and $s\neq0$.
+  \end{enumerate}
+\end{prop}
+
+\begin{pfi}
+  The key insight for (3) is that $s_nt_n-st=(s_n-s)(t_n-t)+s(t_n-t)+t(s_n-s)$.
+\end{pfi}
+
+\begin{prop}
+  If $p>0$, then $\lim_{n\to\infty}\frac{1}{n^p}=0$.
+\end{prop}
+
+\begin{pf}
+  Let $\epsilon>0$ and let $N$ be a positive integer grater than
+  $\frac{1}{\epsilon^{1/p}}$. If $n\ge N$, then
+  $\frac{1}{n^p}\le\frac{1}{N^p}<\frac{1}{(1/\epsilon^{1/p})^p}=\epsilon$. It
+  follows that $\frac{1}{n^p}\to0$.
+\end{pf}
+
+\begin{prop}
+  If $p>0$, then $\lim_{n\to\infty}\sqrt[n]{p}=1$.
+\end{prop}
+
+\begin{pf}
+  Case $p>1$. Put $x_n=\sqrt[n]{p}-1$. Then $x_n>0$ and by the Binomial
+  Theorem, $1+nx_n\le(1+x_n)^n=p$. Thus, $0<x_n\le\frac{p-1}{n}$. Hence
+  $x_n\to0$ so $\sqrt[n]{p}\to1$.\\
+  Case $p=1$. This is trivial.\\
+  Case $0<p<1$. Consider the sequence $\{\frac{1}{\sqrt[n]{p}}\}$. By the first
+  case, $\frac{1}{\sqrt[n]{p}}=\sqrt[n]{\frac{1}{p}}\to1$. Thus,
+  $\sqrt[n]{p}\to1$.
+\end{pf}
+
+\begin{prop}
+  If $n>0$, then $\lim_{n\to\infty}\sqrt[n]{n}=1$.
+\end{prop}
+
+\begin{pf}
+  Let $x_n=\sqrt[n]{n}-1$. Then $x_n\ge0$ and by the Binomial Theorem,
+  $n=(1+x_n)^n\ge\frac{n(n-1)}{2}x_n^2$. Thus when $n\ge2$, $0\le
+  x_n\le\sqrt{\frac{2}{n-1}}$. But $\sqrt{\frac{2}{n-1}}\to0$, thus $x_n\to 0$
+  so $\sqrt[n]{n}\to1$.
+\end{pf}
+
+\begin{prop}
+  If $p>0$ and $\alpha\in\rr$, then
+  $\lim_{n\to\infty}\frac{n^\alpha}{(1+p)^n}=0$.
+\end{prop}
+
+\begin{pf}
+  Let $k$ be a positive integer such that $k>\alpha$. When $n>2k$,
+  $$(1+p)^n>\binom{n}{k}p^k=\frac{n(n-1)(n-2)\ldots(n-k+1)}{k!}>
+  \frac{n}{2}\cdot\frac{n}{2}\cdot\ldots\cdot\frac{n}{2}
+  \cdot\frac{p^k}{k!}=\frac{n^k}{2^k}\frac{p^k}{k!}$$
+  Thus, when $n>2k$,
+  $$0<\frac{n^\alpha}{(1+p)^n}<\frac{n^\alpha}{n^k/2^k\cdot
+  p^k/k!}=\frac{2^kk!}{p^k}n^{\alpha-k}$$
+  Since $\alpha-k<0$, $n^{\alpha-k}=\frac{1}{n^{k-\alpha}}\to0$. Therefore,
+  $\frac{n^\alpha}{(1+p)^n}\to0$.
+\end{pf}
+
+\begin{prop}
+  If $|x|<1$, then $\lim_{n\to\infty}x^n=0$.
+\end{prop}
+
+\begin{pf}
+  Let $p=\frac{1}{|x|}-1$. Then $p>0$ and setting $\alpha=0$ in the identity
+  $\lim_{n\to\infty}\frac{n^\alpha}{(1+p)^n}=0$ yields
+  $$0=\lim_{n\to\infty}\frac{1}{(1+p)^n}=\lim_{n\to\infty}\frac{1}{(1/|x|)^n}
+  =\lim_{n\to\infty}|x|^n$$
+  It follows that $x^n\to0$.
+\end{pf}
+
+\section*{Cauchy Sequences}
+
+\begin{bdefi}
+  A sequence $\{p_n\}$ in a metric space $X$ is a \define{Cauchy sequence} if
+  for every $\epsilon>0$, there is an integer $N$ such that
+  $d(p_n,p_m)<\epsilon$ if $m,n\ge N$.
+\end{bdefi}
+
+\begin{prop}
+  In any metric space $X$, every convergent sequence is a Cauchy sequence.
+\end{prop}
+
+\begin{prop}
+  If $X$ is a compact metric space and if $\{p_n\}$ is a Cauchy sequence, then
+  $\{p_n\}$ converges to some point in $X$.
+\end{prop}
+
+\begin{prop}
+  In $\rr^k$, every Cauchy sequence converges.
+\end{prop}
+
+\begin{defi}
+  A metric space is \define{complete} if every Cauchy sequence converges.
+\end{defi}
+
+\begin{prop}
+  All compact metric spaces and all Euclidean spaces are complete metric spaces.
+\end{prop}
+
+\begin{note}
+  How might we `complete' the rationals? We can think of $\rr$ as equivalences
+  classes of Cauchy sequnces such that $\{p_n\}\sim\{q_n\}$ if and only if
+  $d(p_n,q_n)\to0$.
+\end{note}
+
+\begin{bdefi}
+  Given a complex sequence $\{a_n\}$, we can create a new sequence $\{s_n\}$
+  where $s_n=\sum_{k=1}^na_k$. We call $\{s_n\}$ an (infinite) \define{series}
+  and is often denoted $\sum_{n=1}^\infty a_n$. The numbers $s_n$ are the
+  \define{partial sums} of the series. Also, if $s_n\to s$, then we will write
+  $$\sum_{n=1}^\infty a_n=s$$
+\end{bdefi}
+
+\begin{note}
+  Sometimes we will consider series of the form $s_0,s_1,s_2,\ldots$ and write
+  $\sum_{n=0}^\infty a_n$. We might also just write $\sum a_n$.
+\end{note}
+
+\begin{prop}
+  The series $\sum_{n=1}^\infty a_n$ converges if and only if for every
+  $\epsilon>0$, there is an integer $N$ such that $|\sum_{k=n}^m a_k|<\epsilon$
+  whenever $m\ge n\ge N$.
+\end{prop}
+
+\begin{pf}
+  Note that $\cc$ is essentially $\rr^2$ and thus $\{s_n\}$ converges if and
+  only if it is a Cauchy sequence. Furthermore if $m\ge n-1$, then
+  $d(s_m,s_{n-1})=|s_m-s_{n-1}|=|\sum_{k=n}^m a_k|$.
+\end{pf}
+
+\section*{Tests for Convergence}
+
+\begin{prop}
+  If $\sum_{n=1}^\infty a_n$ converges, then $\lim_{n\to\infty}a_n=0$.
+\end{prop}
+
+\begin{pf}
+  Take $m=n$ in the previous theorem, which gives us $|a_n|<\epsilon$ when
+  $n\ge N$.
+\end{pf}
+
+\begin{note}
+  It is possible for $a_n\to0$ and have $\sum a_n$ be divergent. For example,
+  $\sum_{n=1}^\infty\frac{1}{n}$ diverges.
+\end{note}
+
+\begin{pfi}
+  Consider the following.
+  $$\underbrace{1+1/2}_{>1/2}+
+  \underbrace{1/3+1/4}_{>1/2}+
+  \underbrace{1/5+1/6+1/7+1/8}_{>1/2}+
+  \underbrace{1/9+\ldots+1/16}_{>1/2}+\ldots$$
+\end{pfi}
+
+\begin{thm}[Comparison Test]
+  Let $N_0$ be a fixed integer. If $|a_n|\le c_n$ for $n\ge N_0$, and
+  $\sum_{n=1}^\infty c_n$ converges, then $\sum_{n=1}^\infty a_n$ converges. If
+  $a_n\ge d_n\ge 0$ for $n\ge N_0$, and if $\sum_{n=1}^\infty d_n$ diverges,
+  then $\sum_{n=1}^\infty a_n$ diverges.
+\end{thm}
+
+\begin{pf}
+  Given $\epsilon>0$, we know there is some $N>N_0$ such that $m\ge n\ge N$
+  implies $\sum_{k=n}^mc_k<\epsilon$. Thus,
+  $|\sum_{k=n}^ma_k|\le\sum_{k=n}^m|a_k|\le\sum_{k=n}^mc_k<\epsilon$ and the
+  first part follows. Also, the second part follows from the first part because
+  if $\sum a_n$ converges, then so must $\sum d_n$.
+\end{pf}
+
+\begin{note}
+  To use the Comparison Test, we need to know a series of nonnegative real
+  numbers whose convergence or divergence is known.
+\end{note}
+
+\begin{prop}
+  If $0\le x<1$, then $\sum_{n=0}^\infty x^n=\frac{1}{1-x}$. If $x=1$, the
+  series diverges.
+\end{prop}
+
+\begin{pf}
+  The key insight is that if $x\neq1$, we let
+  $s_n=\sum_{k=0}^nx^k=\frac{1-x^{n+1}}{1-x}$ and the result follows by letting
+  $n\to\infty$. Note that when $x=1$, the series clearly diverges.
+\end{pf}
+
+\begin{thm}[Cauchy Condensation Test]
+  Suppose $a_1\ge a_2\ge\ldots\ge0$. Then the series $\sum_{n=1}^\infty a_n$
+  converges if and only if the series
+  $\sum_{k=0}^\infty2^ka_{2^k}=a_1+2a_2+4a_4+8a_8+\ldots$ converges.
+\end{thm}
+
+\begin{pf}
+  A series of nonnegative real terms converges if and only if its partial sums
+  form a bounded sequence. Thus, it suffices to consider the boundedness of the
+  partial sums $s_n=a_1+a_2+\ldots+a_n$ and $t_k=a_1+2a_2+\ldots+2^ka_{2^k}$.
+  For $n<2^k$, $s_n\le t_k$ because
+  \begin{align*}
+    s_n&\le(a_1)+(a_2+a_3)+\ldots+(a_{2^k}+\ldots+a_{2^{k+1}-1})\\
+       &\le a_1+2a_2+\ldots+2^ka_{2^k}\\
+       &=t_k
+  \end{align*}
+  For $n>2^k$, $2s_n\ge t_k$ because
+  \begin{align*}
+    s_n&\ge(a_1)+(a_2)+(a_3+a_4)+\ldots+(a_{2^{k-1}+1}+\ldots+a_{2^k})\\
+       &\ge\frac{1}{2}a_1+a_2+2a_4+\ldots+2^{k-1}a_{2^k}\\
+       &=\frac{1}{2}t_k
+  \end{align*}
+  It follows that the sequences $\{s_n\}$ and $\{t_n\}$ are either both bounded
+  or both unbounded and the theorem follows.
+\end{pf}
+
+\begin{prop}[$p$-Series Test]
+  $\sum_{n=1}^\infty\frac{1}{n^p}$ converges if $p>1$ and diverges if $p\le1$.
+\end{prop}
+
+\begin{pf}
+  If $p\ge0$, then the terms in the sequence don't converge to 0 so
+  $\sum\frac{1}{n^p}$ diverges. If $p>0$, then by the previous theorem, we can
+  consider the series
+  $$\sum_{k=0}^\infty2^k\frac{1}{(2^k)^p}
+  =\sum_{k=0}^\infty(\frac{1}{2^{p-1}})^k$$
+  But this is a geometric series which will converge if
+  $0\le\frac{1}{2^{p-1}}<1$ and will diverge if $\frac{1}{2^{p-1}}\ge1$ so the
+  original series will converge if $p>1$ and diverge if $p\le1$.
+\end{pf}
+
+\begin{defi}
+  Let $\{s_n\}$ be a sequence of real numbers and let $\{s_{n_k}\}$ be some
+  subsequence that converges to some $x$. Then $x$ is a \define{subsequential
+  limit} of $\{s_n\}$.
+\end{defi}
+
+\begin{defi}
+  Let $\{s_n\}$ be a sequence of real numbers and let $E$ be the set of all
+  subsequential limits. We define
+  $$\limsup_{n\to\infty}s_n=\sup E\hspace{50pt}\liminf_{n\to\infty}s_n=\inf E$$
+\end{defi}
+
+\begin{thm}[The Root Test]
+  Given $\sum a_n$, let $\alpha=\limsup_{n\to\infty}\sqrt[n]{|a_n|}$.
+  \begin{enumerate}
+    \item If $\alpha<1$, then $\sum a_n$ converges.
+    \item If $\alpha>1$, then $\sum a_n$ diverges.
+    \item If $\alpha=1$, then the test gives no info.
+  \end{enumerate}
+\end{thm}
+
+\begin{pf}
+  If $\alpha<1$, then choose $\beta$ such that $\alpha<\beta<1$ and an integer
+  $N$ such that $\sqrt[n]{|a_n|}<\beta$ for $n\ge N$. Thus if $n\ge N$, we have
+  $|a_n|<\beta^n$. Since $0<\beta<1$, $\sum\beta^n$ converges because it is a
+  geometric series and by the comparison test, $\sum a_n$ converges.\\\\
+  If $\alpha>1$, then there is a sequence $\{n_k\}$ such that
+  $\sqrt[\leftroot{-2}\uproot{3}n_k]{|a_{n_k}|}\to\alpha$. Thus $|a_n|>1$ for
+  infinitely many $n$, so it must be the case that $a_n\not\to0$ and therefore
+  $\sum a_n$ can't converge.\\\\
+  Note that $\sum\frac{1}{n}$ and $\sum\frac{1}{n^2}$ both have $\alpha=1$ but
+  they diverge and converge, respectively.
+\end{pf}
+
+\begin{thm}[The Ratio Test]
+  Suppose $a_n\neq0$ for all $n$. The series $\sum a_n$
+  \begin{enumerate}
+    \item Converges if $\limsup_{n\to\infty}|\frac{a_{n+1}}{a_n}|<1$.
+    \item Diverges if $|\frac{a_{n+1}}{a_n}|\ge1$ for all $n\ge n_0$ where
+      $n_0$ is some fixed integer.
+  \end{enumerate}
+\end{thm}
+
+\begin{pf}
+  If $\limsup_{n\to\infty}|\frac{a_{n+1}}{a_n}|<1$, then choose some $\beta<1$
+  and an integer $N$ such that $|\frac{a_{n+1}}{a_n}|<\beta$ for all $n\ge N$.
+  We then have for all $n\ge N$, $|a_n|<(|a_N|\beta^{-N})\beta^n$. Since
+  $0<\beta<1$, $\sum\beta^n$ converges. Thus by the comparison test, $\sum a_n$
+  converges.\\\\
+  If $|a_{n+1}|\ge|a_n|$ for $n\ge n_0$, then $a_n\not\to0$, so $\sum a_n$
+  diverges.
+\end{pf}
+
+\begin{note}
+  The Ratio Test is not useful for $\sum\frac{1}{n}$ and $\sum\frac{1}{n^2}$.
+\end{note}
+
+\begin{ex}
+  Consider the series $\frac{1}{2}+1+\frac{1}{8}+\frac{1}{4}+\frac{1}{32}
+  +\frac{1}{16}+\frac{1}{128}+\frac{1}{64}+\ldots$. In this case,
+  $\liminf_{n\to\infty}\frac{a_{n+1}}{a_n}=\frac{1}{8}$,
+  $\limsup_{n\to\infty}\frac{a_{n+1}}{a_n}=2$, so the Ratio Test does not
+  apply. But $\lim_{n\to\infty}\sqrt[n]{a_n}=2$ so the series converges by the
+  Root Test.
 \end{ex}
 
 \end{document}
