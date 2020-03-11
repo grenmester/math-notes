@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{jacky}[2020/03/09]
+\ProvidesClass{mathnotes}[2020/03/12]
 \LoadClass[11pt]{book}
 
 % Set document dimensions
