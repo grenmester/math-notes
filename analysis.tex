@@ -73,8 +73,8 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
   \item Define the elements of $\RR$ as subsets of $\QQ$ called \define{cuts},
     where a cut is a subset $\alpha$ of $\QQ$ such that
     \begin{enumerate}
-      \item $\alpha$ is a nonempty proper subset of $\QQ$ ($\alpha\ne\varnothing$
-        and $\alpha\ne\QQ$).
+      \item $\alpha$ is a nonempty proper subset of $\QQ$
+        ($\alpha\ne\varnothing$ and $\alpha\ne\QQ$).
       \item If $p\in\alpha$, $q\in\QQ$, and $q<p$, then $q\in\alpha$.
       \item If $p\in\alpha$, then $p<r$ for some $r\in\alpha$ (can't be in the
         set and be an upper bound).
@@ -157,7 +157,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \begin{defi}
   Let $A$ and $B$ be sets. If there is a bijection from $A$ to $B$, then we say
   $A$ and $B$ have the same \define{cardinality} (or `size') and write $A\sim
-  B$.  We also write $|A|=|B|$ where $|A|$ denotes the cardinality of $A$.
+  B$. We also write $|A|=|B|$ where $|A|$ denotes the cardinality of $A$.
 \end{defi}
 
 \begin{defi}
@@ -304,11 +304,11 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{prop}
 
 \begin{pf}
-  We first prove the forward direction then the backward direction.\\
+  We first prove the forward direction then the backward direction.\\\\
   $(\Rightarrow)$ Suppose $E$ is open. If $x$ is a limit point of $E^c$, then
   every neighborhood of $x$ contains a point of $E^c$. In this case, $x$ can't
   be an interior point of $E$, and because $E$ is open, $x\in E^c$. Thus, $E^c$
-  is closed.\\
+  is closed.\\\\
   $(\Leftarrow)$ Now suppose $E^c$ is closed. If $x\in E$ then $x\notin E^c$
   and is thus not a limit point of $E^c$. In this case, there is a neighborhood
   $N(x)$ such that $N(x)\cap E^c=\varnothing$, implying that $N(x)\subseteq E$.
@@ -562,8 +562,8 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \begin{pf}
   Case $p>1$. Put $x_n=\sqrt[n]{p}-1$. Then $x_n>0$ and by the Binomial
   Theorem, $1+nx_n\le(1+x_n)^n=p$. Thus, $0<x_n\le\frac{p-1}{n}$. Hence
-  $x_n\to0$ so $\sqrt[n]{p}\to1$.\\
-  Case $p=1$. This is trivial.\\
+  $x_n\to0$ so $\sqrt[n]{p}\to1$.\\\\
+  Case $p=1$. This is trivial.\\\\
   Case $0<p<1$. Consider the sequence $\{\frac{1}{\sqrt[n]{p}}\}$. By the first
   case, $\frac{1}{\sqrt[n]{p}}=\sqrt[n]{\frac{1}{p}}\to1$. Thus,
   $\sqrt[n]{p}\to1$.
@@ -635,7 +635,8 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{defi}
 
 \begin{prop}
-  All compact metric spaces and all Euclidean spaces are complete metric spaces.
+  All compact metric spaces and all Euclidean spaces are complete metric
+  spaces.
 \end{prop}
 
 \begin{note}

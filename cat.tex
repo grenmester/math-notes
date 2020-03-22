@@ -12,178 +12,172 @@
 
 \begin{document}
 \begin{center}
-    \vspace*{20pt}
-    \LARGE{Category Theory Notes}
+  \vspace*{20pt}
+  \LARGE{Category Theory Notes}
 \end{center}
 
 \begin{defi}
-    A \define{metagraph} consists of \define{objects} $a, b, c, \ldots$,
-    \define{arrows} $f, g, h, \ldots$, and two operations as follows:
-    \begin{itemize}
-        \item \define{Domain}, which assigns to each arrow $f$ an object
-            $a=\dom f$
-        \item \define{Codomain}, which assigns to each arrow $f$ an object
-            $b=\cod f$
-    \end{itemize}
-    These operations on $f$ are usually indicated by
-    \[f:a\rightarrow b\hspace{10pt}\text{or}\hspace{10pt}a\xrightarrow{f}b\]
+  A \define{metagraph} consists of \define{objects} $a, b, c, \ldots$,
+  \define{arrows} $f, g, h, \ldots$, and two operations as follows:
+  \begin{itemize}
+    \item \define{Domain}, which assigns to each arrow $f$ an object $a=\dom f$
+    \item \define{Codomain}, which assigns to each arrow $f$ an object $b=\cod
+      f$
+  \end{itemize}
+  These operations on $f$ are usually indicated by
+  \[f:a\rightarrow b\hspace{10pt}\text{or}\hspace{10pt}a\xrightarrow{f}b\]
 \end{defi}
 
 \begin{defi}
-    A \define{metacategory} is a metagraph with two additional operations:
-    \begin{itemize}
-        \item \define{Identity}, which assigns to each object $a$ an arrow
-            $\id_a=1_a:a\rightarrow a$
-        \item \define{Composition}, which assigns to each pair $\langle g,f
-            \rangle$ of arrows with $\dom g=\cod f$ an arrow $g\circ f$,
-            called their \define{composite}, with $g\circ
-            f:\dom f\rightarrow\cod g$
-    \end{itemize}
-    This operation may be pictured by the diagram
-    \begin{center}
-        \begin{tikzcd}
-            A\arrow[r, "f"]\arrow[dr, "g\circ f", swap] & B\arrow[d, "g"]\\
-            & C
+  A \define{metacategory} is a metagraph with two additional operations:
+  \begin{itemize}
+    \item \define{Identity}, which assigns to each object $a$ an arrow
+      $\id_a=1_a:a\rightarrow a$
+    \item \define{Composition}, which assigns to each pair $\langle g,f
+      \rangle$ of arrows with $\dom g=\cod f$ an arrow $g\circ f$, called their
+      \define{composite}, with $g\circ f:\dom f\rightarrow\cod g$
+  \end{itemize}
+  This operation may be pictured by the diagram
+  \begin{center}
+    \begin{tikzcd}
+      A\arrow[r, "f"]\arrow[dr, "g\circ f", swap] & B\arrow[d, "g"] \\
+                                                  & C
+    \end{tikzcd}
+  \end{center}
+  These operations in a metacategory are subject to the two following axioms:
+  \begin{itemize}
+    \item \define{Associativity}. For given objects and arrow in the
+      configuration
+      \[a\xrightarrow{f}b\xrightarrow{g}c\xrightarrow{k}d\]
+      one always has the equality
+      \[k\circ\left(g\circ f\right)=\left(k\circ g\right)\circ f\]
+      This axiom is represented by the statement that the following diagram is
+      commutative.
+      \begin{center}
+        \begin{tikzcd}[column sep=3cm, row sep=huge]
+          A\arrow[r, "k\circ (g\circ f) = (k\circ g)\circ f"]
+          \arrow[d, "f"']\arrow[dr, "g\circ f", pos=0.2, swap]
+          & D \\
+          B\arrow[r, "g", swap]
+          \arrow[ur, "k\circ g", pos=0.8, swap, crossing over]
+          & C\arrow[u, "k"']
         \end{tikzcd}
-    \end{center}
-    These operations in a metacategory are subject to the two following axioms:
-    \begin{itemize}
-        \item \define{Associativity}. For given objects and arrow in the
-            configuration
-            \[a\xrightarrow{f}b\xrightarrow{g}c\xrightarrow{k}d\]
-            one always has the equality
-            \[k\circ\left(g\circ f\right)=\left(k\circ g\right)\circ f\]
-            This axiom is represented by the statement that the following
-            diagram is commutative.
-            \begin{center}
-                \begin{tikzcd}[column sep=3cm, row sep=huge]
-                    A\arrow[r, "k\circ (g\circ f) = (k\circ g)\circ f"]
-                    \arrow[d, "f"']\arrow[dr, "g\circ f", pos=0.2, swap] & D \\
-                    B\arrow[r, "g", swap]
-                    \arrow[ur, "k\circ g", pos=0.8, swap, crossing over]
-                    & C\arrow[u, "k"']
-                \end{tikzcd}
-            \end{center}
-        \item \define{Unit law}. For all arrows $f:a\rightarrow b$ and
-            $g:b\rightarrow c$, composition with the identity arrow $1_b$ gives
-            \[1_b\circ f=f\hspace{10pt}\text{and}\hspace{10pt}g\circ1_b=g\]
-            This axiom is represented by the statement that the following
-            diagram is commutative.
-            \begin{center}
-                \begin{tikzcd}
-                    A\arrow[r, "f"]\arrow[dr, "f", swap]
-                    & B\arrow[d, "1_b"]\arrow[dr, "g"', swap]\\
+      \end{center}
+    \item \define{Unit law}. For all arrows $f:a\rightarrow b$ and
+      $g:b\rightarrow c$, composition with the identity arrow $1_b$ gives
+      \[1_b\circ f=f\hspace{10pt}\text{and}\hspace{10pt}g\circ1_b=g\]
+      This axiom is represented by the statement that the following diagram is
+      commutative.
+      \begin{center}
+        \begin{tikzcd}
+          A\arrow[r, "f"]\arrow[dr, "f", swap]
+                    & B\arrow[d, "1_b"]\arrow[dr, "g"', swap] \\
                     & B\arrow[r, "g"'] & C
-                \end{tikzcd}
-            \end{center}
-    \end{itemize}
+        \end{tikzcd}
+      \end{center}
+  \end{itemize}
 \end{defi}
 
 \begin{defi}
-    A \define{directed graph} is a set $O$ of objects, a set $A$ of arrows, and
-    two functions
-    \[A\xrightarrow{\dom}O\hspace{50pt}A\xrightarrow{\cod}O\]
-    The set of composable pairs of arrows is the set
-    \[A\times_OA=\{\langle g,f\rangle\ |\ g,f\in A
-        \text{ and }\dom g=\cod f\}\]
+  A \define{directed graph} is a set $O$ of objects, a set $A$ of arrows, and
+  two functions
+  \[A\xrightarrow{\dom}O\hspace{50pt}A\xrightarrow{\cod}O\]
+  The set of composable pairs of arrows is the set
+  \[A\times_OA=\{\langle g,f\rangle\ |\ g,f\in A
+  \text{ and }\dom g=\cod f\}\]
 \end{defi}
 
 \begin{bdefi}
-    A \define{category} is a directed graph with two additional functions
-    \[O\xrightarrow{\id}A,\ A\times_OA\xrightarrow{\circ}A,\]
-    \[c\mapsto\id_c,\ \langle g,f\rangle\mapsto g\circ f\]
-    called identity and composition (also written as $gf$), such that
-    \[\dom(\id a)=a=\cod(\id a),\hspace{20pt}\dom(g\circ
-    f)=\dom f,\hspace{20pt}\cod(g\circ f)=\cod g\]
-    for all objects $a\in O$ and all composable pairs of arrows $\langle
-    g,f\rangle\in A\times_OA$, and such that the associativity and unit axioms
-    hold.
+  A \define{category} is a directed graph with two additional functions
+  \[O\xrightarrow{\id}A,\ A\times_OA\xrightarrow{\circ}A,\]
+  \[c\mapsto\id_c,\ \langle g,f\rangle\mapsto g\circ f\]
+  called identity and composition (also written as $gf$), such that
+  \[\dom(\id a)=a=\cod(\id a),\hspace{20pt}\dom(g\circ
+  f)=\dom f,\hspace{20pt}\cod(g\circ f)=\cod g\]
+  for all objects $a\in O$ and all composable pairs of arrows $\langle
+  g,f\rangle\in A\times_OA$, and such that the associativity and unit axioms
+  hold.
 \end{bdefi}
 
 \begin{note}
-    We usually drop the letters $A$ and $O$, and write
-    \[c\in C\hspace{50pt}f\text{ in }C\]
-    for ``$c$ is an object of $C$'' and ``$f$ is an arrow of $C$'',
-    respectively.
+  We usually drop the letters $A$ and $O$, and write
+  \[c\in C\hspace{50pt}f\text{ in }C\]
+  for ``$c$ is an object of $C$'' and ``$f$ is an arrow of $C$'', respectively.
 \end{note}
 
 \begin{defi}
-    We write
-    \[\hom(b,c)=\{f\ |\ f\text{ in }C,\dom f=b, \cod f=c\}\]
-    for the set of arrows from $b$ to $c$.
+  We write
+  \[\hom(b,c)=\{f\ |\ f\text{ in }C,\dom f=b, \cod f=c\}\]
+  for the set of arrows from $b$ to $c$.
 \end{defi}
 
 \begin{ex}
-    The following are simple examples of categories.
-    \begin{itemize}
-        \item \textbf{0} is the empty category with no objects or arrows.
-        \item \textbf{1} is the category with one object and one identity
-            arrow.
-        \item \textbf{2} is the category $A\rightarrow B$ with two objects and
-            one non-identity arrow.
-        \item \textbf{3} is the category with three objects whose non-identity
-            arrows are arranged as in the following triangle.
-            \begin{center}
-                \begin{tikzcd}
-                    A\arrow[r]\arrow[dr, swap] & B\arrow[d]\\
-                    & C
-                \end{tikzcd}
-            \end{center}
-        \item $\downdownarrows$ is the category $A\rightrightarrows B$ with two
-            objects and two non-identity arrows. We call two such arrows
-            \define{parallel arrows}.
-    \end{itemize}
+  The following are simple examples of categories.
+  \begin{itemize}
+    \item \textbf{0} is the empty category with no objects or arrows.
+    \item \textbf{1} is the category with one object and one identity arrow.
+    \item \textbf{2} is the category $A\rightarrow B$ with two objects and one
+      non-identity arrow.
+    \item \textbf{3} is the category with three objects whose non-identity
+      arrows are arranged as in the following triangle.
+      \begin{center}
+        \begin{tikzcd}
+          A\arrow[r]\arrow[dr, swap] & B\arrow[d] \\
+                                     & C
+        \end{tikzcd}
+      \end{center}
+    \item $\downdownarrows$ is the category $A\rightrightarrows B$ with two
+      objects and two non-identity arrows. We call two such arrows
+      \define{parallel arrows}.
+  \end{itemize}
 \end{ex}
 
 \begin{bdefi}
-    A \define{functor} is a morphism of categories. For categories $C$ and $B$,
-    a functor $T:C\rightarrow B$ consists of two related functions: The
-    \define{object function} $T$, which assigns to each object $c$ of $C$ an
-    object $Tc$ of $B$ and the \define{arrow function} (also written $T$) which
-    assigns to each arrow $f:c\rightarrow c'$ of $C$ an arrow $Tf:Tc\rightarrow
-    Tc'$ of $B$, in such a way that
-    \[T(1_c)=1_{Tc}\hspace{50pt} T(g\circ f)=Tg\circ Tf\]
+  A \define{functor} is a morphism of categories. For categories $C$ and $B$, a
+  functor $T:C\rightarrow B$ consists of two related functions: The
+  \define{object function} $T$, which assigns to each object $c$ of $C$ an
+  object $Tc$ of $B$ and the \define{arrow function} (also written $T$) which
+  assigns to each arrow $f:c\rightarrow c'$ of $C$ an arrow $Tf:Tc\rightarrow
+  Tc'$ of $B$, in such a way that
+  \[T(1_c)=1_{Tc}\hspace{50pt} T(g\circ f)=Tg\circ Tf\]
 \end{bdefi}
 
 \begin{defi}
-    The \define{forgetful functor} (or \define{underlying functor}) is a
-    functor which ``forgets'' some of all of the structure of an algebraic
-    object.
+  The \define{forgetful functor} (or \define{underlying functor}) is a functor
+  which ``forgets'' some of all of the structure of an algebraic object.
 \end{defi}
 
 \begin{ex}
-    The functor $U: \cat{Rng}\rightarrow\cat{Grp}$ that assigns to each ring
-    $R$ the set $UR$ of its elements and assigns to each morphism
-    $f:R\rightarrow R'$ of rings the same function $f$, regarded just as a
-    group homomorphism rather than a ring homomorphism (thus ``forgetting'' the
-    multiplication).
+  The functor $U: \cat{Rng}\rightarrow\cat{Grp}$ that assigns to each ring $R$
+  the set $UR$ of its elements and assigns to each morphism $f:R\rightarrow R'$
+  of rings the same function $f$, regarded just as a group homomorphism rather
+  than a ring homomorphism (thus ``forgetting'' the multiplication).
 \end{ex}
 
 \begin{defi}
-    The \define{composite} of two functors $T:C\rightarrow B$ and
-    $S:B\rightarrow A$ is $S\circ T:C\rightarrow A$.
+  The \define{composite} of two functors $T:C\rightarrow B$ and $S:B\rightarrow
+  A$ is $S\circ T:C\rightarrow A$.
 \end{defi}
 
 \begin{defi}
-    An \define{isomorphism} $T:C\rightarrow B$ of categories is a functor $T$
-    from $C$ to $B$ which is a bijection, both on objects and on arrows.
-    Alternatively, a functor $T:C\rightarrow B$ is an isomorphism if and only
-    if there exists a functor $S:B\rightarrow C$ for which both composites
-    $S\circ T$ and $T\circ S$ are identity functors. Then, $S$ is the
-    \define{two-sided inverse} $S=T^{-1}$.
+  An \define{isomorphism} $T:C\rightarrow B$ of categories is a functor $T$
+  from $C$ to $B$ which is a bijection, both on objects and on arrows.
+  Alternatively, a functor $T:C\rightarrow B$ is an isomorphism if and only if
+  there exists a functor $S:B\rightarrow C$ for which both composites $S\circ
+  T$ and $T\circ S$ are identity functors. Then, $S$ is the \define{two-sided
+  inverse} $S=T^{-1}$.
 \end{defi}
 
 \begin{defi}
-    A functor $T:C\rightarrow B$ is \define{full} when to every pair $c, c'$ of
-    objects of $C$ and to every arrow $g:Tc\rightarrow Tc'$ of $B$, there
-    exists an arrow $f:c\rightarrow c'$ of $C$ with $g=Tf$.
+  A functor $T:C\rightarrow B$ is \define{full} when to every pair $c, c'$ of
+  objects of $C$ and to every arrow $g:Tc\rightarrow Tc'$ of $B$, there exists
+  an arrow $f:c\rightarrow c'$ of $C$ with $g=Tf$.
 \end{defi}
 
 \begin{defi}
-    A functor $T:C\rightarrow B$ is \define{faithful} when to every pair $c,
-    c'$ of objects of $C$ and to every pair $f_1,f_2:c\rightarrow c'$ of
-    parallel arrows of $C$, the equality $Tf_1=Tf_2:Tc\rightarrow Tc'$ implies
-    $f_1=f_2$.
+  A functor $T:C\rightarrow B$ is \define{faithful} when to every pair $c, c'$
+  of objects of $C$ and to every pair $f_1,f_2:c\rightarrow c'$ of parallel
+  arrows of $C$, the equality $Tf_1=Tf_2:Tc\rightarrow Tc'$ implies $f_1=f_2$.
 \end{defi}
 
 For a pair of objects $c,c'\in C$, the arrow function of $T:C\rightarrow B$
@@ -197,47 +191,47 @@ functor itself is an isomorphism of categories, for there may be objects of $B$
 not in the image of $T$.
 
 \begin{defi}
-    A \define{subcategory} $S$ of a category $C$ is a collection of some of the
-    objects and some of the arrows of $C$, which includes with each arrow $f$
-    both the object $\dom f$ and the object $\cod f$, with each object $s$
-    its identity arrow $1_s$ and with each pair of composable arrows
-    $s\rightarrow s'\rightarrow s''$ their composite.
+  A \define{subcategory} $S$ of a category $C$ is a collection of some of the
+  objects and some of the arrows of $C$, which includes with each arrow $f$
+  both the object $\dom f$ and the object $\cod f$, with each object $s$ its
+  identity arrow $1_s$ and with each pair of composable arrows $s\rightarrow
+  s'\rightarrow s''$ their composite.
 \end{defi}
 
 \begin{defi}
-    Given a subcategory $S$ of $C$, the \define{inclusion functor} is the
-    functor $T:S\rightarrow C$ which sends each object and each arrow of $S$ to
-    itself in $C$.
+  Given a subcategory $S$ of $C$, the \define{inclusion functor} is the functor
+  $T:S\rightarrow C$ which sends each object and each arrow of $S$ to itself in
+  $C$.
 \end{defi}
 
 \begin{defi}
-    $S$ is a \define{full subcategory} of $C$ when the inclusion functor
-    $T:S\rightarrow C$ is full.
+  $S$ is a \define{full subcategory} of $C$ when the inclusion functor
+  $T:S\rightarrow C$ is full.
 \end{defi}
 
 \begin{bdefi}
-    Given two functors $S,T:C\rightarrow B$, a \define{natural transformation}
-    $\tau:S\xrightarrow{\bullet}T$ is a function which assign to each object
-    $c$ of $C$ an arrow $\tau_c=\tau c:Sc\rightarrow Tc$ of $B$ in such a way
-    that every arrow $f:c\rightarrow c'$ in $C$ yields a diagram
-    \begin{center}
-        \begin{tikzcd}
-            c\arrow[d, "f"] & Sc\arrow[r,"\tau c"]\arrow[d,"Sf"] &
-            Tc\arrow[d,"Tf"]\\
-            c'              & Sc'\arrow[r,"\tau c'"]             &
-            Tc'
-        \end{tikzcd}
-    \end{center}
-    which is commutative. When this holds, we say that $\tau_c:Sc\rightarrow Tc$
-    is \define{natural} in $c$. We call $\tau a,\tau b,\tau c,\ldots$ the
-    \define{components} of the natural transformation $\tau$.
+  Given two functors $S,T:C\rightarrow B$, a \define{natural transformation}
+  $\tau:S\xrightarrow{\bullet}T$ is a function which assign to each object $c$
+  of $C$ an arrow $\tau_c=\tau c:Sc\rightarrow Tc$ of $B$ in such a way that
+  every arrow $f:c\rightarrow c'$ in $C$ yields a diagram
+  \begin{center}
+    \begin{tikzcd}
+      c\arrow[d, "f"] & Sc\arrow[r,"\tau c"]\arrow[d,"Sf"] &
+      Tc\arrow[d,"Tf"] \\
+      c'              & Sc'\arrow[r,"\tau c'"]             &
+      Tc'
+    \end{tikzcd}
+  \end{center}
+  which is commutative. When this holds, we say that $\tau_c:Sc\rightarrow Tc$
+  is \define{natural} in $c$. We call $\tau a,\tau b,\tau c,\ldots$ the
+  \define{components} of the natural transformation $\tau$.
 \end{bdefi}
 
 \begin{defi}
-    A natural transformation $\tau$ with every component $\tau c$ invertible in
-    $B$ is called a\\
-    \define{natural equivalence} or a \define{natural
-    isomorphism}. Symbolically, $\tau:S\cong T$.
+  A natural transformation $\tau$ with every component $\tau c$ invertible in
+  $B$ is called a\\
+  \define{natural equivalence} or a \define{natural isomorphism}. Symbolically,
+  $\tau:S\cong T$.
 \end{defi}
 
 \end{document}
