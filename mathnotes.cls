@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mathnotes}[2020/03/12]
+\ProvidesClass{mathnotes}[2020/03/23]
 \LoadClass[11pt]{book}
 
 % Set document dimensions
@@ -56,12 +56,13 @@
 \newcommand{\define}[1]{\underline{\textbf{#1}}}
 
 % Other shortcuts
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
 \newcommand{\pn}[1]{\left( #1 \right)}
-\newcommand{\hmap}[3][\varphi]{%
-  #1:#2\rightarrow#3}
-\renewcommand{\ker}[1][(\varphi)]{\text{Ker}#1}
-\newcommand{\im}[1][(\varphi)]{\text{Im}#1}
-\DeclareMathOperator{\lcm}{lcm}
 
 %% Context environment definitions
 

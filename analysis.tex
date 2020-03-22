@@ -4,12 +4,6 @@
 \notetitle{Real Analysis Notes}
 \notedate{\today}
 
-\newcommand{\cc}{\mathbb{C}}
-\newcommand{\nn}{\mathbb{N}}
-\newcommand{\qq}{\mathbb{Q}}
-\newcommand{\rr}{\mathbb{R}}
-\newcommand{\zz}{\mathbb{Z}}
-
 \begin{document}
 \begin{center}
   \vspace*{20pt}
@@ -18,7 +12,7 @@
 
 \section*{Rational Numbers and Bounds}
 
-If $\frac{a}{b},\frac{c}{d}\in\qq$, then
+If $\frac{a}{b},\frac{c}{d}\in\QQ$, then
 $$\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd} \hspace{50pt}
 \frac{a}{b}-\frac{c}{d}=\frac{ad-bc}{bd} \hspace{50pt}
 \frac{a}{b}\times\frac{c}{d}=\frac{ac}{bd} \hspace{50pt}
@@ -48,7 +42,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{defi}
 
 \begin{ex}
-  Consider the set $\{r\in\qq:r^2<2\}$, which has no supremum in $\qq$.
+  Consider the set $\{r\in\QQ:r^2<2\}$, which has no supremum in $\QQ$.
 \end{ex}
 
 \begin{defi}
@@ -63,9 +57,9 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{prop}
 
 \begin{defi}
-  There exists an ordered field $\rr$ (called the \define{real numbers}) which
+  There exists an ordered field $\RR$ (called the \define{real numbers}) which
   has the least-upper-bound property, and it contains an isomorphic copy of
-  $\qq$.
+  $\QQ$.
 \end{defi}
 
 \begin{note}
@@ -76,43 +70,43 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \section*{Dedekind Cuts}
 
 \begin{enumerate}
-  \item Define the elements of $\rr$ as subsets of $\qq$ called \define{cuts},
-    where a cut is a subset $\alpha$ of $\qq$ such that
+  \item Define the elements of $\RR$ as subsets of $\QQ$ called \define{cuts},
+    where a cut is a subset $\alpha$ of $\QQ$ such that
     \begin{enumerate}
-      \item $\alpha$ is a nonempty proper subset of $\qq$ ($\alpha\ne\varnothing$
-        and $\alpha\ne\qq$).
-      \item If $p\in\alpha$, $q\in\qq$, and $q<p$, then $q\in\alpha$.
+      \item $\alpha$ is a nonempty proper subset of $\QQ$ ($\alpha\ne\varnothing$
+        and $\alpha\ne\QQ$).
+      \item If $p\in\alpha$, $q\in\QQ$, and $q<p$, then $q\in\alpha$.
       \item If $p\in\alpha$, then $p<r$ for some $r\in\alpha$ (can't be in the
         set and be an upper bound).
     \end{enumerate}
-  \item Define an order on $\rr$ where $\alpha<\beta$ if and only if $\alpha$
+  \item Define an order on $\RR$ where $\alpha<\beta$ if and only if $\alpha$
     is a proper subset of $\beta$.
-  \item Show that the ordered set $\rr$ has the least-upper-bound property. To
-    do this, suppose $A$ is a nonempty subset of $\rr$ that is bounded above.
-    Let $\gamma$ be the union of all $\alpha\in A$. Then show $\gamma\in\rr$
+  \item Show that the ordered set $\RR$ has the least-upper-bound property. To
+    do this, suppose $A$ is a nonempty subset of $\RR$ that is bounded above.
+    Let $\gamma$ be the union of all $\alpha\in A$. Then show $\gamma\in\RR$
     and $\gamma=\sup A$.
-  \item For $\alpha,\beta\in\rr$, define the sum $\alpha+\beta$ to be the set
+  \item For $\alpha,\beta\in\RR$, define the sum $\alpha+\beta$ to be the set
     of all sums $r+s$ where $r\in\alpha$ and $s\in\beta$. Define
-    $0^*=\{t\in\qq:t<0\}$ then show axioms for addition in fields hold for
-    $\rr$, and that $0^*$ is the additive identity.
-  \item Show that if $\alpha,\beta,\gamma\in\rr$ and $\beta<\gamma$, then
-    $\alpha+\beta<\alpha+\gamma$. This is part of showing that $\rr$ is an
+    $0^*=\{t\in\QQ:t<0\}$ then show axioms for addition in fields hold for
+    $\RR$, and that $0^*$ is the additive identity.
+  \item Show that if $\alpha,\beta,\gamma\in\RR$ and $\beta<\gamma$, then
+    $\alpha+\beta<\alpha+\gamma$. This is part of showing that $\RR$ is an
     ordered field.
-  \item For $\alpha,\beta\in\rr$, where $\alpha>0^*$ and $\beta>0^*$, define
-    the product $\alpha\beta$ to be $\{p\in\qq:q\le rs,\ r\in\alpha,\
+  \item For $\alpha,\beta\in\RR$, where $\alpha>0^*$ and $\beta>0^*$, define
+    the product $\alpha\beta$ to be $\{p\in\QQ:q\le rs,\ r\in\alpha,\
     s\in\beta,\ r>0,\ s>0\}$. Note that $\alpha\beta>0^*$ if $\alpha>0^*$ and
-    $\beta>0^*$, which is part of showing that $\rr$ is an ordered field.
-  \item Extend the definition of multiplication to all of $\rr$ by setting, for
-    all $\alpha,\beta\in\rr$, $\alpha0^*=0^*\alpha=0^*$ and
+    $\beta>0^*$, which is part of showing that $\RR$ is an ordered field.
+  \item Extend the definition of multiplication to all of $\RR$ by setting, for
+    all $\alpha,\beta\in\RR$, $\alpha0^*=0^*\alpha=0^*$ and
     $$\alpha\beta=\begin{cases}
       (-\alpha)(-\beta) & \alpha<0^*, \beta<0^*\\
       -[(-\alpha)(\beta)] & \alpha<0^*, \beta>0^*\\
       -[(\alpha)(-\beta)] & \alpha>0^*, \beta<0^*
     \end{cases}$$
     then prove the distributive law.
-  \item Associate to each $r\in\qq$ the real number $r^*=\{t\in\qq:t<r\}$ and
-    let $\qq^*=\{r^*:r\in\qq\}$. These are the rational cuts in $\rr$.
-  \item Show that $\qq$ is isomorphic to $\qq^*$ as ordered fields.
+  \item Associate to each $r\in\QQ$ the real number $r^*=\{t\in\QQ:t<r\}$ and
+    let $\QQ^*=\{r^*:r\in\QQ\}$. These are the rational cuts in $\RR$.
+  \item Show that $\QQ$ is isomorphic to $\QQ^*$ as ordered fields.
 \end{enumerate}
 
 \section*{Properties of Real Numbers}
@@ -122,22 +116,22 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{thm}
 
 \begin{thm}
-  If $x,y\in\rr$, and $x>0$, then there is a positive integer $n$ such that
-  $nx>y$. This is called the \define{Archimedean property} of $\rr$.
+  If $x,y\in\RR$, and $x>0$, then there is a positive integer $n$ such that
+  $nx>y$. This is called the \define{Archimedean property} of $\RR$.
 \end{thm}
 
 \begin{pf}
-  Let $A=\{nx:n\in\zz^+\}$ and suppose the Archimedean property is false. Then
+  Let $A=\{nx:n\in\ZZ^+\}$ and suppose the Archimedean property is false. Then
   $y$ would be an upper bound of $A$. But then $A$ would have a least upper
   bound. Say $\alpha=\sup A$. Since $x>0$, $\alpha-x<\alpha$, and $\alpha-x$ is
-  not an upper bound. Thus, $\alpha-x<mx$ for some $m\in\zz^+$. But then
+  not an upper bound. Thus, $\alpha-x<mx$ for some $m\in\ZZ^+$. But then
   $\alpha<(m+1)x$, which contradicts the fact that $\alpha$ is an upper bound
   of $A$. Thus, the Archimedean property must be true.
 \end{pf}
 
 \begin{thm}
-  If $x,y\in\rr$ and $x<y$, then there exists $p\in\qq$ such that $x<p<y$. We
-  say that $\qq$ is \define{dense} in $\rr$.
+  If $x,y\in\RR$ and $x<y$, then there exists $p\in\QQ$ such that $x<p<y$. We
+  say that $\QQ$ is \define{dense} in $\RR$.
 \end{thm}
 
 \begin{thm}
@@ -147,7 +141,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 
 \begin{pf}
   There is at most one since $0<y_1<y_2$ implies $y_1^n<y_2^n$. Let
-  $E=\{t\in\rr:t>0,t^n<x\}$. Then $E$ is nonempty since
+  $E=\{t\in\RR:t>0,t^n<x\}$. Then $E$ is nonempty since
   $t=\frac{x}{1+x}\implies0<t<1\implies t^n<t<x\implies t\in E$. We also know
   $E$ is bounded above since $t>1+x\implies t^n>t>x\implies t\notin E$ and $t$
   is an upper bound. Define $y=\sup E$. We can then show that $y^n<x$ and
@@ -167,13 +161,13 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{defi}
 
 \begin{defi}
-  Let $\nn$ denote the natural numbers $\{1,2,3,\ldots\}$, also denoted
-  $\zz^+$. For $n\in\nn$, let $J_n=\{1,2,\ldots,n\}$ and $J_0=\varnothing$. For
+  Let $\NN$ denote the natural numbers $\{1,2,3,\ldots\}$, also denoted
+  $\ZZ^+$. For $n\in\NN$, let $J_n=\{1,2,\ldots,n\}$ and $J_0=\varnothing$. For
   any set $A$,
   \begin{enumerate}
-    \item $A$ is \define{finite} if $A\sim J_n$ for some $n\in\nn\cup\{0\}$.
+    \item $A$ is \define{finite} if $A\sim J_n$ for some $n\in\NN\cup\{0\}$.
     \item $A$ is \define{infinite} if it is not finite.
-    \item $A$ is \define{countable} if $A\sim\nn$.
+    \item $A$ is \define{countable} if $A\sim\NN$.
     \item $A$ is \define{uncountable} if $A$ is neither finite nor countable.
     \item $A$ is \define{at most countable} if $A$ is finite or countable.
   \end{enumerate}
@@ -189,7 +183,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{prop}
 
 \begin{prop}
-  Let $\{E_n\}$ where $n\in\zz^+$ be a sequence of countable sets. If
+  Let $\{E_n\}$ where $n\in\ZZ^+$ be a sequence of countable sets. If
   $S=\cup_{n=1}^\infty E_n$, then $S$ is countable.
 \end{prop}
 
@@ -211,7 +205,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \begin{prop}
   Let $A$ be a countable set and $B_n$ be the set of all $n$-tuples
   $(a_1,a_2,\ldots,a_n)$ where $a_k\in A$ for $k=1,2,\ldots,n$. Then $B_n$ is
-  countable for all $n\in\nn$.
+  countable for all $n\in\NN$.
 \end{prop}
 
 \begin{thm}
@@ -237,7 +231,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 
 \begin{bdefi}
   A set $X$, whose elements we will call \define{points}, is a \define{metric
-  space} if there is a function $d:X\times X\to\rr$ such that $\forall p,q\in
+  space} if there is a function $d:X\times X\to\RR$ such that $\forall p,q\in
   X$
   \begin{enumerate}
     \item $d(p,q)>0$ if $p\ne q$, and $d(p,p)=0$.
@@ -252,8 +246,8 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{defi}
 
 \begin{note}
-  $\rr^k$ is a metric space with the usual metric $d(x,y)=|x-y|$,
-  $x,y\in\rr^k$.
+  $\RR^k$ is a metric space with the usual metric $d(x,y)=|x-y|$,
+  $x,y\in\RR^k$.
 \end{note}
 
 \begin{prop}
@@ -266,14 +260,14 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \begin{defi}
   Let $X$ be a metric space, $p\in X$, and $E\subseteq X$.
   \begin{enumerate}
-    \item Let $r\in\rr^+$. The \define{neighborhood} of $p$ with
+    \item Let $r\in\RR^+$. The \define{neighborhood} of $p$ with
       \define{radius} $r$ is the set $N_r(p)=\{q\in X:d(p,q)<r\}$.
     \item The point $p$ is a \define{limit point} of $E$ if every neighborhood
       of $p$ contains a point $q\in E$ and $q\ne p$.
     \item If $p\in E$ and $p$ is not a limit point of $E$, then $p$ is an
       \define{isolated point} of $E$.
     \item $E$ is \define{closed} if every limit point of $E$ is in $E$.
-    \item If $p\in E$ and there is an $r\in\rr^+$ such that $N_r(p)\subseteq
+    \item If $p\in E$ and there is an $r\in\RR^+$ such that $N_r(p)\subseteq
       E$, then $p$ is an \define{interior point} of $E$.
     \item $E$ is \define{open} if every point of $E$ is an interior point of
       $E$.
@@ -281,7 +275,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
       X:x\notin E\}$.
     \item $E$ is \define{perfect} if it is closed and if every point of $E$ is
       a limit point of $E$.
-    \item $E$ is \define{bounded} if there exists a number $M\in\rr^+$ and a
+    \item $E$ is \define{bounded} if there exists a number $M\in\RR^+$ and a
       point $q\in X$ such that $d(p,q)<M$ for all $p\in E$.
     \item $E$ is \define{dense} in $X$ if every point of $X$ is in $E$ or a
       limit of $E$ (or both).
@@ -294,7 +288,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 
 \begin{pf}
   Consider the neighborhood $E=N_r(p)$, and let $q\in E$. Then
-  $r-d(p,q)\in\rr^+$. For all points $s$ such that $d(q,s)<r-d(p,q)$, we have
+  $r-d(p,q)\in\RR^+$. For all points $s$ such that $d(q,s)<r-d(p,q)$, we have
   $d(p,s)\le d(p,q)+d(q,s)<d(p,q)+(r-d(p,q))=r$, implying $s\in N_r(p)$. Thus,
   $q$ is an interior point of $E$, and the result follows.
 \end{pf}
@@ -423,7 +417,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{pf}
 
 \begin{bthm}
-  Let $E$ be a subset of $\rr^k$ (viewed as a metric space with the usual
+  Let $E$ be a subset of $\RR^k$ (viewed as a metric space with the usual
   metric). The following are equivalent.
   \begin{enumerate}
     \item $E$ is closed and bounded.
@@ -433,7 +427,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{bthm}
 
 \begin{note}
-  The Heine-Borel Theorem is ``(1) if and only if (2)'' for $\rr^k$.
+  The Heine-Borel Theorem is ``(1) if and only if (2)'' for $\RR^k$.
 \end{note}
 
 \begin{note}
@@ -452,14 +446,14 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{defi}
 
 \begin{prop}
-  If $P$ is a nonempty perfect set in $\rr^k$, then $P$ is uncountable.
+  If $P$ is a nonempty perfect set in $\RR^k$, then $P$ is uncountable.
 \end{prop}
 
 \begin{pf}
   Since $P$ has limit points, we know $P$ is infinite. Suppose $P$ is countable
   and define the points of $P$ by $x_1,x_2,\ldots$. Let $V_1$ be any
   neighborhood of $x_1$. If $V_1$ has radius $r$, note that
-  $\overline{V_1}=\{y\in\rr^k:|y-x_1|\le r\}$. We will use $V_1$ to recursively
+  $\overline{V_1}=\{y\in\RR^k:|y-x_1|\le r\}$. We will use $V_1$ to recursively
   construct a sequence $\{V_n\}$ of neighborhoods as follows. Suppose $V_n$ has
   been constructed so that $V_n\cap P$ is not empty. Since every point of $P$
   is a limit point of $P$, there is a neighborhood $V_{n+1}$ such that
@@ -478,12 +472,12 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{pf}
 
 \begin{prop}
-  Let $a,b\in\rr$ and $a<b$. Then the interval $[a,b]$ is uncountable. Also,
-  $\rr$ is uncountable.
+  Let $a,b\in\RR$ and $a<b$. Then the interval $[a,b]$ is uncountable. Also,
+  $\RR$ is uncountable.
 \end{prop}
 
 \begin{note}
-  There are, however, perfect sets in $\rr$ that contain no intervals.
+  There are, however, perfect sets in $\RR$ that contain no intervals.
 \end{note}
 
 \begin{ex}
@@ -587,7 +581,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{pf}
 
 \begin{prop}
-  If $p>0$ and $\alpha\in\rr$, then
+  If $p>0$ and $\alpha\in\RR$, then
   $\lim_{n\to\infty}\frac{n^\alpha}{(1+p)^n}=0$.
 \end{prop}
 
@@ -633,7 +627,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{prop}
 
 \begin{prop}
-  In $\rr^k$, every Cauchy sequence converges.
+  In $\RR^k$, every Cauchy sequence converges.
 \end{prop}
 
 \begin{defi}
@@ -645,7 +639,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{prop}
 
 \begin{note}
-  How might we `complete' the rationals? We can think of $\rr$ as equivalences
+  How might we `complete' the rationals? We can think of $\RR$ as equivalences
   classes of Cauchy sequnces such that $\{p_n\}\sim\{q_n\}$ if and only if
   $d(p_n,q_n)\to0$.
 \end{note}
@@ -670,7 +664,7 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
 \end{prop}
 
 \begin{pf}
-  Note that $\cc$ is essentially $\rr^2$ and thus $\{s_n\}$ converges if and
+  Note that $\CC$ is essentially $\RR^2$ and thus $\{s_n\}$ converges if and
   only if it is a Cauchy sequence. Furthermore if $m\ge n-1$, then
   $d(s_m,s_{n-1})=|s_m-s_{n-1}|=|\sum_{k=n}^m a_k|$.
 \end{pf}

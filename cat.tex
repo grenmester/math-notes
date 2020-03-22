@@ -5,17 +5,9 @@
 \notetitle{Category Theory Notes}
 \notedate{\today}
 
-\NewDocumentCommand{\dom}{o}{
-  \IfNoValueTF{#1}
-    {\text{dom}}
-    {\text{dom }#1}
-}
-\NewDocumentCommand{\cod}{o}{
-  \IfNoValueTF{#1}
-    {\text{cod}}
-    {\text{cod }#1}
-}
-\newcommand{\id}[1]{\text{id}_{#1}}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\id}{id}
 \newcommand{\cat}[1]{\text{\textbf{#1}}}
 
 \begin{document}
@@ -29,9 +21,9 @@
     \define{arrows} $f, g, h, \ldots$, and two operations as follows:
     \begin{itemize}
         \item \define{Domain}, which assigns to each arrow $f$ an object
-            $a=\dom[f]$
+            $a=\dom f$
         \item \define{Codomain}, which assigns to each arrow $f$ an object
-            $b=\cod[f]$
+            $b=\cod f$
     \end{itemize}
     These operations on $f$ are usually indicated by
     \[f:a\rightarrow b\hspace{10pt}\text{or}\hspace{10pt}a\xrightarrow{f}b\]
@@ -41,11 +33,11 @@
     A \define{metacategory} is a metagraph with two additional operations:
     \begin{itemize}
         \item \define{Identity}, which assigns to each object $a$ an arrow
-            $\id{a}=1_a:a\rightarrow a$
+            $\id_a=1_a:a\rightarrow a$
         \item \define{Composition}, which assigns to each pair $\langle g,f
-            \rangle$ of arrows with $\dom[g]=\cod[f]$ an arrow $g\circ f$,
+            \rangle$ of arrows with $\dom g=\cod f$ an arrow $g\circ f$,
             called their \define{composite}, with $g\circ
-            f:\dom[f]\rightarrow\cod[g]$
+            f:\dom f\rightarrow\cod g$
     \end{itemize}
     This operation may be pictured by the diagram
     \begin{center}
@@ -93,16 +85,16 @@
     \[A\xrightarrow{\dom}O\hspace{50pt}A\xrightarrow{\cod}O\]
     The set of composable pairs of arrows is the set
     \[A\times_OA=\{\langle g,f\rangle\ |\ g,f\in A
-        \text{ and }\dom[g]=\cod[f]\}\]
+        \text{ and }\dom g=\cod f\}\]
 \end{defi}
 
 \begin{bdefi}
     A \define{category} is a directed graph with two additional functions
-    \[O\xrightarrow{\text{id}}A,\ A\times_OA\xrightarrow{\circ}A,\]
-    \[c\mapsto\text{id}_c,\ \langle g,f\rangle\mapsto g\circ f\]
+    \[O\xrightarrow{\id}A,\ A\times_OA\xrightarrow{\circ}A,\]
+    \[c\mapsto\id_c,\ \langle g,f\rangle\mapsto g\circ f\]
     called identity and composition (also written as $gf$), such that
-    \[\dom(\id\ a)=a=\cod(\id\ a),\hspace{20pt}\dom(g\circ
-    f)=\dom[f],\hspace{20pt}\cod(g\circ f)=\cod[g]\]
+    \[\dom(\id a)=a=\cod(\id a),\hspace{20pt}\dom(g\circ
+    f)=\dom f,\hspace{20pt}\cod(g\circ f)=\cod g\]
     for all objects $a\in O$ and all composable pairs of arrows $\langle
     g,f\rangle\in A\times_OA$, and such that the associativity and unit axioms
     hold.
@@ -117,7 +109,7 @@
 
 \begin{defi}
     We write
-    \[\hom(b,c)=\{f\ |\ f\text{ in }C,\dom[f]=b, \cod[f]=c\}\]
+    \[\hom(b,c)=\{f\ |\ f\text{ in }C,\dom f=b, \cod f=c\}\]
     for the set of arrows from $b$ to $c$.
 \end{defi}
 
@@ -207,7 +199,7 @@ not in the image of $T$.
 \begin{defi}
     A \define{subcategory} $S$ of a category $C$ is a collection of some of the
     objects and some of the arrows of $C$, which includes with each arrow $f$
-    both the object $\dom[f]$ and the object $\cod[f]$, with each object $s$
+    both the object $\dom f$ and the object $\cod f$, with each object $s$
     its identity arrow $1_s$ and with each pair of composable arrows
     $s\rightarrow s'\rightarrow s''$ their composite.
 \end{defi}

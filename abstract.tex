@@ -5,6 +5,10 @@
 \notetitle{Abstract Algebra Notes}
 \notedate{\today}
 
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Inn}{Inn}
+
 \begin{document}
 \begin{center}
     \vspace*{20pt}
@@ -215,7 +219,7 @@ $\frac{2\pi k}{n}$, $1\le k\le n$.
 \end{note}
 
 \begin{bdefi}
-    Let $(G,\star)$ and $(G',\ast)$ be groups. A map of sets $\hmap{G}{G'}$ is
+    Let $(G,\star)$ and $(G',\ast)$ be groups. A map of sets $\varphi:G\to G'$ is
     a \define{group homomorphism} if for all $a,b\in G$,
     $$\varphi(a\star b)=\varphi(a)\ast\varphi(b)$$
 \end{bdefi}
@@ -223,25 +227,25 @@ $\frac{2\pi k}{n}$, $1\le k\le n$.
 \begin{ex}
     The following are two very simple examples of homomorphisms.\\\\
     \textbf{Trivial Homomorphism}
-    $$\hmap{G}{G'},\varphi(g)=e,\forall g\in G$$
+    $$\varphi:G\to G',\varphi(g)=e,\forall g\in G$$
     \textbf{Identity Homomorphism}
-    $$\hmap{G}{G'},\varphi(g)=g,\forall g\in G$$
+    $$\varphi:G\to G',\varphi(g)=g,\forall g\in G$$
 \end{ex}
 
 \begin{defi}
-    If $\hmap{G}{G'}$ is a homomorphism, the \define{domain} of $\varphi$ is
+    If $\varphi:G\to G'$ is a homomorphism, the \define{domain} of $\varphi$ is
     $\text{Dom}(\varphi)=G$, the \define{codomain} of $\varphi$ is
     $\text{Codom}(\varphi)=G'$, the \define{range} or \define{image} of
     $\varphi$ is $\varphi(G)=\{\varphi(g):g\in G\}\subseteq G'$ denoted
-    $\text{Range}(\varphi)$ or $\im$.
+    $\text{Range}(\varphi)$ or $\im\varphi$.
 \end{defi}
 
 \begin{bdefi}
     A homomorphism which is bijective is called an \define{isomorphism}.
 \end{bdefi}
 
-$\hmap{G}{G'}$ is an isomorphism if and only if there exists
-$\hmap[\psi]{G'}{G}$ such that $\psi$ is a homomorphism and
+$\varphi:G\to G'$ is an isomorphism if and only if there exists
+$\psi:G'\to G$ such that $\psi$ is a homomorphism and
 $\varphi\circ\psi=1_{G'}$, $\psi\circ\varphi=1_{G}$, i.e. $\psi$ is an inverse
 homomorphism to $\varphi$. We say $G$ is isomorphic to $G'$ by $G\cong G'$ or
 $\phi:G\xrightarrow{\sim}G'$.
@@ -365,13 +369,13 @@ A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
     \begin{enumerate}
         \item $G'=G$/$\sim$, $G'$ is the quotient set of $G$ under an
           equivalence relation $\sim$.
-        \item The projection map $\hmap[\pi]{G}{G'}=G$/$\sim$ is a group
+        \item The projection map $\pi:G\to G'=G$/$\sim$ is a group
           homomorphism.
     \end{enumerate}
 \end{bdefi}
 
 \begin{defi}
-    Let $\hmap{G}{G'}$ be a homomorphism and let $g'\in G'$. The \define{fiber}
+    Let $\varphi:G\to G'$ be a homomorphism and let $g'\in G'$. The \define{fiber}
     over $g'$ is $\varphi^{-1}(g')=\{g\in G:\varphi(g)=g'\}$.
 \end{defi}
 
@@ -380,7 +384,7 @@ A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
 \end{bprop}
 
 \begin{bpf}
-    Let $\hmap{G}{G'}$ be a homomorphism, then $\varphi$ induces an equivalence
+    Let $\varphi:G\to G'$ be a homomorphism, then $\varphi$ induces an equivalence
     relation on $G$. Let $x\sim y\Leftrightarrow\varphi(x)=\varphi(y)$. But
     $\varphi$ is a group homomorphism, so
     $\varphi(x)=\varphi(y)\Leftrightarrow\varphi(x)\varphi(y)^{-1}
@@ -388,11 +392,11 @@ A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
     \varphi(xy^{-1})=1$.
     So $x\sim y\Leftrightarrow\varphi(xy^{-1})=1$. Let $K=\{g\in
     G:\varphi(g)=1\}$. Then $x\sim y\Leftrightarrow xy^{-1}\in K$. Recall
-    $K=\ker\le G$.\\\\
+    $K=\ker\varphi\le G$.\\\\
     Let $G'$ be a quotient group of $G$. Then $x\sim
     y\Leftrightarrow[x]=[y]\Leftrightarrow\pi(x)=\pi(y)$ where
-    $\hmap[\pi]{G}{G'}$ is the projection. But $\pi(x)=\pi(y)\Leftrightarrow
-    xy^{-1}\in\ker$.
+    $\pi:G\to G'$ is the projection. But $\pi(x)=\pi(y)\Leftrightarrow
+    xy^{-1}\in\ker\varphi$.
 \end{bpf}
 
 \begin{defi}
@@ -402,7 +406,7 @@ A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
 \end{defi}
 
 \begin{prop}
-    Let $\hmap{G}{G'}$ be a homomorphism and $K=\ker$. Then $xKx^{-1}\subseteq
+    Let $\varphi:G\to G'$ be a homomorphism and $K=\ker\varphi$. Then $xKx^{-1}\subseteq
     K$, $\forall x\in G$.
 \end{prop}
 
@@ -418,7 +422,7 @@ A\}\hspace{50pt}gAg^{-1}=\{gag^{-1}:a\in A\}$$
 \end{bdefi}
 
 \begin{prop}
-    $\ker\unlhd G$ for any homomorphism $\hmap{G}{G'}$.
+    $\ker\varphi\unlhd G$ for any homomorphism $\varphi:G\to G'$.
 \end{prop}
 
 \begin{bthm}
@@ -500,7 +504,7 @@ $G/N=G$/$\sim$ ($x\sim y\Leftrightarrow xN=yN$)\\
 
 Every quotient group is $G/N$ for some $N$.\\
 
-$\pi:G\rightarrow G$/$\sim$, $\ker[(\pi)]\unlhd G$, $G$/$\sim\ =G/\ker[(\pi)]$.
+$\pi:G\rightarrow G$/$\sim$, $\ker\pi\unlhd G$, $G$/$\sim\ =G/\ker\pi$.
 
 \begin{prop}
     If $H\le G$ and $G$ is abelian, then $H\unlhd G$.
@@ -518,18 +522,18 @@ These notions of quotient groups are equivalent.
 \begin{prop}
     If $\sim$ is an equivalence relation and $G$/$\sim$ is a quotient group,
     then there exists a homomorphism $\pi:G\rightarrow G$/$\sim$ and
-    $\ker[(\pi)]\unlhd G$.
+    $\ker\pi\unlhd G$.
 \end{prop}
 
 \begin{pf}
     $x\sim y\Leftrightarrow \pi(x)=\pi(y)\Leftrightarrow
-    \pi(y^{-1}x)=1\Leftrightarrow y^{-1}x\in\ker[(\pi)]\Leftrightarrow
-    x\ker[(\pi)]=y\ker[(\pi)]$.
+    \pi(y^{-1}x)=1\Leftrightarrow y^{-1}x\in\ker\pi\Leftrightarrow
+    x\ker\pi=y\ker\pi$.
 \end{pf}
 
 If $N\unlhd G$, define $x\sim y\Leftrightarrow xN=yN\Leftrightarrow y^{-1}x\in
-N$. Then, $G$/$\sim=G/N$, $[x]=xN$, $\hmap[\pi]{G}{G/N}$, $\pi(x)=xN$,
-$\ker[(\pi)]=N$.
+N$. Then, $G$/$\sim=G/N$, $[x]=xN$, $\pi:G\to G/N$, $\pi(x)=xN$,
+$\ker\pi=N$.
 
 \begin{prop}
     Every subgroup of an abelian group is a normal subgroup.
@@ -554,8 +558,8 @@ $$G=\bigcup\limits_{x\in G}xH,\ xH\cap yH=\emptyset,\ x\nsim y$$
 
 \begin{pf}
     Let $R=\{Hx:x\in G\}$ and $L=\{xH:x\in G\}$. We construct a bijection
-    $L\rightarrow R$. Define $\hmap[f]{R}{L}$ by $f(Hx)=x^{-1}H$, and define
-    $\hmap[g]{L}{R}$ by $g(xH)=Hx^{-1}$. Then $f$ and $g$ are mutually inverse.
+    $L\rightarrow R$. Define $f:R\to L$ by $f(Hx)=x^{-1}H$, and define
+    $g:L\to R$ by $g(xH)=Hx^{-1}$. Then $f$ and $g$ are mutually inverse.
     Hence $R\leftrightarrow L$.
 \end{pf}
 
@@ -581,20 +585,20 @@ $$G=\bigcup\limits_{x\in G}xH,\ xH\cap yH=\emptyset,\ x\nsim y$$
     Let $G$ be a finite group and let $a\in G$. Then, $a^{|G|}=1$.
 \end{cor}
 
-Let $\hmap{G}{G'}$ be a homomorphism. How far is $\varphi$ from an isomorphism?
+Let $\varphi:G\to G'$ be a homomorphism. How far is $\varphi$ from an isomorphism?
 How can $\varphi$ fail to be an isomorphism?
 \begin{enumerate}
-    \item $\varphi$ could fail to be injective. $(\ker\ne\{1\})$
+    \item $\varphi$ could fail to be injective. $(\ker\varphi\ne\{1\})$
     \item $\varphi$ could fail to be surjective.
 \end{enumerate}
 
 \begin{bthm}[First Isomorphism Theorem]
-    Let $\hmap{G}{G'}$ be a homomorphism. Then $\ker\unlhd G$, $\im\le G'$ and
-    $$G/\ker\cong\im$$
+    Let $\varphi:G\to G'$ be a homomorphism. Then $\ker\varphi\unlhd G$, $\im\varphi\le G'$ and
+    $$G/\ker\varphi\cong\im\varphi$$
 \end{bthm}
 
 \begin{prop}
-    There exists an isomorphism $\hmap[\theta]{G/\ker}{\im}$ such that
+    There exists an isomorphism $\theta:G/\ker\varphi\to \im\varphi$ such that
     \begin{center}
         \begin{tikzcd}[column sep={8em,between origins}, row sep=6em, every
           matrix/.append style={name=m}, execute at end picture={
@@ -603,7 +607,7 @@ How can $\varphi$ fail to be an isomorphism?
             }]
             G \arrow[r, "\varphi"] \arrow[d, "\pi"] & G' \arrow[d,
             hookleftarrow, "\iota"] \\
-            G/\ker \arrow[r, "\theta"] & \im
+            G/\ker\varphi \arrow[r, "\theta"] & \im\varphi
         \end{tikzcd}
     \end{center}
     The curved arrow in the middle means the diagram is commutative, i.e.
@@ -611,18 +615,18 @@ How can $\varphi$ fail to be an isomorphism?
 \end{prop}
 
 \begin{pf}
-    Define $\hmap[\theta]{G/\ker}{\im}$ by $\theta(x\ker)=\varphi(x)$.\\\\
-    First we show that $\theta$ is well-defined. Suppose $x\ker=y\ker$. Then,
+    Define $\theta:G/\ker\varphi\to \im\varphi$ by $\theta(x\ker\varphi)=\varphi(x)$.\\\\
+    First we show that $\theta$ is well-defined. Suppose $x\ker\varphi=y\ker\varphi$. Then,
     \begin{align*}
-        x\ker=y\ker&\Leftrightarrow y^{-1}x\ker=\ker\\
-                   &\Leftrightarrow y^{-1}x\in\ker\\
+        x\ker\varphi=y\ker\varphi&\Leftrightarrow y^{-1}x\ker\varphi=\ker\varphi\\
+                   &\Leftrightarrow y^{-1}x\in\ker\varphi\\
                    &\Leftrightarrow \varphi(y^{-1}x)=1\\
                    &\Leftrightarrow \varphi(y)^{-1}\varphi(x)=1\\
                    &\Leftrightarrow \varphi(x)=\varphi(y)\\
-                   &\Leftrightarrow \theta(x\ker)=\theta(y\ker)
+                   &\Leftrightarrow \theta(x\ker\varphi)=\theta(y\ker\varphi)
     \end{align*}
     Thus, $\theta$ is well-defined.\\\\
-    Then, we show that $\theta$ is a homomorphism. Let $K=\ker$.
+    Then, we show that $\theta$ is a homomorphism. Let $K=\ker\varphi$.
     \begin{align*}
         \theta(xKyK)&=\theta(xyK)\\
                     &=\varphi(xy)\\
@@ -639,7 +643,7 @@ How can $\varphi$ fail to be an isomorphism?
                              &\Leftrightarrow xK=yK
     \end{align*}
     Thus, $\theta$ is injective.\\\\
-    Then, we show that $\theta$ is surjective. Let $y\in\im$. There exists
+    Then, we show that $\theta$ is surjective. Let $y\in\im\varphi$. There exists
     $xK\in G/K$ such that $\theta(xK)=y$. We know there exists an $x\in G$ such
     that $\varphi(x)=y$. $\theta(xK)=\varphi(x)=y$. Thus, $\theta$ is
     surjective and $\theta$ is an isomorphism.
@@ -668,31 +672,31 @@ How can $\varphi$ fail to be an isomorphism?
 
 \begin{defi}
     For any $x\in G$, the \define{inner automorphism} of $G$ induced by $x$ is
-    $\hmap[T_x]{G}{G}$ defined by $T_x(g)=xgx^{-1}$.
+    $T_x:G\to G$ defined by $T_x(g)=xgx^{-1}$.
 \end{defi}
 
 \begin{defi}
     The set of all inner automorphisms of $G$ is a group, called the
     \define{inner automorphism group}, and is denoted
-    $\text{Inn}(G)=\{\hmap[T_x]{G}{G}\mid x\in G\}$.
+    $\Inn(G)=\{T_x:G\to G\mid x\in G\}$.
 \end{defi}
 
 \begin{prop}
-    $G/Z(G)\cong\text{Inn}(G)$
+    $G/Z(G)\cong\Inn(G)$
 \end{prop}
 
 \begin{pf}
-    Consider $\hmap[\psi]{G}{\text{Inn}(G)}$ defined by $x\mapsto T_x$. Then,
-    $\psi$ is surjective, i.e. $\im[(\psi)]=\text{Inn}(G)$. We then determine
+    Consider $\psi:G\to \Inn(G)$ defined by $x\mapsto T_x$. Then,
+    $\psi$ is surjective, i.e. $\im\psi=\Inn(G)$. We then determine
     the kernel of the homomorphism.
     \begin{align*}
-        \ker[(\psi)]&=\{x\in G:\psi(x)=1_G\}\\
+        \ker\psi&=\{x\in G:\psi(x)=1_G\}\\
                     &=\{x\in G:T_x(g)=g,\ \forall g\in G\}\\
                     &=\{x\in G:xgx^{-1}=g,\ \forall g\in G\}\\
                     &=\{x\in G:xg=gx,\ \forall g\in G\}\\
                     &=Z(G)
     \end{align*}
-    By the first isomorphism theorem, $G/Z(G)\cong\text{Inn}(G)$.
+    By the first isomorphism theorem, $G/Z(G)\cong\Inn(G)$.
 \end{pf}
 
 \begin{bthm}[Third Isomorphism Theorem]
@@ -728,7 +732,7 @@ How can $\varphi$ fail to be an isomorphism?
     $b_3\in B$ such that $yb_2y^{-1}=b_3\in B$. We then get $z=b_3A$. Since
     $z=b_3A\in B/A$, $B/A\unlhd G/A$.\\\\
     Now we prove $(G/A)/(B/A)\cong(G/B)$. We define the homomorphism
-    $\hmap[\omega]{G/A}{G/B}$ such that $\omega(xA)=xB$. We show that $\omega$
+    $\omega:G/A\to G/B$ such that $\omega(xA)=xB$. We show that $\omega$
     is well-defined. If $xA=yA$, then
     \begin{align*}
         xA=yA&\Leftrightarrow y^{-1}x\in A\subseteq B\\
@@ -737,14 +741,14 @@ How can $\varphi$ fail to be an isomorphism?
              &\Leftrightarrow\omega(xA)=\omega(yA)
     \end{align*}
     We may then determine the kernel and image of the homomorphism.
-    $$\im[(\omega)]=\{xB:x\in G\}=G/B$$
-    $$\ker[(\omega)]=\{xA:\omega(xA)=B\}=\{xA:xB=B\}=\{xA:x\in B\}=B/A$$
-    By the first isomorphism theorem, $(G/A)/\ker[(\omega)]\cong\im[(\omega)]$
+    $$\im\omega=\{xB:x\in G\}=G/B$$
+    $$\ker\omega=\{xA:\omega(xA)=B\}=\{xA:xB=B\}=\{xA:x\in B\}=B/A$$
+    By the first isomorphism theorem, $(G/A)/\ker\omega\cong\im\omega$
     so $(G/A)/(B/A)\cong(G/B)$.
 \end{bpf}
 
 \begin{prop}
-    There is an isomorphism $\hmap[\theta]{(G/A)/(B/A)}{G/B}$ such that this
+    There is an isomorphism $\theta:(G/A)/(B/A)\to G/B$ such that this
     diagram commutes.
     \begin{center}
         \begin{tikzcd}[column sep={6em,between origins}, row sep=huge]
@@ -763,7 +767,7 @@ How can $\varphi$ fail to be an isomorphism?
 \end{bthm}
 
 \begin{bpf}
-    Let $\hmap{A}{AN/N}$ such that $a\mapsto aN$. Then by the first isomorphism
+    Let $\varphi:A\to AN/N$ such that $a\mapsto aN$. Then by the first isomorphism
     theorem, $(AN)/N\cong A/(A\cap N)$.
 \end{bpf}
 
@@ -781,8 +785,8 @@ How can $\varphi$ fail to be an isomorphism?
 \begin{ex}
     We look at an example of the second isomorphism theorem. Let
     $G=\mathbb{Z}$, $N=12\mathbb{Z}$, and $A=8\mathbb{Z}$.
-    $$A\cap N=\{0,\pn24,\pn48,\ldots\}=24\mathbb{Z}$$
-    $$AN=\{0,\pn4,\pn8,\ldots\}=4\mathbb{Z}$$
+    $$A\cap N=\{0,\pm24,\pm48,\ldots\}=24\mathbb{Z}$$
+    $$AN=\{0,\pm4,\pm8,\ldots\}=4\mathbb{Z}$$
     $$AN/A=4\mathbb{Z}/12\mathbb{Z}=\{0,4,8\}(\text{mod }12)$$
     $$A/(A\cap N)=8\mathbb{Z}/24\mathbb{Z}
     =\{0,8,16\}(\text{mod }24)$$
@@ -970,14 +974,14 @@ $$pq=(c_0,c_1,\ldots,c_k,0,\ldots),\ c_k=\sum_{i+j=k}a_ib_j$$
 
 \begin{bdefi}
     Let $R$ and $S$ be rings. A \define{ring homomorphism} is a map of sets
-    $\hmap{R}{S}$ such that for all $a,b\in R$,
+    $\varphi:R\to S$ such that for all $a,b\in R$,
     $$\varphi(a+b)=\varphi(a)+\varphi(b)$$
     $$\varphi(ab)=\varphi(a)\varphi(b)$$
 \end{bdefi}
 
 \begin{defi}
-    The \define{kernel} of the homomorphism $\hmap{R}{S}$ is given by
-    $$\ker=\{r\in R:\varphi(r)=0\in S\}$$
+    The \define{kernel} of the homomorphism $\varphi:R\to S$ is given by
+    $$\ker\varphi=\{r\in R:\varphi(r)=0\in S\}$$
 \end{defi}
 
 \begin{defi}
@@ -1005,14 +1009,14 @@ $$pq=(c_0,c_1,\ldots,c_k,0,\ldots),\ c_k=\sum_{i+j=k}a_ib_j$$
 \end{prop}
 
 \begin{prop}
-    If $I$ is any ideal of $R$, the map $\hmap{R}{R/I}$ defined by $r\mapsto
+    If $I$ is any ideal of $R$, the map $\varphi:R\to R/I$ defined by $r\mapsto
     r+I$ is a surjective ring homomorphism with kernel $I$.
 \end{prop}
 
 \begin{thm}[First Isomorphism Theorem for Rings]
-    If $\hmap{R}{S}$ is homomorphism of rings, then $\ker$ is an ideal of $R$,
-    $\im$ is a subring of $S$, and
-    $$R/\ker\cong\im$$
+    If $\varphi:R\to S$ is homomorphism of rings, then $\ker\varphi$ is an ideal of $R$,
+    $\im\varphi$ is a subring of $S$, and
+    $$R/\ker\varphi\cong\im\varphi$$
 \end{thm}
 
 \begin{thm}[Second Isomorphism Theorem for Rings]
