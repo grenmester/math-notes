@@ -832,4 +832,418 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
   Root Test.
 \end{ex}
 
+\section*{Properties of Convergence}
+
+\begin{defi}
+  Let $z\in\CC$ and let $\{c_n\}$ be a sequence of complex numbers. The series
+  $\sum c_nz^n$ is a (complex) \define{power series}.
+\end{defi}
+
+\begin{prop}
+  Given the power series $\sum c_nz^n$, let
+  $\alpha=\limsup_{n\to\infty}\sqrt[n]{|c_n|}$ and let $R=\frac{1}{\alpha}$
+  (where $\alpha=0\implies R=+\infty$ and $\alpha=+\infty\implies R=0$). Then
+  $\sum c_nz^n$ converges if $|z|<R$, and diverges if $|z|>R$.
+\end{prop}
+
+\begin{pf}
+  Let $a_n=c_nz^n$ and apply the Root Test. We see that
+  $$\limsup_{n\to\infty}\sqrt[n]{|a_n|}=|z|
+  \limsup_{n\to\infty}\sqrt[n]{|c_n|}=|z|\alpha=\frac{|z|}{R}$$
+  Note that if $\frac{|z|}{R}>1$ then $|z|>R$ and the series diverges.
+  Similarly, if $\frac{|z|}{R}<1$, then $|z|<R$ and the series converges.
+\end{pf}
+
+\begin{prop}
+  Given two sequences $\{a_n\}$ and $\{b_n\}$, let $A_n=\sum_{k=0}^na_k$ be the
+  $n^{\text{th}}$ partial sum of $\sum a_n$ for $n\ge0$ and $A_{-1}=0$. If
+  $0\le p\le q$, then
+  $$\sum_{n=p}^qa_nb_n=\sum_{n=p}^{q-1}A_n(b_n-b_{n+1})+A_qb_q-A_{p-1}b_p$$
+\end{prop}
+
+\begin{pf}
+  We have
+  \begin{align*}
+    \sum_{n=p}^qa_nb_n&=\sum_{n=p}^q(A_n-A_{n-1})b_n\\
+                      &=\sum_{n=p}^qA_nb_n-\sum_{n=p}^qA_{n-1}b_n\\
+                      &=\sum_{n=p}^{q-1}A_n(b_n-b_{n+1})+A_qb_q-A_{p-1}b_p
+  \end{align*}
+\end{pf}
+
+\begin{note}
+  This is a ``partial summation formula''. We will use it to understand series
+  of the form $\sum a_nb_n$.
+\end{note}
+
+\begin{prop}
+  Suppose the partial sums $A_n$ of $\sum a_n$ form a bounded sequence and
+  $b_0\ge b_1\ge b_2\ge\ldots$ and $\lim_{n\to\infty}b_n=0$. Then $\sum a_nb_n$
+  converges.
+\end{prop}
+
+\begin{pf}
+  Choose $M$ such that $|A_n|\le M$ for all $n$. Given $\epsilon>0$, there is
+  an integer $N$ such that $b_N<\frac{\epsilon}{2M}$. If $N\le p\le q$, then
+  \begin{align*}
+    \left|\sum_{n=p}^qa_nb_n\right|
+    &=\left|\sum_{n=p}^{q-1}A_n(b_n-b_{n+1})+A_qb_q-A_{p-1}b_p\right|\\
+    &\le M\left|\sum_{n=p}^{q-1}(b_n-b_{n+1})+b_q\right|+M\left|b_p\right|\\
+    &=M(2b_p)\\
+    &\le2Mb_p\\
+    &\le2Mb_N\\
+    &<\epsilon
+  \end{align*}
+  The convergence of $\sum a_nb_n$ follows from the Cauchy Criterion.
+\end{pf}
+
+\begin{prop}
+  Suppose $|c_1|\ge|c_2|\ge|c_3|\ge\ldots$, $c_{2m-1}\ge0$, $c_{2m}\le0$, and
+  $\lim_{n\to\infty}c_n=0$. Then $\sum c_n$ converges.
+\end{prop}
+
+\begin{pf}
+  Apply the previous proposition with $a_n=(-1)^{n+1}$ and $b_n=|c_n|$.
+\end{pf}
+
+\begin{defi}
+  An \define{alternating series} is a series for which $c_{2m-1}\ge0$ and
+  $c_{2m}\le0$.
+\end{defi}
+
+\begin{defi}
+  The series $\sum a_n$ is said to \define{converge absolutely} if the series
+  $\sum|a_n|$ converges.
+\end{defi}
+
+\begin{prop}
+  If $\sum a_n$ converges absolutely, then $\sum a_n$ converges.
+\end{prop}
+
+\begin{pf}
+  Convergence follows from the inequality
+  $|\sum_{k=n}^ma_k|\le\sum_{k=n}^m|a_k|$ and the Cauchy Criterion.
+\end{pf}
+
+\begin{defi}
+  If $\sum a_n$ converges but not absolutely, then we say it converges
+  \define{conditionally}.
+\end{defi}
+
+\begin{note}
+  The Comparison Test, Root Test, and Ratio Test are really tests for absolute
+  convergence. They don't give any information about conditionally convergent
+  series.
+\end{note}
+
+\begin{defi}
+  The \define{sum} of two series $\sum a_n$ and $\sum b_n$ is the series $\sum
+  d_n$ where $d_n=a_n+b_n$ for all $n$. The \define{product} of $\sum a_n$ and
+  $\sum b_n$ is the series $\sum c_n$ where
+  $c_n=a_0b_n+a_1b_{n-1}+\ldots+a_nb_0$.
+\end{defi}
+
+\begin{prop}
+  If $\sum a_n=A$ and $\sum b_n=B$, then $\sum(a_n+b_n)=A+B$ and $\sum
+  ca_n=cA$.
+\end{prop}
+
+\begin{note}
+  It is possible to take the product of two convergent series and yield a
+  series that does not converge.
+\end{note}
+
+\begin{prop}
+  Suppose $\sum a_n$ converges absolutely, $\sum a_n=A$, $\sum b_n=B$,
+  and $c_n=\sum_{k=0}^na_kb_{n-k}$, then $\sum c_n=AB$.
+\end{prop}
+
+\begin{prop}
+  If $\sum a_n=A$, $\sum b_n=B$, $\sum c_n=C$, and $c_n=a_0b_n+\ldots+a_nb_0$,
+  then $AB=C$.
+\end{prop}
+
+\begin{defi}
+  Let $\{k_n\}$ for $n=1,2,3,\ldots$ be a sequence in which every positive
+  integer appears once and only once. If $a_k'=a_{k_n}$ then we say $\sum a_n'$
+  is a \define{rearrangement} of $\sum a_n$.
+\end{defi}
+
+\begin{ex}
+  The series $1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\ldots$ converges to some
+  nonzero real number, say $A$. If we could rearrange the terms without
+  changing the limit $A$, we would see that
+  \begin{align*}
+    A&=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\frac{1}{5}-\frac{1}{6}+\ldots\\
+     &=1-\frac{1}{2}-\frac{1}{4}+\frac{1}{3}-\frac{1}{6}-\frac{1}{8}
+     +\frac{1}{5}-\frac{1}{10}-\frac{1}{12}+\ldots\\
+     &=\left(1-\frac{1}{2}\right)-\frac{1}{4}+\left(\frac{1}{3}
+     -\frac{1}{6}\right)-\frac{1}{8}+\left(\frac{1}{5}
+     -\frac{1}{10}\right)-\frac{1}{12}+\ldots\\
+     &=\frac{1}{2}-\frac{1}{4}+\frac{1}{6}-\frac{1}{8}+\frac{1}{10}
+     -\frac{1}{12}+\ldots\\
+     &=\frac{1}{2}\left(1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\frac{1}{5}
+     -\frac{1}{6}+\ldots\right)\\
+     &=\frac{1}{2}A
+  \end{align*}
+  But then $A=0$, which is a contradiction of $A\neq0$.
+\end{ex}
+
+\begin{prop}
+  Let $\sum a_n$ be a real series that converges but not absolutely. If
+  $-\infty\le\alpha\le\beta\le+\infty$, then there exists a rearrangement $\sum
+  a_n'$ with partial sums $s_n'$ such that $\liminf_{n\to\infty}s_n'=\alpha$
+  and $\limsup_{n\to\infty}s_n'=\beta$.
+\end{prop}
+
+\begin{prop}
+  If $\sum a_n$ converges absolutely, then every rearrangement of $\sum a_n$
+  converges and they all converge to the same number.
+\end{prop}
+
+\section*{Continuity}
+
+\begin{bdefi}
+  Let $X$ and $Y$ be metric space with metrics $d_X$ and $d_Y$, respectively.
+  If $p$ is a limit point of $X$, and $f:X\to Y$, then we write
+  $$\lim_{x\to p}f(x)=q$$
+  if there is a point $q\in Y$ with the following property.\\\\
+  For every $\epsilon>0$, there exists $\delta>0$ such that
+  $d_Y(f(x),q)<\epsilon$ for all $x\in X$ for which $d_X(x,p)<\delta$.\\\\
+  In this case, we say that ``the limit of $f(x)$ as $x$ approaches $p$ is
+  $a$''.
+\end{bdefi}
+
+\begin{bdefi}
+  Suppose $X$ and $Y$ are metric spaces, $p\in X$, and $f:X\to Y$. We say $f$
+  is \define{continuous at $p$} if for every $\epsilon>0$ there exists
+  $\delta>0$ such that $d_Y(f(x),f(p))<\epsilon$ for all $x\in X$ such that
+  $d_X(x,p)<\delta$.
+\end{bdefi}
+
+\begin{bdefi}
+  If $f$ is continuous at every point of $X$, then we say $f$ is
+  \define{continuous on $X$}, or simply that $f$ is \define{continuous}.
+\end{bdefi}
+
+\begin{ex}
+  Every function $f:\ZZ\to\RR$ is continuous.
+\end{ex}
+
+\begin{thm}
+  Suppose $p$ is a limit point of $X$ and $f:X\to Y$. Then $f$ is continuous at
+  $p$ if and only if $\lim_{x\to p}f(x)=f(p)$.
+\end{thm}
+
+\begin{thm}
+  Suppose $f:X\to Y$. The map $f$ is continuous on $X$ if and only if
+  $f^{-1}(V)$ is open in $X$ for every open set $V$ in $Y$.
+\end{thm}
+
+\begin{pf}
+  We first prove the forward direction then the backward direction.\\\\
+  $(\Rightarrow)$ Suppose $f$ is continuous on $X$ and $V$ is an open set of
+  $Y$. We will show every point of $f^{-1}(V)$ is an interior point of
+  $f^{-1}(V)$. Suppose $p\in X$ and $f(p)\in V$. Since $V$ is open, there
+  exists $\epsilon>0$ such that $y\in V$ if $d_X(f(p),y)<\epsilon$. Since $f$
+  is continuous on $p$, there exists $\delta>0$ such that
+  $d_Y(f(x),f(p))<\epsilon$ if $d_X(x,p)<\delta$. Thus, the neighborhood
+  $N_\delta(p)$ is contained in $f^{-1}(V)$. It follows that every point of
+  $f^{-1}(V)$ is an interior point of $f^{-1}(V)$. Thus $f^{-1}(V)$ is open as
+  desired.\\\\
+  $(\Leftarrow)$ Suppose $f^{-1}(V)$ is open in $X$ for every open set $V$ in
+  $Y$. Fix $p\in X$ and $\epsilon>0$ and let $V=N_\epsilon(f(p))$. Then $V$ is
+  open, so $f^{-1}(V)$ is open. Hence there exists $\delta>0$ such that
+  $N_\delta(p)\subseteq f^{-1}(V)$. In other words, there exists $\delta>0$
+  such that $d_Y(f(x),f(p))<\epsilon$ for all $x\in X$ for which
+  $d_X(x,p)<\delta$. Thus $f$ is continuous at $p$. It follows that $f$ is
+  continuous on $X$.
+\end{pf}
+
+\begin{prop}
+  Suppose $f:X\to Y$. The map $f$ is continuous on $X$ if and only if
+  $f^{-1}(K)$ is closed for every closed set $K$ in $Y$.
+\end{prop}
+
+\begin{prop}
+  Suppose $X$ and $Y$ are metric spaces and that $X$ is compact. If $f:X\to Y$
+  is continuous, then $f(X)$ is compact.
+\end{prop}
+
+\begin{pf}
+  Let $\{V_\alpha\}$ be an open covering of $f(X)$. Since $f$ is continuous,
+  $\{f^{-1}(V_\alpha)\}$ is an open covering of $X$. Since $X$ is compact,
+  there are finitely many indices $\alpha_1,\alpha_2,\ldots,\alpha_n$ such that
+  $X\subseteq f^{-1}(V_{\alpha_1})\cup\ldots\cup f^{-1}(V_{\alpha_n})$. Thus,
+  $f(X)\subseteq V_{\alpha_1}\cup\ldots\cup V_{\alpha_n}$ implying that $f(X)$
+  is compact.
+\end{pf}
+
+\begin{ex}
+  There is no continuous map from $[0,1]$ to $\RR$.
+\end{ex}
+
+\begin{prop}
+  If $f$ is a continuous map of a compact metric space $X$ into $\RR^k$, then
+  $f(X)$ is closed and bounded.
+\end{prop}
+
+\begin{prop}
+  Suppose $f$ is a continuous real function on a compact space $X$, $M=\sup
+  f(x)$, and $m=\inf f(x)$. Then there are points $p,q\in X$ such that $f(p)=M$
+  and $f(q)=m$.
+\end{prop}
+
+\begin{prop}
+  Let $X$ and $Y$ be metric spaces and suppose $f:X\to Y$ is continuous and
+  bijective. If $X$ is compact, then $f^{-1}:Y\to X$ is continuous.
+\end{prop}
+
+\begin{pf}
+  It is enough to show that for every open set $V$ in $X$,
+  $(f^{-1})^{-1}(V)=f(V)$ is open in $Y$. Let $V$ be an open set in $X$. Then
+  $V^c$ is closed in $X$, thus $V^c$ is compact in $X$. Hence, $f(V^c)$ is
+  compact in $Y$ and is therefore closed in $Y$. Since $f$ is bijective,
+  $f(V)^c=f(V^c)$. Thus, $f(V)$ is open.
+\end{pf}
+
+\begin{defi}
+  Let $X$ and $Y$ be metric spaces and $f:X\to Y$. We say $f$ is
+  \define{uniformly continuous} on $X$ if for every $\epsilon>0$ there exists
+  $\delta>0$ such that $d_Y(f(p),f(q))<\epsilon$ for all $p,q\in X$ for which
+  $d_X(p,q)<\delta$.
+\end{defi}
+
+\begin{prop}
+  Let $X$ and $Y$ be metric spaces and suppose $f:X\to Y$ is continuous. If $X$
+  is compact, then $f$ is uniformly continuous.
+\end{prop}
+
+\section*{Derivatives}
+
+\begin{bdefi}
+  Let $f$ be a real-valued function on $[a,b]$. For any $x\in[a,b]$, define
+  $$f'(x)=\lim_{t\to x}\frac{f(t)-f(x)}{t-x}$$
+  provided that the limit exists. Then $f'$ is called the \define{derivative}
+  of $f$. If $f'$ is defined on $x$, then $f$ is \define{differentiable at
+  $x$}. If $f'$ is defined at every point $x\in E\subseteq[a,b]$, then $f$ is
+  \define{differentiable on $E$}.
+\end{bdefi}
+
+\begin{thm}
+  Let $f$ be a function on $[a,b]$. If $f$ is differentiable at $x\in[a,b]$,
+  then $f$ is continuous at $x$.
+\end{thm}
+
+\begin{prop}
+  If $f:[a,b]\to\RR$, $f:[a,b]\to\RR$, and $f$ and $g$ are both differentiable,
+  then $fg$ is differentiable.
+\end{prop}
+
+\begin{pf}
+  We first note that $fg(t)-fg(x)=(f(t)-f(x))g(x)+f(t)(g(t)-g(x))$. Then we
+  observe that
+  $$\lim_{t\to x}\frac{fg(t)-fg(x)}{t-x}=\lim_{t\to x}\frac{f(t)-f(x)}{t-x}
+  g(x)+\lim_{t\to x}f(t)\frac{g(t)-g(x)}{t-x}$$
+  Thus, $(fg)'(x)=f'(x)g(x)+f(x)g'(x)$.
+\end{pf}
+
+\begin{note}
+  Similar properties hold for the sum and quotient of two functions. The proof
+  and derivation are similar.
+\end{note}
+
+\begin{note}
+  Because you know the derivative of $f(x)=c$ and $f(x)=x$, you can use the
+  product rule, sum rule, and induction to show that the derivatives of
+  polynomials are what you know they are. You induct by using the identity
+  $$a_nx^n+\ldots+a_1x+a_0=x(a_nx^{n-1}+\ldots+a_2x+a_1)+a_0$$
+\end{note}
+
+\begin{thm}[Generalized Mean Value Theorem]
+  If $f$ and $g$ are continuous real functions on a closed interval $[a,b]$
+  which are differentiable in $(a,b)$, then there is a point $x\in(a,b)$ such
+  that
+  $$[f(b)-f(a)]g'(x)=[g(b)-g(a)]f'(x)$$
+\end{thm}
+
+\begin{pf}
+  Define $h:[a,b]\to\RR$ by setting $h(t)=[f(b)-f(a)]g(t)-[g(b)-g(a)]f(t)$.
+  Then $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Also,
+  $h(a)=f(b)g(a)-f(a)g(b)=h(b)$. The theorem will follow if we show that
+  $h'(x)=0$ for some $x\in(a,b)$. If $h$ is constant then we are done. If
+  $h(t)>h(a)$ for some $t\in(a,b)$, then let $x$ be a point in $(a,b)$ at which
+  $h$ attains its maximum (by the compactness of $[a,b]$). Thus, $h'(x)=0$. If
+  $h(t)<h(a)$ for some $t\in(a,b)$, then the same result holds by using the
+  minimum of $h$.
+\end{pf}
+
+\begin{thm}[Mean Value Theorem]
+  If $f$ is real and continuous on $[a,b]$ and differentiable on $(a,b)$, then
+  there is a point $x\in(a,b)$ at which
+  $$f(b)-f(a)=f'(x)(b-a)$$
+\end{thm}
+
+\begin{cor}
+  Suppose $f$ is differentiable on $(a,b)$.
+  \begin{enumerate}
+    \item $f'(x)\ge0$ for all $x\in(a,b)\implies$ $f$ is monotonically
+      increasing.
+    \item $f'(x)=0$ for all $x\in(a,b)\implies$ $f$ is constant.
+    \item $f'(x)\le0$ for all $x\in(a,b)\implies$ $f$ is monotonically
+      decreasing.
+  \end{enumerate}
+\end{cor}
+
+\begin{prop}
+  Suppose $f$ is a real differentiable function on $[a,b]$. If
+  $f'(a)<\lambda<f'(b)$, there is a point $x\in(a,b)$ such that
+  $f'(x)=\lambda$.
+\end{prop}
+
+\begin{pf}
+  Set $g(t)=f(t)-\lambda t$. Then $g'(a)=f'(a)-\lambda<0$ so $g(t_1)<g(a)$ for
+  some $t_1\in(a,b)$. Also, $g'(b)=f'(b)-\lambda>0$ so $g(t_2)<g(b)$ for some
+  $t_2\in(a,b)$. Thus, we know $g$ attains its minimum on $[a,b]$ at some point
+  $x\in(a,b)$. Thus, $g'(x)=0$ and $f'(x)=\lambda$.
+\end{pf}
+
+\begin{thm}[Taylor's Theorem]
+  Suppose $f$ is a real function on $[a,b]$, $n$ is a positive integer,
+  $f^{(n-1)}$ is continuous on $[a,b]$, and $f^{(n)}(t)$ exists for all
+  $t\in(a,b)$. Let $\alpha,\beta\in[a,b]$ where $\alpha\neq\beta$ and define
+  \begin{align*}
+    P_{n-1}(t)&=f(\alpha)+f'(\alpha)(t-\alpha)+\frac{1}{2!}f''(\alpha)
+  (t-\alpha)^2+\ldots+\frac{1}{(n-1)!}f^{(n-1)}(\alpha)(t-\alpha)^{n-1}\\
+              &=\sum_{k=0}^{n-1}\frac{f^{(k)}(\alpha)}{k!}(t-\alpha)^k
+  \end{align*}
+  Then there exists a point $x$ between $\alpha$ and $\beta$ such that
+  $f(\beta)=P_{n-1}(\beta)+\frac{f^{(n)}(x)}{n!}(\beta-\alpha)^n$.
+\end{thm}
+
+\begin{pf}
+  Let $M$ be the number such that $f(\beta)=P_{n-1}(\beta)+M(\beta-\alpha)^n$.
+  We want to show that $M=\frac{f^{(n)}(x)}{n!}$ for some $x$ between $\alpha$
+  and $\beta$. To do so, define $g:[a,b]\to\RR$ by setting
+  $g(t)=f(t)-P_{n-1}(t)-M(t-\alpha)^n$. Then $g^{(n)}(t)=f^{(n)}(t)-n!M$ for
+  all $t\in(a,b)$. Thus, we need to show that $g^{(n)}(x)=0$ for some $x$
+  between $\alpha$ and $\beta$. Since $P_{n-1}^{(k)}(\alpha)=f^{(k)}(\alpha)$
+  for $k=0,1,\ldots,n-1$, we have
+  $g(\alpha)=g'(\alpha)=\ldots=g^{(n-1)}(\alpha)=0$. Next note that
+  $g(\beta)=0$ so by the Mean Value Theorem, $g'(x_1)=0$ for some $x_1$ between
+  $\alpha$ and $\beta$. Since $g'(\alpha)=0$ and $g'(x_1)=0$, by the Mean Value
+  Theorem, $g''(x_2)=0$ for some $x_2$ between $\alpha$ and $x_1$. After $n$
+  such steps, we have $g^{(n)}(x_n)=0$ for some $x_n$ between $\alpha$ and
+  $x_{n-1}$. Since $x_n$ is also between $\alpha$ and $\beta$, this completes
+  the proof.
+\end{pf}
+
+\begin{note}
+  When $n=1$, this is just the Mean Value Theorem.
+\end{note}
+
+\begin{note}
+  The polynomial $P_{n-1}$ is a \define{Taylor polynomial} and we can ask
+  questions about the sequence $P_0,P_1,P_2,\ldots$ such as does it converge.
+\end{note}
+
 \end{document}
