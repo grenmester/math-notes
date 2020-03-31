@@ -1246,4 +1246,141 @@ provided that $\frac{c}{d}\neq\frac{0}{1}$.\\
   questions about the sequence $P_0,P_1,P_2,\ldots$ such as does it converge.
 \end{note}
 
+\section*{Convergence of Functions}
+
+Consider the following example of a sequence of functions $f_1,f_2,f_3,\ldots$
+where $f_n=\frac{x}{n}$ ($f_n:\RR\to\RR$). Then the picture we have is
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[<->] (-3.5, 0) -- (3.5, 0) node[right] {$x$};
+      \draw[<->] (0, -1.5) -- (0, 1.5) node[above] {$y$};
+      \draw[domain=-1.4:1.4, samples=2] plot({\x}, {\x}) node[above] {$f_1$};
+      \draw[domain=-2.8:2.8, samples=2] plot({\x}, {\x/2}) node[above] {$f_2$};
+      \draw[domain=-3.4:3.4, samples=2] plot({\x}, {\x/3}) node[above] {$f_3$};
+      \draw[domain=-3.4:3.4, samples=2] plot({\x}, {\x/4}) node[right] {$f_4$};
+    \end{tikzpicture}
+  \end{center}
+and the functions are converging ``pointwise'' to the constant function
+$f(x)=0$. Next consider the functions $f_n$ defined on $[0,\infty)$ where\\\\
+\begin{minipage}{0.4\textwidth}
+  $$f_n=\begin{cases}
+    x^n & x\in[0,1] \\
+    1 & x\in(1,\infty)
+  \end{cases}$$
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[scale=1.8]
+      \draw[->] (0, 0) -- (3.5, 0) node[right] {$x$};
+      \draw[->] (0, 0) -- (0, 1.2) node[above] {$y$};
+      \draw[domain=0:1, samples=2] plot({\x}, {\x});
+      \draw[domain=0:1, samples=30] plot({\x}, {\x^2});
+      \draw[domain=0:1, samples=30] plot({\x}, {\x^3});
+      \draw[domain=1:3.4, samples=2] plot({\x}, {1});
+      \node at (0.5,0.7) {$f_1$};
+      \node at (0.9,0.4) {$f_3$};
+    \end{tikzpicture}
+  \end{center}
+\end{minipage}\\\\
+The picture here is as shown and the limit approaches a function resembling a
+step. In this, each $f_n$ is continuous, but the pointwise limit is not
+continuous.
+
+\begin{defi}
+  A sequence of functions $\{f_n\}$ \define{converges uniformly} to a function
+  $f$ if for every $\epsilon>0$ there is an integer $N$ such that $m\ge N$
+  implies $|f_n(x)-f(x)|\le\epsilon$ for all $x\in E$.
+\end{defi}
+
+\begin{prop}[Cauchy Criterion]
+  The sequence $\{f_n\}$ converges uniformly if and only if for every
+  $\epsilon>0$ there exists an integer $N$ such that $n\ge N$ and $m\ge N$
+  implies $|f_n(x)-f_m(x)|\le\epsilon$ for all $x\in E$.
+\end{prop}
+
+\begin{thm}
+  Suppose $f_n\to f$ uniformly on a set $E$ in a metric space. Let $x$ be a
+  limit point of $E$ and suppose $\lim_{t\to x}f_n(t)=A_n$ ($n=1,2,3,\ldots$).
+  Then $\{A_n\}$ converges and $\lim_{t\to x}f(t)=\lim_{n\to\infty}A_n$. In
+  other words,
+  $$\lim_{t\to x}\lim_{n\to\infty}f_n(t)=\lim_{n\to\infty}\lim_{t\to x}f_n(t)$$
+\end{thm}
+
+\begin{pf}
+  Let $\epsilon>0$. By the uniform convergence of $\{f_n\}$, there exists an
+  $N$ such that $n\ge N$, $m\ge N$, $t\in E$ imply
+  $|f_n(t)-f_m(t)|\le\epsilon$. Letting $t\to x$ yields $|A_n-A_m|\le\epsilon$
+  when $n\ge N$ and $m\ge M$, showing that $\{A_n\}$ is a Cauchy sequence (of
+  complex numbers) and therefore converges to some $A$. Note that for $n\in\NN$
+  and $t\in E$,
+  $$|f(t)-A|\le|f(t)-f_n(t)|+|f_n(t)-A_n|+|A_n-A|$$
+  by the Triangle Inequality. Now choose $n$ such that for all $t\in E$,
+  $|f(t)-f_n(t)|\le\frac{\epsilon}{3}$ (which we can do since $f_n\to f$
+  uniformly) and such that $|A_n-A|\le\frac{\epsilon}{3}$. Then for this $n$,
+  choose a neighborhood $V$ of $x$ such that
+  $|f_n(t)-A_n|\le\frac{\epsilon}{3}$ when $t\in V\cap E$, $t\neq x$. It
+  follows that $|f(t)-A|\le\epsilon$ when $t\in V\cap E$, $t\neq x$, which is
+  equivalent to $\lim_{t\to x}f(t)=\lim_{n\to\infty}A_n$.
+\end{pf}
+
+\begin{cor}
+  If $\{f_n\}$ is a sequence of continuous functions, and if $f_n\to f$
+  uniformly, then $f$ is continuous.
+\end{cor}
+
+\begin{pf}
+  By the previous theorem, $\lim_{t\to x}f_n(t)=A_n=f_n(x)$ and $\lim_{t\to
+  x}f(t)=\lim_{n\to\infty}A_n=\lim_{n\to\infty}f_n(x)=f(x)$.
+\end{pf}
+
+\begin{defi}
+  If $X$ is a metric space, then $\SC(X)$ denotes the set of all continuous,
+  complex-valued, and bounded functions with domain $X$.
+\end{defi}
+
+\begin{defi}
+  We can associate to each $f\in\SC(X)$ its \define{supremum norm}
+  $$\|f\|=\sup_{x\in X}|f(x)|$$
+\end{defi}
+
+\begin{prop}
+  Suppose $f,g\in\SC(X)$.
+  \begin{enumerate}
+    \item $\|f\|<\infty$.
+    \item $\|f\|=0$ if and only if $f$ is the zero function.
+    \item $\|f+g\|\le\|f\|+\|g\|$.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  Define the distance between $f$ and $g$ to be $\|f-g\|$. Then $\SC(X)$ is a
+  metric space.
+\end{prop}
+
+\begin{prop}
+  A sequence $\{f_n\}$ converges to $f$ in $\SC(X)$ if and only if $f_n\to f$
+  uniformly on $X$.
+\end{prop}
+
+\begin{prop}
+  The above metric makes $\SC(X)$ into a complete metric space.
+\end{prop}
+
+\begin{pf}
+  Suppose $\{f_n\}$ is a Cauchy sequence in $\SC(X)$. Thus for every
+  $\epsilon>0$, there is an $N$ such that $\|f_n-f_m\|<\epsilon$ whenever $n\ge
+  N$ and $m\ge N$. Thus there is a function $f:X\to\CC$ to which $\{f_n\}$
+  converges uniformly. Thus $f$ is continuous. Also, $f$ is bounded since there
+  is an $n$ such that $|f(x)-f_n(x)|<1$ for all $x\in X$ and $f_n$ is bounded.
+  Hence $f\in\SC(X)$ and since $f_n\to f$ uniformly on $X$, we have
+  $\|f-f_n\|\to0$ as $n\to\infty$.
+\end{pf}
+
+\begin{thm}[Stone-Weierstrass Theorem]
+  If $f$ is a continuous complex function on $[a,b]$, then there exists a
+  sequence of polynomials $\{P_n\}$ such that $\lim_{n\to\infty}P_n(x)=f(x)$
+  uniformly on $[a,b]$. Furthermore, if $f$ is real, then $P_n$ can be taken to
+  be real.
+\end{thm}
+
 \end{document}

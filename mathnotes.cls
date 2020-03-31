@@ -10,6 +10,8 @@
 \usepackage{lastpage}
 % Font
 \usepackage{mathpazo}
+% Script fonts
+\usepackage{mathrsfs}
 % Enable colors
 \usepackage[usenames, dvipsnames, svgnames]{xcolor}
 % Boxed environments
@@ -61,6 +63,7 @@
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\SC}{\mathscr{C}}
 
 \newcommand{\pn}[1]{\left( #1 \right)}
 
